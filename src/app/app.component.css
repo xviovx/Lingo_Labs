@@ -25,16 +25,15 @@ mat-sidenav{
 }
 
 .content{
-  height: calc(100vh - 98px);
+  height: calc(100vh - 35px);
   margin: 16px;
   margin-left: 32px;
-  background-color: red;
-
-  border-radius: 5px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
 }
 
 mat-sidenav-container{
-  height: calc(100vh - 65px);
+  height: 100vh
 }
 
 .menu-button{
@@ -63,9 +62,4 @@ mat-sidenav-container{
   box-shadow: none;
 }
 
-mat-divider{
-  margin-top: 16px;
-  margin-bottom: 16px;
-  background-color: rgba(255, 255, 255, 0.5);
-}
 

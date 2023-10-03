@@ -1,0 +1,28 @@
+/*global styles*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  background-color: red;
+}
+
+.home{
+  height: 100%;
+  background-color: red;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+}
+
+
+
+
+
+
+

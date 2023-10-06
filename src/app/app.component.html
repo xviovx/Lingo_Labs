@@ -6,42 +6,41 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav="matSidenav" (mouseenter)="isHovering = true" (mouseleave)="isHovering = false">
+  <mat-sidenav #sidenav="matSidenav" (mouseenter)="onSidenavHover(true)" (mouseleave)="onSidenavHover(false)">
     <img class="logo mat-elevation-z8" src="https://i.ibb.co/y6Ljfzw/Logo.png" width="25px">
 
-    <!-- Repeat the updated button structure for each menu item -->
     <button mat-button class="menu-button" routerLink="/home">
       <div class="icon-text-wrapper">
         <mat-icon>home</mat-icon>
-        <span>Home</span>
+        <span class="icon-text" *ngIf="sidenavHovered">Home</span>
       </div>
     </button>
     
     <button mat-button class="menu-button" routerLink="/past-exercises">
       <div class="icon-text-wrapper">
         <mat-icon>assignment</mat-icon>
-        <span>Past Exercises</span>
+        <span class="icon-text" *ngIf="sidenavHovered">Past Exercises</span>
       </div>
     </button>
     
     <button mat-button class="menu-button" routerLink="/book-lesson">
       <div class="icon-text-wrapper">
         <mat-icon>book_online</mat-icon>
-        <span>Book a Lesson</span>
+        <span class="icon-text" *ngIf="sidenavHovered">Book a Lesson</span>
       </div>
     </button>
     
     <button mat-button class="menu-button" routerLink="/stats">
       <div class="icon-text-wrapper">
         <mat-icon>bar_chart</mat-icon>
-        <span>Stats</span>
+        <span class="icon-text" *ngIf="sidenavHovered">Stats</span>
       </div>
     </button>
     
     <button mat-button class="menu-button" routerLink="/chatbot">
       <div class="icon-text-wrapper">
         <mat-icon>chat</mat-icon>
-        <span>Chatbot</span>
+        <span class="icon-text" *ngIf="sidenavHovered">Chatbot</span>
       </div>
     </button>
 

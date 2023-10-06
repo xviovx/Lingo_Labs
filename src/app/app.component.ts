@@ -9,7 +9,11 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  isHovering = false;
+  sidenavHovered = false;
+
+  onSidenavHover(hovered: boolean) {
+    this.sidenavHovered = hovered;
+  }
 
   title = 'Lingo_Labs';
 

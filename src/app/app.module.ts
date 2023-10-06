@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 //materials
@@ -52,7 +52,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatOptionModule,
     FormsModule,
     CommonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent] // the first initial component

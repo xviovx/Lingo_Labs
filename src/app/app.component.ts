@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  isHovering = false;
+
   title = 'Lingo_Labs';
 
   @ViewChild(MatSidenav)

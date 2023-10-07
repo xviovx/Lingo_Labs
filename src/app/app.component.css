@@ -18,19 +18,19 @@ mat-sidenav{
   padding: 16px;
   text-align: center;
   overflow: hidden;  
+  padding-top: 45px;
 }
 
-.content{
-  height: calc(100vh - 35px);
-  margin: 16px;
-  margin-left: 32px;
+.content {
+  height: calc(100vh - 140px);
+  margin: 120px 16px 16px 32px;  /* Adjusted top margin value */
   background-color: #FFFFFF;
   border-radius: 10px;
-}
+} 
 
 mat-sidenav-container{
   height: 100vh;
-  background-color: white;
+  background: linear-gradient(to right, #BFD8FF, #28ACE2);
   overflow-x: hidden; 
 }
 

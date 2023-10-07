@@ -45,9 +45,22 @@
     </button>
 
   </mat-sidenav>
+
   <mat-sidenav-content>
+    <div class="greeting-text">
+      {{ getGreeting() }}
+    </div>
+    <div class="bell-and-profile">
+      <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+    </button>
+    <button mat-icon-button>
+        <mat-icon>account_circle</mat-icon> 
+    </button>
+    </div>
     <div class="content mat-elevation-z4">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
+  
 </mat-sidenav-container>

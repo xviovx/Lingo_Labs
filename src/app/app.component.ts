@@ -11,7 +11,22 @@ import { Router } from '@angular/router';
 })
 
 export class AppComponent {
-
+  getGreeting(): string {
+    switch (this.router.url) {
+      case '/home':
+        return 'Welcome, Gringo! 👋🏻';
+      case '/past-exercises':
+        return 'View your Past Exercises here!';
+      case '/book-lesson':
+        return 'Ready to book a new Lesson?';
+      case '/stats':
+        return 'Check out your Stats!';
+      case '/chatbot':
+        return 'Chat with our Bot!';
+      default:
+        return '';
+    }
+  }
   
   sidenavHovered = false;
 

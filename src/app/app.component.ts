@@ -2,13 +2,17 @@ import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
+
+  
   sidenavHovered = false;
 
   onSidenavHover(hovered: boolean) {
@@ -20,9 +24,10 @@ export class AppComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
-  constructor(public observer: BreakpointObserver) {
-
-  }
+  constructor(
+    public observer: BreakpointObserver,
+    public router: Router
+    ) {}
 
   ngAfterViewInit() {
     this.observer.observe(['(max-width:800px)']).subscribe((res) => {

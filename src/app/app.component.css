@@ -59,9 +59,15 @@ mat-sidenav-container{
   overflow: hidden;
 }
 
-.menu-button.active, .menu-button:hover {
+.menu-button:hover {
   background-color: white;
   color: #1C3C6D;
+}
+
+.menu-button.active {
+  background-color: white;
+  color: #1C3C6D;
+  border: 6px solid #07FFD1;
 }
 
 .menu-button.active mat-icon, .menu-button:hover mat-icon {

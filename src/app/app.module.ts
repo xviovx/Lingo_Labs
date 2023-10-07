@@ -22,6 +22,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatOptionModule} from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 //components
 import { HomeComponent } from './pages/home/home.component';
@@ -53,7 +54,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     CommonModule,
     MatTooltipModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent] // the first initial component

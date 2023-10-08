@@ -28,9 +28,24 @@
             <div class="scroll-container">
                 <!-- Repeat this sub-container for each exercise item -->
                 <div class="sub-container-one">
-                    <h1 class="exercise-level">General English (A2)</h1>
-                    <h4 class="exercise-details">Book 1, Step 2, Unit 3.1</h4>
-                </div>
+                    <div class="text-container">
+                        <h1 class="exercise-level">General English (A2)</h1>
+                        <h4 class="exercise-details">Book 1, Step 2, Unit 3.1</h4>
+                    </div>
+                    <div class="progress-container">
+                        <label>Exercise Completion</label>
+                        <mat-progress-bar
+                            mode="determinate"
+                            [value]="progressValue">
+                        </mat-progress-bar>
+                        <label style="text-align: center;">50%</label>
+                    </div>
+                    <button mat-raised-button class="continue-button">
+                        <mat-icon>play_arrow</mat-icon> 
+                        Continue
+                    </button>
+                </div>                
+                
                 <div class="sub-container-one"></div>
                 <div class="sub-container-one"></div>
                 <div class="sub-container-one"></div>
@@ -42,7 +57,7 @@
     <div class="right-section">
         <h1>Progress</h1>
         <h4>Until the next level</h4>
-        <div class="progress-container">
+        <div class="progress-container-one">
             <mat-progress-bar
                 mode="determinate"
                 [value]="progressValue"

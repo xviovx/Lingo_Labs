@@ -36,12 +36,26 @@
 .sub-container-one {
     background-color: #0093FF;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     height: 18vh;
     border-radius: 10px;
     position: relative;
     padding-left: 15px;
     padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  /* This line ensures vertical centering */
+    flex-direction: row; /* Ensures that the elements are laid out in a row */
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.continue-button {
+    color: #fff;
+    background-color: #07FFD1;
 }
 
 .sub-container-one h1 {
@@ -132,12 +146,28 @@ label {
     font-size: 14px;
 }
 
-.right-section .custom-color .mat-progress-bar-fill::after {
-    background-color: #07FFD1 !important;
+.progress-container {
+    width: 30%; /* Adjust the width as necessary */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.progress-container {
-    max-width: 98%; 
+.progress-container-one {
+    width: 90%;
+}
+
+.progress-container label {
+    margin-bottom: 5px; /* Spacing between label and progress bar */
+    font-size: 12px; /* Adjust the font size as necessary */
+    color: white; /* Adjust the color as necessary */
+    text-align: center; /* Center the text */
+}
+
+mat-progress-bar {
+    width: 100%; /* Makes progress bar take the full width of its container */
+    height: 10px; /* Adjusts the height of the progress bar */
 }
 
 .info-icon {

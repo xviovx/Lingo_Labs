@@ -46,10 +46,25 @@
                     </button>
                 </div>                
                 
-                <div class="sub-container-one"></div>
-                <div class="sub-container-one"></div>
-                <div class="sub-container-one"></div>
-                <div class="sub-container-one"></div>
+                <div class="sub-container-one-unstarted">
+                    <div class="text-container">
+                        <h1 class="exercise-level">General English (A2)</h1>
+                        <h4 class="exercise-details">Book 1, Step 2, Unit 3.2</h4>
+                    </div>
+                    <div class="progress-container">
+                        <label>Exercise Completion</label>
+                        <mat-progress-bar
+                            mode="determinate"
+                            [value]="0">
+                        </mat-progress-bar>
+                        <label style="text-align: center;">0%</label>
+                    </div>
+                    <button mat-raised-button class="continue-button" [disabled]="isDisabled">
+                        <mat-icon>play_arrow</mat-icon> 
+                        Start
+                    </button>                    
+                </div>
+
             </div>
         </div>
     </div>

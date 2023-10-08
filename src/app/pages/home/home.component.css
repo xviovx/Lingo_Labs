@@ -36,6 +36,22 @@
 .sub-container-one {
     background-color: #0093FF;
     padding: 10px;
+    margin-bottom: 25px;
+    height: 18vh;
+    border-radius: 10px;
+    position: relative;
+    padding-left: 15px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  /* This line ensures vertical centering */
+    flex-direction: row; /* Ensures that the elements are laid out in a row */
+}
+
+.sub-container-one-unstarted {
+    background-color: #cccccc; /* a grey color */
+    opacity: 0.5; /* 50% opacity */
+    padding: 10px;
     margin-bottom: 10px;
     height: 18vh;
     border-radius: 10px;
@@ -55,10 +71,11 @@
 
 .continue-button {
     color: #fff;
-    background-color: #07FFD1;
+    background-color: #2ad1b3;
+    margin-right: 5px;
 }
 
-.sub-container-one h1 {
+.sub-container-one-unstarted h1, .sub-container-one h1 {
     font-family: 'Roboto', '';
     font-weight: 700;
     font-size: 18px;
@@ -69,7 +86,7 @@
     margin-top: 12px;
 }
 
-.sub-container-one h4 {
+.sub-container-one-unstarted h4, .sub-container-one h4 {
     font-family: 'Poppins', 'sans-serif';
     font-weight: 400;
     font-size: 11px;

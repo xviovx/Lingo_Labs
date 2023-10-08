@@ -8,4 +8,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 })
 export class HomeComponent {
   progressValue = 50;
+
+  isDisabled = true;
 }

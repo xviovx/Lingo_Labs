@@ -1,7 +1,5 @@
 <div class="container">
-    <!-- Left Section -->
     <div class="left-section">
-        <!-- Stats Section -->
         <div class="stats-section">
             <h1>Stats</h1>
             <div class="sub-container">
@@ -22,11 +20,9 @@
                 </div>
             </div>                        
         </div>
-        <!-- Exercises Section -->
         <div class="exercises-section">
             <h1>Exercises</h1>
             <div class="scroll-container">
-                <!-- Repeat this sub-container for each exercise item -->
                 <div class="sub-container-one">
                     <div class="text-container">
                         <h1 class="exercise-level">General English (A2)</h1>
@@ -59,16 +55,18 @@
                         </mat-progress-bar>
                         <label style="text-align: center;">0%</label>
                     </div>
-                    <button mat-raised-button class="continue-button" [disabled]="isDisabled">
-                        <mat-icon>play_arrow</mat-icon> 
-                        Start
-                    </button>                    
+                    <button mat-raised-button 
+                        class="continue-button" 
+                        [disabled]="isDisabled"
+                        [ngClass]="{'red-button': isDisabled}">
+                            <mat-icon>play_arrow</mat-icon> 
+                            Start
+                    </button>                   
                 </div>
 
             </div>
         </div>
     </div>
-    <!-- Right Section -->
     <div class="right-section">
         <h1>Progress</h1>
         <h4>Until the next level</h4>

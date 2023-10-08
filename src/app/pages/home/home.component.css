@@ -263,3 +263,59 @@ mat-progress-bar {
     font-weight: bold;
     color: #fff;
 }
+
+
+/*MOBILE VIEW*/
+
+/*-----NEEDS WORK!------*/
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left-section, .right-section {
+        flex: none;
+        width: 100%;
+    }
+
+    .stats-section {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .stats-section h1, .exercises-section h1 {
+        font-size: 14px;
+    }
+
+    .sub-container, .sub-container-one, .sub-container-one-unstarted {
+        height: auto;
+    }
+
+    .exercises-section {
+        height: auto;
+    }
+
+    .progress-container {
+        width: 100%;
+    }
+
+    .progress-container-one {
+        width: 100%;
+    }
+
+    .custom-progress-bars {
+        width: 100%;
+    }
+
+    .progress-label {
+        width: auto;
+        margin-right: 10px;
+    }
+
+    .info-icon {
+        position: relative;
+        top: auto;
+        right: auto;
+    }
+}

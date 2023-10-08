@@ -23,16 +23,19 @@ import {MatOptionModule} from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatRadioModule } from '@angular/material/radio';
 
 //components
 import { HomeComponent } from './pages/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ChatbotComponent } from './pages/chatbot/chatbot.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    ChatbotComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     MatTooltipModule,
     ReactiveFormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent] // the first initial component

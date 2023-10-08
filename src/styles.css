@@ -12,34 +12,30 @@ body{
   font-family: 'Roboto', sans-serif;
   background-color: white;
 }
-/*SCROLL BAR STYLES*/
 
-/* This will style the scrollbar for Chrome, Safari and newer versions of Opera */
 ::-webkit-scrollbar {
-  width: 12px;  /* width of the entire scrollbar */
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #f9f9f9;  /* color of the tracking area */
+  background-color: #f9f9f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #61C2FF;  /* color of the scroll thumb */
-  border-radius: 6px;  /* roundness of the scroll thumb */
-  border: 2px solid #f9f9f9;  /* creates padding around scroll thumb */
+  background-color: #61C2FF;
+  border-radius: 6px;
+  border: 2px solid #f9f9f9;
 }
 
-/* This will style the scrollbar for Internet Explorer, Edge, and Firefox */
 body {
-  scrollbar-width: thin;  /* "auto" or "thin"  */
-  scrollbar-color: #61C2FF #f9f9f9;  /* scroll thumb color | track color */
+  scrollbar-width: thin;
+  scrollbar-color: #61C2FF #f9f9f9;
 }
-
 
 ::ng-deep .mat-progress-bar {
-  height: 10px;  /* Set the height of the progress bar */
+  height: 10px;
 }
 
 ::ng-deep .mat-progress-bar-fill::after {
-  background-color: red;  /* Change the color of the progress bar fill */
+  background-color: red;
 }

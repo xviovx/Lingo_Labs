@@ -1,16 +1,20 @@
+.custom-radio-button,
+.custom-radio-button * {
+    box-sizing: border-box;
+}
+
 .custom-radio-button {
     display: inline-flex;
     align-items: center;
     cursor: pointer;
-    margin-bottom: 10px; /* space between radio buttons */
 }
 
 .custom-radio-button input {
-    position: absolute;
+    position: static; /* Changed from absolute to static */
     opacity: 0;
     cursor: pointer;
-    width: 100%;
-    height: 100%;
+    width: auto; /* Changed from 100% to auto */
+    height: auto; /* Changed from 100% to auto */
     margin: 0;
     padding: 0;
     z-index: 1;

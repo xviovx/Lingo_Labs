@@ -17,24 +17,32 @@
     </div>
 
     <div class="chat-and-info-container">
+        <!-- ... other parts of your HTML ... -->
+
         <div class="chat-container">
             <div class="chat-history" id="chat-history">
-                <!-- Chatbot message -->
                 <div class="chat-message chat-message-bot">
+                    <div class="chat-icon">
+                        <mat-icon>chat_bubble_outline</mat-icon>
+                    </div>
                     <div class="chat-message-content">Hello! How can I assist you today?</div>
+                    <div class="star-icon" onclick="toggleStar(this)">
+                        <mat-icon>star_border</mat-icon>
+                    </div>
                 </div>
-                <!-- User message -->
                 <div class="chat-message chat-message-user">
+                    <i class="material-icons user-icon">account_circle</i>
                     <div class="chat-message-content">Hi! I need help with my account.</div>
                 </div>
-                <!-- ... more messages ... -->
             </div>
-            <!-- Message input field -->
             <div class="chat-input">
                 <input type="text" id="chat-input-field" placeholder="Type your message here..." />
                 <button id="send-button">Send</button>
             </div>
         </div>
+
+<!-- ... other parts of your HTML ... -->
+
 
         <div class="info-container">
             <!-- Your new container content here -->

@@ -50,19 +50,37 @@
 
 /*CHATTT STYLESESSS*/
 
+.content-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.chat-and-info-container {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
 .chat-container {
-    width: 100%;
-    max-width: 800px;
-    height: 60vh;
+    width: 60%;
+    height: 68vh;
     border: 1px solid #ccc;
-    margin: 0;
-    margin-left: 25px;
-    margin-top: 25px;
+    margin-right: 20px;
     display: flex;
     flex-direction: column;
     background-color: #f9f9f9;
-    box-sizing: border-box; 
-    overflow: hidden; 
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.info-container {
+    width: 40%;
+    height: 68vh;
+    background-color: blue;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .chat-history {
@@ -116,11 +134,14 @@
 
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
-    .chat-container {
+    .chat-and-info-container {
+        flex-direction: column;
+    }
+
+    .chat-container,
+    .info-container {
         width: 100%;
-        max-width: none;
-        height: 100vh; 
-        margin: 0; 
+        margin-right: 0;
+        margin-bottom: 20px;
     }
 }
-

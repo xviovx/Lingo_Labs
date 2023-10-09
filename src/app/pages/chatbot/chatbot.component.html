@@ -1,36 +1,43 @@
-<div class="custom-radio-group" style="padding-top: 20px; padding-left: 10px;">
-    <label class="custom-radio-button">
-        <input type="radio" name="options" value="1" checked>
-        <div class="outer-circle">
-            <div class="inner-circle"></div>
-        </div>
-        <span style="color: black; margin-left: 10px; font-weight: bold;">Formal</span>
-    </label>
-    <label class="custom-radio-button">
-        <input type="radio" name="options" value="2"> 
-        <div class="outer-circle">
-            <div class="inner-circle"></div>
-        </div>
-        <span style="color: black; margin-left: 10px; font-weight: bold;">Playful</span>
-    </label>
-</div>
-
-<div class="chat-container">
-    <div class="chat-history" id="chat-history">
-        <!-- Chatbot message -->
-        <div class="chat-message chat-message-bot">
-            <div class="chat-message-content">Hello! How can I assist you today?</div>
-        </div>
-        <!-- User message -->
-        <div class="chat-message chat-message-user">
-            <div class="chat-message-content">Hi! I need help with my account.</div>
-        </div>
-        <!-- ... more messages ... -->
+<div class="content-container">
+    <div class="custom-radio-group" style="padding-top: 20px; padding-left: 10px;">
+        <label class="custom-radio-button">
+            <input type="radio" name="options" value="1" checked>
+            <div class="outer-circle">
+                <div class="inner-circle"></div>
+            </div>
+            <span style="color: black; margin-left: 10px; font-weight: bold;">Formal</span>
+        </label>
+        <label class="custom-radio-button">
+            <input type="radio" name="options" value="2"> 
+            <div class="outer-circle">
+                <div class="inner-circle"></div>
+            </div>
+            <span style="color: black; margin-left: 10px; font-weight: bold;">Playful</span>
+        </label>
     </div>
-    <!-- Message input field -->
-    <div class="chat-input">
-        <input type="text" id="chat-input-field" placeholder="Type your message here..." />
-        <button id="send-button">Send</button>
+
+    <div class="chat-and-info-container">
+        <div class="chat-container">
+            <div class="chat-history" id="chat-history">
+                <!-- Chatbot message -->
+                <div class="chat-message chat-message-bot">
+                    <div class="chat-message-content">Hello! How can I assist you today?</div>
+                </div>
+                <!-- User message -->
+                <div class="chat-message chat-message-user">
+                    <div class="chat-message-content">Hi! I need help with my account.</div>
+                </div>
+                <!-- ... more messages ... -->
+            </div>
+            <!-- Message input field -->
+            <div class="chat-input">
+                <input type="text" id="chat-input-field" placeholder="Type your message here..." />
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+
+        <div class="info-container">
+            <!-- Your new container content here -->
+        </div>
     </div>
 </div>
-

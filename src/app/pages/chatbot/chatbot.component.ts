@@ -44,5 +44,10 @@ updateStarColor(): void {
     sendMessage(): void {
         
     }
+
+    onRowClick(): void {
+      console.log('Row clicked');
+    }
+    
 }
 

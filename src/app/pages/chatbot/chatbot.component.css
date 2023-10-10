@@ -160,6 +160,42 @@
 
 /*info container code*/
 
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.508);
+    padding: 10px;
+    border-radius: 15px;
+  }
+  
+  .search-icon {
+    margin-right: 10px;
+  }
+
+  .search-icon mat-icon {
+    font-size: 16px; 
+    height: 8px;
+    width: 8px;
+  }
+  
+  
+  .search-input {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #fff;
+    outline: none;
+    padding-left: 10px;
+  }
+  
+  .search-input::placeholder {
+    color: #fff;
+    opacity: 1;
+  }
+
 .info-container {
     width: calc(35% - 20px);
     height: 68vh;

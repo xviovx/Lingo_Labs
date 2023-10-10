@@ -17,19 +17,21 @@
     </div>
 
     <div class="chat-and-info-container">
-        <!-- ... other parts of your HTML ... -->
-
         <div class="chat-container">
             <div class="chat-history" id="chat-history">
                 <div class="chat-message chat-message-bot">
-                    <div class="chat-icon">
-                        <mat-icon>chat</mat-icon>
+                    <div style="display: flex; align-items: center;">
+                        <div class="chat-icon">
+                            <mat-icon>chat</mat-icon>
+                        </div>
+                        <div class="chat-message-content">
+                            Hello! How can I assist you today?
+                        </div>
                     </div>
-                    <div class="chat-message-content">Hello! How can I assist you today?</div>
                     <div class="star-icon" (click)="toggleStar()">
-                        <mat-icon [style.color]="starActive ? '#0093FF' : 'black'">{{ starActive ? 'star' : 'star_border' }}</mat-icon>
+                        <mat-icon [ngClass]="{'active': starActive}">{{ starActive ? 'star' : 'star_border' }}</mat-icon>
                     </div>
-                </div>
+                </div>                                                                              
                 <div class="chat-message chat-message-user">
                     <i class="material-icons user-icon">account_circle</i>
                     <div class="chat-message-content">Hi! I need help with my account.</div>
@@ -40,14 +42,9 @@
                 <mat-icon id="send-icon" (click)="sendMessage()">send</mat-icon>
                 <span id="char-count">0 / 1000</span>
             </div>
-            
         </div>
 
-<!-- ... other parts of your HTML ... -->
-
-
         <div class="info-container">
-            <!-- Your new container content here -->
         </div>
     </div>
 </div>

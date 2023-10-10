@@ -10,12 +10,25 @@ export class ChatbotComponent implements OnInit {
 
   ngOnInit(): void {
     this.starActive = localStorage.getItem('starActive') === 'true';
+    this.updateStarColor();
   }
 
   toggleStar(): void {
     this.starActive = !this.starActive;
     localStorage.setItem('starActive', this.starActive.toString());
+    console.log('toggleStar called, this.starActive:', this.starActive);
+    const starElement = document.querySelector('.star-icon mat-icon') as HTMLElement;
+    if (starElement) {
+      starElement.style.color = this.starActive ? '#0093FF' : 'initial';
+    }
+}
+
+updateStarColor(): void {
+  const starElement = document.querySelector('.star-icon mat-icon') as HTMLElement;
+  if (starElement) {
+    starElement.style.color = this.starActive ? '#0093FF' : 'initial';
   }
+}
 
   characterCount: number = 0;
 
@@ -27,7 +40,6 @@ export class ChatbotComponent implements OnInit {
           charCountElement.innerText = `${this.characterCount} / 1000`;
       }
   }
-  
 
     sendMessage(): void {
         

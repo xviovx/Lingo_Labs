@@ -91,7 +91,7 @@
 }
 
 .chat-message {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     padding: 10px;
     border-radius: 5px;
     display: flex;
@@ -116,6 +116,10 @@
     background-color: #ffffff;
     align-self: flex-start;
     color: black;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .chat-message-user {
@@ -131,6 +135,7 @@
     padding: 10px;
     border-top: 1px solid #ccc;
     box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+    font-family: 'Roboto';
 }
 
 #chat-input-field {
@@ -158,25 +163,6 @@
 #send-icon {
     cursor: pointer;
     color: yellow;
-}
-
-.star-container {
-    border-radius: 50%;
-    transition: background-color 0.3s ease, border 0.3s ease;
-    padding: 5px;
-    display: inline-block;
-}
-
-.star-container mat-icon {
-    transition: color 0.3s ease;
-}
-
-.star-container.active {
-    background-color: #0093FF;
-}
-
-.star-container.active mat-icon {
-    color: #ffffff;
 }
 
 /* Media Query for Mobile Devices */

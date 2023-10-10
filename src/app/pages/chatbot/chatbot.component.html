@@ -23,11 +23,11 @@
             <div class="chat-history" id="chat-history">
                 <div class="chat-message chat-message-bot">
                     <div class="chat-icon">
-                        <mat-icon>chat_bubble_outline</mat-icon>
+                        <mat-icon>chat</mat-icon>
                     </div>
                     <div class="chat-message-content">Hello! How can I assist you today?</div>
-                    <div class="star-icon" onclick="toggleStar(this)">
-                        <mat-icon>star_border</mat-icon>
+                    <div class="star-icon" (click)="toggleStar()">
+                        <mat-icon [style.color]="starActive ? '#0093FF' : 'black'">{{ starActive ? 'star' : 'star_border' }}</mat-icon>
                     </div>
                 </div>
                 <div class="chat-message chat-message-user">

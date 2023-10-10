@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="chat-input">
-                <input type="text" id="chat-input-field" placeholder="Type your message here..." (input)="updateCharacterCount($event)" maxlength="2000" />
+                <input type="text" id="chat-input-field" placeholder="Type your message here..." (input)="updateCharacterCount($event)" maxlength="1000" />
                 <mat-icon id="send-icon" (click)="sendMessage()">send</mat-icon>
                 <span id="char-count">0 / 1000</span>
             </div>

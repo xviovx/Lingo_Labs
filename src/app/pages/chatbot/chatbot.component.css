@@ -72,6 +72,7 @@
     background-color: #f9f9f9;
     box-sizing: border-box;
     overflow: hidden;
+    border-radius: 15px;
 }
 
 .chat-history {
@@ -98,6 +99,10 @@
 .chat-icon,
 .user-icon:hover {
     cursor: default;
+}
+
+.star-icon:hover{
+    cursor: pointer;
 }
 
 .chat-message-bot {

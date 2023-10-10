@@ -39,11 +39,11 @@ export class ChatbotComponent implements OnInit {
     }
   }
 
-  sendMessage(): void {
-    // message-sending code
-  }
-
   onRowClick(): void {
     console.log('Row clicked');
+  }
+
+  sendMessage(): void {
+    //add messaging functionality
   }
 }

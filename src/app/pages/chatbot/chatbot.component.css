@@ -24,7 +24,7 @@
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    border: 2px solid #6200ea; 
+    border: 2px solid #1C3C6D; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,7 +35,7 @@
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    background-color: #6200ea; 
+    background-color: #1C3C6D; 
     opacity: 0;
     transition: opacity 0.3s ease;
     position: absolute;
@@ -162,7 +162,12 @@
 
 #send-icon {
     cursor: pointer;
-    color: yellow;
+    color: rgba(0, 0, 0, 0.712);
+}
+
+#send-icon:hover {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.501);
 }
 
 /* Media Query for Mobile Devices */

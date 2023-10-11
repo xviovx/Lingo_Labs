@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OpenaiService } from 'src/app/openai.service';
 
 @Component({
   selector: 'app-chatbot',
@@ -6,6 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chatbot.component.css']
 })
 export class ChatbotComponent implements OnInit {
+  userInput: string = '';
+
+  constructor(private openaiService: OpenaiService) { }
+
+  fetchCompletion(userInput: string): void {
+    this.openaiService.getCompletion(userInput).subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.error('Error:', error);
+      }
+    );
+  }
+
   starActive = false;
   characterCount: number = 0;
 
@@ -44,6 +60,6 @@ export class ChatbotComponent implements OnInit {
   }
 
   sendMessage(): void {
-    //add messaging functionality
+    this.fetchCompletion(this.userInput); 
   }
 }

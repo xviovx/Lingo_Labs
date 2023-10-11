@@ -9,6 +9,7 @@ import { OpenaiService } from 'src/app/openai.service';
 export class ChatbotComponent implements OnInit {
   userInput: string = '';
   botMessages: string[] = [];
+  userMessages: string[] = [];
 
   constructor(private openaiService: OpenaiService) { }
 
@@ -62,6 +63,12 @@ export class ChatbotComponent implements OnInit {
   }
 
   sendMessage(): void {
-    this.fetchCompletion(this.userInput); 
+    this.fetchCompletion(this.userInput);
+    const userMessage = this.userInput;
+    if (userMessage) {
+      this.userMessages.push(userMessage); 
+      this.userInput = ''; 
+    }
   }
+  
 }

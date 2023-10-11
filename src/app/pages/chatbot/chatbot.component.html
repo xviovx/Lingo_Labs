@@ -32,9 +32,9 @@
                         <mat-icon [ngClass]="{'active': starActive}">{{ starActive ? 'star' : 'star_border' }}</mat-icon>
                     </div>
                 </div>                                                                              
-                <div class="chat-message chat-message-user">
+                <div class="chat-message chat-message-user" *ngFor="let userMessage of userMessages">
                     <i class="material-icons user-icon">account_circle</i>
-                    <div class="chat-message-content">Hi! I need help with my account.</div>
+                    <div class="chat-message-content">{{userMessage}}</div>
                 </div>
             </div>
             <div class="chat-input">

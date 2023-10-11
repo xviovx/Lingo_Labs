@@ -19,7 +19,7 @@
     <div class="chat-and-info-container">
         <div class="chat-container">
             <div class="chat-history" id="chat-history">
-                <div class="chat-message chat-message-bot">
+                <div class="chat-message chat-message-bot" *ngFor="let botMessage of botMessages">
                     <div style="display: flex; align-items: center;">
                         <div class="chat-icon">
                             <mat-icon>chat</mat-icon>

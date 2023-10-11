@@ -8,14 +8,15 @@ import { OpenaiService } from 'src/app/openai.service';
 })
 export class ChatbotComponent implements OnInit {
   userInput: string = '';
-  botMessage: string = '';
+  botMessages: string[] = [];
 
   constructor(private openaiService: OpenaiService) { }
 
   fetchCompletion(userInput: string): void {
     this.openaiService.getCompletion(userInput).subscribe(
       response => {
-        this.botMessage = response.completion;
+        const newBotMessage = response.completion;
+        this.botMessages.push(newBotMessage);
       },
       error => {
         console.error('Error:', error);

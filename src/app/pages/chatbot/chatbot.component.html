@@ -19,30 +19,36 @@
     <div class="chat-and-info-container">
         <div class="chat-container">
             <div class="chat-history" id="chat-history">
-                <div class="chat-message chat-message-bot" *ngFor="let botMessage of botMessages">
+              <div *ngFor="let message of sortedMessages">
+                <ng-container *ngIf="message.type === 'bot'">
+                  <div class="chat-message chat-message-bot">
                     <div style="display: flex; align-items: center;">
-                        <div class="chat-icon">
-                            <mat-icon>chat</mat-icon>
-                        </div>
-                        <div class="chat-message-content">
-                            {{ botMessage }}
-                        </div>
+                      <div class="chat-icon">
+                        <mat-icon>chat</mat-icon>
+                      </div>
+                      <div class="chat-message-content">
+                        {{ message.content }}
+                      </div>
                     </div>
                     <div class="star-icon" (click)="toggleStar()">
-                        <mat-icon [ngClass]="{'active': starActive}">{{ starActive ? 'star' : 'star_border' }}</mat-icon>
+                      <mat-icon [ngClass]="{'active': starActive}">{{ starActive ? 'star' : 'star_border' }}</mat-icon>
                     </div>
-                </div>                                                                              
-                <div class="chat-message chat-message-user" *ngFor="let userMessage of userMessages">
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="message.type === 'user'">
+                  <div class="chat-message chat-message-user">
                     <i class="material-icons user-icon">account_circle</i>
-                    <div class="chat-message-content">{{userMessage}}</div>
-                </div>
+                    <div class="chat-message-content">{{ message.content }}</div>
+                  </div>
+                </ng-container>
+              </div>
             </div>
             <div class="chat-input">
-                <input [(ngModel)]="userInput" type="text" id="chat-input-field" placeholder="Type your message here..." (input)="updateCharacterCount($event)" maxlength="1000" />
-                <mat-icon id="send-icon" (click)="sendMessage()">send</mat-icon>
-                <span id="char-count">0 / 1000</span>
+              <input [(ngModel)]="userInput" type="text" id="chat-input-field" placeholder="Type your message here..." (input)="updateCharacterCount($event)" maxlength="1000" />
+              <mat-icon id="send-icon" (click)="sendMessage()">send</mat-icon>
+              <span id="char-count">0 / 1000</span>
             </div>
-        </div>
+        </div>          
 
         <div class="info-container">
             <div class="info-header">

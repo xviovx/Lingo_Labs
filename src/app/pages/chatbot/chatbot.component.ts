@@ -8,29 +8,29 @@ import { OpenaiService } from 'src/app/openai.service';
 })
 export class ChatbotComponent implements OnInit {
   userInput: string = '';
-  botMessages: string[] = [];
-  userMessages: string[] = [];
+  botMessages: {content: string, timestamp: number, type: string}[] = [];
+  userMessages: {content: string, timestamp: number, type: string}[] = [];
+  starActive = false;
+  characterCount: number = 0;
 
   constructor(private openaiService: OpenaiService) { }
+
+  ngOnInit(): void {
+    this.starActive = localStorage.getItem('starActive') === 'true';
+    this.updateStarColor();
+  }
 
   fetchCompletion(userInput: string): void {
     this.openaiService.getCompletion(userInput).subscribe(
       response => {
         const newBotMessage = response.completion;
-        this.botMessages.push(newBotMessage);
+        this.botMessages.push({ content: newBotMessage, timestamp: Date.now(), type: 'bot' });
+
       },
       error => {
         console.error('Error:', error);
       }
     );
-  }
-
-  starActive = false;
-  characterCount: number = 0;
-
-  ngOnInit(): void {
-    this.starActive = localStorage.getItem('starActive') === 'true';
-    this.updateStarColor();
   }
 
   toggleStar(): void {
@@ -58,17 +58,21 @@ export class ChatbotComponent implements OnInit {
     }
   }
 
-  onRowClick(): void {
-    console.log('Row clicked');
-  }
-
   sendMessage(): void {
-    this.fetchCompletion(this.userInput);
     const userMessage = this.userInput;
     if (userMessage) {
-      this.userMessages.push(userMessage); 
-      this.userInput = ''; 
+      this.userMessages.push({ content: userMessage, timestamp: Date.now(), type: 'user' });
+      this.userInput = '';
+      this.fetchCompletion(userMessage);
     }
   }
-  
+
+  get sortedMessages() {
+    return [...this.botMessages, ...this.userMessages]
+      .sort((a, b) => a.timestamp - b.timestamp);
+  }
+
+  onRowClick(): void{
+    console.log("clicked")
+  }
 }

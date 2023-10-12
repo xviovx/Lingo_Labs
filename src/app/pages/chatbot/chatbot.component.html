@@ -73,3 +73,32 @@
         </div>  
     </div>
 </div>
+
+
+<!--
+  <div class="chat-history" id="chat-history">
+              <div *ngFor="let message of sortedMessages">
+                <ng-container *ngIf="message.type === 'bot'">
+                  <div class="chat-message chat-message-bot">
+                    <div style="display: flex; align-items: center;">
+                      <div class="chat-icon">
+                        <mat-icon>chat</mat-icon>
+                      </div>
+                      <div class="chat-message-content">
+                        {{ message.content }}
+                      </div>
+                    </div>
+                    <div class="star-icon" (click)="toggleStar()">
+                      <mat-icon [ngClass]="{'active': starActive}">{{ starActive ? 'star' : 'star_border' }}</mat-icon>
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="message.type === 'user'">
+                  <div class="chat-message chat-message-user">
+                    <i class="material-icons user-icon">account_circle</i>
+                    <div class="chat-message-content">{{ message.content }}</div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+-->

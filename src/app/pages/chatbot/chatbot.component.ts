@@ -72,6 +72,13 @@ export class ChatbotComponent implements OnInit {
       }
     }
   }
+
+  scrollToBottom(): void {
+    const chatHistory = document.querySelector('.chat-history');
+    if (chatHistory) {
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+  }
   
   sendMessage(): void {
     const userMessage = this.userInput;
@@ -84,6 +91,7 @@ export class ChatbotComponent implements OnInit {
         charCountElement.innerText = `${this.characterCount} / 1000`;
       }
       this.fetchCompletion(userMessage);
+      this.scrollToBottom();
     }
   }  
 

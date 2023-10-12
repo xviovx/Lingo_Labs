@@ -73,14 +73,12 @@ export class ChatbotComponent implements OnInit {
     }
   }
   
-
   sendMessage(): void {
     const userMessage = this.userInput;
     if (userMessage) {
       this.userMessages.push({ content: userMessage, timestamp: Date.now(), type: 'user' });
       this.userInput = '';
       this.characterCount = 0;
-      // Update charCountElement here
       const charCountElement = document.getElementById('char-count');
       if (charCountElement) {
         charCountElement.innerText = `${this.characterCount} / 1000`;

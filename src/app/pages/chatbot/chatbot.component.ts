@@ -7,14 +7,18 @@ import { ChangeDetectorRef } from '@angular/core';
   templateUrl: './chatbot.component.html',
   styleUrls: ['./chatbot.component.css']
 })
+
 export class ChatbotComponent implements OnInit {
   userInput: string = '';
-  botMessages: {content: string, timestamp: number, type: string}[] = [];
-  userMessages: {content: string, timestamp: number, type: string}[] = [];
+  botMessages: { content: string, timestamp: number, type: string }[] = [];
+  userMessages: { content: string, timestamp: number, type: string }[] = [];
   starActive = false;
   characterCount: number = 0;
 
-  constructor(private openaiService: OpenaiService, private cdRef: ChangeDetectorRef) { }
+  constructor(
+    private openaiService: OpenaiService,
+    private cdRef: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
     this.starActive = localStorage.getItem('starActive') === 'true';
@@ -33,9 +37,8 @@ export class ChatbotComponent implements OnInit {
       response => {
         const newBotMessage = response.completion;
         this.botMessages.push({ content: newBotMessage, timestamp: Date.now(), type: 'bot' });
-        
-        this.cdRef.detectChanges();
 
+        this.cdRef.detectChanges();
         this.scrollToBottom();
       },
       error => {
@@ -63,12 +66,12 @@ export class ChatbotComponent implements OnInit {
   updateCharacterCount(event: Event | KeyboardEvent): void {
     const inputElement = event.target as HTMLInputElement;
     this.characterCount = inputElement.value.length;
-    
+
     const charCountElement = document.getElementById('char-count');
     if (charCountElement) {
       charCountElement.innerText = `${this.characterCount} / 1000`;
     }
-    
+
     if ('key' in event && 'shiftKey' in event) {
       if (event.key === 'Enter' && !event.shiftKey) {
         event.preventDefault();
@@ -80,10 +83,10 @@ export class ChatbotComponent implements OnInit {
   scrollToBottom(): void {
     const chatHistory = document.querySelector('.chat-history');
     if (chatHistory) {
-        chatHistory.scrollTop = chatHistory.scrollHeight;
+      chatHistory.scrollTop = chatHistory.scrollHeight;
     }
   }
-  
+
   sendMessage(): void {
     const userMessage = this.userInput;
     if (userMessage) {
@@ -94,21 +97,19 @@ export class ChatbotComponent implements OnInit {
       if (charCountElement) {
         charCountElement.innerText = `${this.characterCount} / 1000`;
       }
-      
+
       this.cdRef.detectChanges();
-
       this.scrollToBottom();
-
       this.fetchCompletion(userMessage);
     }
-}  
+  }
 
   get sortedMessages() {
     return [...this.botMessages, ...this.userMessages]
       .sort((a, b) => a.timestamp - b.timestamp);
   }
 
-  onRowClick(): void{
+  onRowClick(): void {
     console.log("clicked")
   }
 }

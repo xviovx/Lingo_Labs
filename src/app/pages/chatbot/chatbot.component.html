@@ -30,7 +30,7 @@
                         {{ message.content }}
                       </div>
                     </div>
-                    <div class="star-icon" (click)="toggleStar()">
+                    <div class="star-icon" (click)="toggleStar()" style="margin-left: 10px;">
                       <mat-icon [ngClass]="{'active': starActive}">{{ starActive ? 'star' : 'star_border' }}</mat-icon>
                     </div>
                   </div>

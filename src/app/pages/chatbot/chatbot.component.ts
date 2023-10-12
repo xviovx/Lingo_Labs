@@ -56,23 +56,38 @@ export class ChatbotComponent implements OnInit {
     }
   }
 
-  updateCharacterCount(event: Event): void {
+  updateCharacterCount(event: Event | KeyboardEvent): void {
     const inputElement = event.target as HTMLInputElement;
     this.characterCount = inputElement.value.length;
+    
     const charCountElement = document.getElementById('char-count');
     if (charCountElement) {
       charCountElement.innerText = `${this.characterCount} / 1000`;
     }
+    
+    if ('key' in event && 'shiftKey' in event) {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        this.sendMessage();
+      }
+    }
   }
+  
 
   sendMessage(): void {
     const userMessage = this.userInput;
     if (userMessage) {
       this.userMessages.push({ content: userMessage, timestamp: Date.now(), type: 'user' });
       this.userInput = '';
+      this.characterCount = 0;
+      // Update charCountElement here
+      const charCountElement = document.getElementById('char-count');
+      if (charCountElement) {
+        charCountElement.innerText = `${this.characterCount} / 1000`;
+      }
       this.fetchCompletion(userMessage);
     }
-  }
+  }  
 
   get sortedMessages() {
     return [...this.botMessages, ...this.userMessages]

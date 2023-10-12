@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./stats.component.css'],
 })
 export class StatsComponent{
-  
+  lessonsCompleted: number = 12;
 }
 

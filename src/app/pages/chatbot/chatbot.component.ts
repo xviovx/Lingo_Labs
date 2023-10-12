@@ -18,6 +18,13 @@ export class ChatbotComponent implements OnInit {
   ngOnInit(): void {
     this.starActive = localStorage.getItem('starActive') === 'true';
     this.updateStarColor();
+
+    document.getElementById('chat-input-field')?.addEventListener('keydown', (event: KeyboardEvent) => {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        this.sendMessage();
+      }
+    });
   }
 
   fetchCompletion(userInput: string): void {

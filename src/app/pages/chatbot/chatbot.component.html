@@ -44,10 +44,10 @@
               </div>
             </div>
             <div class="chat-input">
-              <input [(ngModel)]="userInput" type="text" id="chat-input-field" placeholder="Type your message here..." (input)="updateCharacterCount($event)" maxlength="1000" />
-              <mat-icon id="send-icon" (click)="sendMessage()">send</mat-icon>
-              <span id="char-count">0 / 1000</span>
+              <input [(ngModel)]="userInput" type="text" id="chat-input-field" style="margin-bottom: 15px;" placeholder="Type your message here..." (input)="updateCharacterCount($event)" maxlength="1000" />
+              <mat-icon id="send-icon" style="margin-bottom: 15px;" (click)="sendMessage()">send</mat-icon>
             </div>
+            <span id="char-count">0 / 1000</span>
         </div>          
 
         <div class="info-container">

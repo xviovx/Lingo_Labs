@@ -78,6 +78,7 @@
 }
 
 .chat-input {
+    height: 8vh;
     display: flex;
     align-items: center;
     padding: 10px;
@@ -142,6 +143,7 @@
     border-top: 1px solid #ccc;
     box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
     font-family: 'Roboto';
+    height: 10vh;
 }
 
 #chat-input-field {
@@ -157,7 +159,8 @@
     bottom: 5px;
     left: 10px;
     font-size: 10px;
-    margin-left: 30px;
+    margin-left: 15px;
+    margin-top: 80px;
     color: #666;
 }
 
@@ -167,8 +170,11 @@
 }
 
 #send-icon {
+    width: 22px;
+    height: 22px;
     cursor: pointer;
     color: rgba(0, 0, 0, 0.712);
+    float: right;
 }
 
 #send-icon:hover {

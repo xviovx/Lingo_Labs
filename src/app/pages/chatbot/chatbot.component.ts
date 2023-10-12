@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OpenaiService } from 'src/app/openai.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-chatbot',
@@ -13,7 +14,7 @@ export class ChatbotComponent implements OnInit {
   starActive = false;
   characterCount: number = 0;
 
-  constructor(private openaiService: OpenaiService) { }
+  constructor(private openaiService: OpenaiService, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.starActive = localStorage.getItem('starActive') === 'true';
@@ -32,7 +33,10 @@ export class ChatbotComponent implements OnInit {
       response => {
         const newBotMessage = response.completion;
         this.botMessages.push({ content: newBotMessage, timestamp: Date.now(), type: 'bot' });
+        
+        this.cdRef.detectChanges();
 
+        this.scrollToBottom();
       },
       error => {
         console.error('Error:', error);
@@ -90,10 +94,14 @@ export class ChatbotComponent implements OnInit {
       if (charCountElement) {
         charCountElement.innerText = `${this.characterCount} / 1000`;
       }
-      this.fetchCompletion(userMessage);
+      
+      this.cdRef.detectChanges();
+
       this.scrollToBottom();
+
+      this.fetchCompletion(userMessage);
     }
-  }  
+}  
 
   get sortedMessages() {
     return [...this.botMessages, ...this.userMessages]

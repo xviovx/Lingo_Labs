@@ -1,3 +1,41 @@
-<h1>book lesson content</h1>
+<div class="booking-container">
+    <div class="booking-section">
+        <h2>Book a session</h2>
+        <div class="lesson-type">
+            <!-- <mat-icon>person</mat-icon>  -->
+            <span>Private Lesson</span>
+        </div>
+        <div class="input-group">
+            <label>Preferred Availability:</label>
+            <input type="date">
+        </div>
+        <div class="input-group">
+            <label>Preferred Trainer:</label>
+            <select>
+                <option>Female</option>
+                <!-- Add other options as needed -->
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Type of lessons:</label>
+            <select>
+                <option>General English</option>
+                <!-- Add other options as needed -->
+            </select>
+        </div>
+        <button>SUBMIT</button>
+    </div>
 
-
+    <div class="upcoming-section">
+        <h2>Upcoming lessons</h2>
+        <!-- <mat-icon class="more-icon">more</mat-icon> -->
+        <!-- Repeated for each lesson -->
+        <div class="lesson">
+            <h3>General English (A2)</h3>
+            <p>Discussing Experiences</p>
+            <span>2023/09/23 at 10h30</span>
+            <button class="join-btn">Join</button>
+        </div>
+        <!-- Repeat lesson div for each upcoming lesson -->
+    </div>
+</div>

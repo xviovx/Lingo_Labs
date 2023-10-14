@@ -21,7 +21,7 @@
             <div class="chat-history" id="chat-history">
               <div *ngFor="let message of sortedMessages">
                 <ng-container *ngIf="message.type === 'bot'">
-                  <div class="chat-message chat-message-bot">
+                  <div class="chat-message chat-message-bot" @messageAnimation>
                     <div style="display: flex; align-items: center;">
                       <div class="chat-icon">
                         <mat-icon>chat</mat-icon>
@@ -36,7 +36,7 @@
                   </div>
                 </ng-container>
                 <ng-container *ngIf="message.type === 'user'">
-                  <div class="chat-message chat-message-user">
+                  <div class="chat-message chat-message-user" @messageAnimation>
                     <i class="material-icons user-icon">account_circle</i>
                     <div class="chat-message-content">{{ message.content }}</div>
                   </div>

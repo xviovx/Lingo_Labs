@@ -1,11 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { OpenaiService } from 'src/app/openai.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-chatbot',
   templateUrl: './chatbot.component.html',
-  styleUrls: ['./chatbot.component.css']
+  styleUrls: ['./chatbot.component.css'],
+  animations: [
+    trigger('messageAnimation', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-100%)' }),
+        animate('300ms ease-out', style({ opacity: 1, transform: 'none' })),
+      ]),
+    ]),
+  ]
 })
 
 export class ChatbotComponent implements OnInit {

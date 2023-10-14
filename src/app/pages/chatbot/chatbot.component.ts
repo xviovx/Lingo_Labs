@@ -18,6 +18,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 
 export class ChatbotComponent implements OnInit {
+  loading: boolean = false;
   userInput: string = '';
   userLevel: string = 'A2';
   botMessages: { content: string, timestamp: number, type: string }[] = [
@@ -45,8 +46,10 @@ export class ChatbotComponent implements OnInit {
   }
 
   fetchCompletion(userInput: string): void {
+    this.loading = true;
     this.openaiService.getCompletionWithLevel(userInput, this.userLevel).subscribe(
       response => {
+        this.loading = false;
         const newBotMessage = response.completion;
         this.botMessages.push({ content: newBotMessage, timestamp: Date.now(), type: 'bot' });
 
@@ -54,6 +57,7 @@ export class ChatbotComponent implements OnInit {
         this.scrollToBottom();
       },
       error => {
+        this.loading = false;
         console.error('Error:', error);
       }
     );

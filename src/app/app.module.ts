@@ -24,6 +24,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 //components
 import { HomeComponent } from './pages/home/home.component';
@@ -59,7 +60,8 @@ import { ChatbotComponent } from './pages/chatbot/chatbot.component';
     MatTooltipModule,
     ReactiveFormsModule,
     MatProgressBarModule,
-    MatRadioModule
+    MatRadioModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent] // the first initial component

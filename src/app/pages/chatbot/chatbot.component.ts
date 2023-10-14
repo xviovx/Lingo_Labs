@@ -18,6 +18,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 
 export class ChatbotComponent implements OnInit {
+  mode: 'formal' | 'playful' = 'formal';
   loading: boolean = false;
   userInput: string = '';
   userLevel: string = 'A2';
@@ -136,4 +137,19 @@ export class ChatbotComponent implements OnInit {
   onRowClick(): void {
     console.log("clicked")
   }
+
+  handleModeChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.mode = input.value === '1' ? 'formal' : 'playful';
+    this.openaiService.changeMode(this.mode).subscribe(
+      response => {
+        console.log('Mode changed successfully', response);
+      },
+      error => {
+        console.error('Error changing mode:', error);
+      }
+    );
+  }
+  
+
 }

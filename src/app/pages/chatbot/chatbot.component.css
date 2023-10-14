@@ -84,19 +84,18 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Dim the background with a semi-transparent black */
+    background: rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1; /* Ensure the loader appears on top of the chat history */
+    z-index: 1; 
   }
   
   .chat-history {
     opacity: 1;
-    transition: opacity 0.3s ease-in-out; /* Optional: smooth transition */
+    transition: opacity 0.3s ease-in-out; 
   }
   
-  /* Optional: Dim the chat history when loading */
   .chat-container.loading .chat-history {
     opacity: 0.5;
   }

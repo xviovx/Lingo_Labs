@@ -6,7 +6,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav="matSidenav" (mouseenter)="onSidenavHover(true)" (mouseleave)="onSidenavHover(false)">
+  <mat-sidenav #sidenav="matSidenav" (mouseenter)="onSidenavHover(true)" (mouseleave)="onSidenavHover(false)" class="bubble-animation">
     <img class="logo mat-elevation-z8" src="https://i.ibb.co/y6Ljfzw/Logo.png" width="25px">
 
     <button mat-button class="menu-button" routerLink="/home" [class.active]="router.url === '/home'">

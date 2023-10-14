@@ -115,6 +115,50 @@ mat-sidenav:hover .menu-button span {
   position: relative; 
 }
 
+/*nav animation*/
+
+@keyframes riseBubble {
+  0% {
+      bottom: -10%;
+      transform: translateX(0);
+  }
+  50% {
+      transform: translateX(15px);
+  }
+  100% {
+      bottom: 110%;
+      transform: translateX(0);
+  }
+}
+
+mat-sidenav:hover::before, 
+mat-sidenav:hover::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    bottom: -10%;
+    width: 20px;
+    height: 20px;
+    background-color: #28ACE2;
+    animation-name: riseBubble;
+    animation-timing-function: linear;
+}
+
+mat-sidenav:hover::before {
+  left: 15%;
+  width: 15px;
+  height: 15px;
+  animation-duration: 6s;
+}
+
+mat-sidenav:hover::after {
+  left: 80%;
+  width: 25px;
+  height: 25px;
+  animation-duration: 5s;
+}
+
+
 
 
 

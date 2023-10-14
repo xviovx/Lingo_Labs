@@ -10,7 +10,10 @@ import { ChangeDetectorRef } from '@angular/core';
 
 export class ChatbotComponent implements OnInit {
   userInput: string = '';
-  botMessages: { content: string, timestamp: number, type: string }[] = [];
+  userLevel: string = 'A2';
+  botMessages: { content: string, timestamp: number, type: string }[] = [
+    { content: 'Hello! I am your English tutor, Polly. How may I assist you today?', timestamp: Date.now(), type: 'bot' }
+  ];
   userMessages: { content: string, timestamp: number, type: string }[] = [];
   starActive = false;
   characterCount: number = 0;
@@ -33,7 +36,7 @@ export class ChatbotComponent implements OnInit {
   }
 
   fetchCompletion(userInput: string): void {
-    this.openaiService.getCompletion(userInput).subscribe(
+    this.openaiService.getCompletionWithLevel(userInput, this.userLevel).subscribe(
       response => {
         const newBotMessage = response.completion;
         this.botMessages.push({ content: newBotMessage, timestamp: Date.now(), type: 'bot' });

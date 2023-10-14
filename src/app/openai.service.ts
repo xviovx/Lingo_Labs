@@ -10,7 +10,8 @@ export class OpenaiService {
 
   constructor(private http: HttpClient) { }
 
-  getCompletion(userInput: string): Observable<any> {
-    return this.http.post<any>(this.serverUrl, { user_input: userInput });
+  getCompletionWithLevel(userInput: string, userLevel: string): Observable<any> {
+    return this.http.post<any>(this.serverUrl, { user_input: userInput, user_level: userLevel });
   }
+
 }

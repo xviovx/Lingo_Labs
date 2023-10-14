@@ -18,7 +18,6 @@
 
     <div class="chat-and-info-container">
         <div class="chat-container">
-          <mat-spinner *ngIf="loading"></mat-spinner>
             <div class="chat-history" id="chat-history">
               <div *ngFor="let message of sortedMessages">
                 <ng-container *ngIf="message.type === 'bot'">
@@ -43,6 +42,9 @@
                   </div>
                 </ng-container>
               </div>
+            </div>
+            <div class="loader" *ngIf="loading">
+              <mat-spinner></mat-spinner>
             </div>
             <div class="chat-input">
               <input [(ngModel)]="userInput" type="text" id="chat-input-field" style="margin-bottom: 15px;" placeholder="Type your message here..." (input)="updateCharacterCount($event)" maxlength="1000" />

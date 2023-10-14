@@ -47,9 +47,13 @@ export class ChatbotComponent implements OnInit {
 
   fetchCompletion(userInput: string): void {
     this.loading = true;
+    const chatContainer = document.querySelector('.chat-container');
+    if (chatContainer) chatContainer.classList.add('loading');
+
     this.openaiService.getCompletionWithLevel(userInput, this.userLevel).subscribe(
       response => {
         this.loading = false;
+        if (chatContainer) chatContainer.classList.remove('loading');
         const newBotMessage = response.completion;
         this.botMessages.push({ content: newBotMessage, timestamp: Date.now(), type: 'bot' });
 
@@ -58,6 +62,7 @@ export class ChatbotComponent implements OnInit {
       },
       error => {
         this.loading = false;
+        if (chatContainer) chatContainer.classList.remove('loading');
         console.error('Error:', error);
       }
     );
@@ -116,7 +121,10 @@ export class ChatbotComponent implements OnInit {
 
       this.cdRef.detectChanges();
       this.scrollToBottom();
-      this.fetchCompletion(userMessage);
+
+      setTimeout(() => {
+        this.fetchCompletion(userMessage);
+      }, 1000);
     }
   }
 

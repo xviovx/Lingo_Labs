@@ -47,8 +47,8 @@
               <mat-spinner></mat-spinner>
             </div>
             <div class="chat-input">
-              <input [(ngModel)]="userInput" type="text" id="chat-input-field" style="margin-bottom: 15px;" placeholder="Type your message here..." (input)="updateCharacterCount($event)" maxlength="1000" />
-              <mat-icon id="send-icon" style="margin-bottom: 15px;"(click)="sendMessage()">send</mat-icon>
+              <textarea [(ngModel)]="userInput" id="chat-input-field" placeholder="Type your message here..." (input)="updateCharacterCount($event)" maxlength="1000"></textarea>
+              <mat-icon id="send-icon" style="margin-bottom: 25px;"(click)="sendMessage()">send</mat-icon>
             </div>
             <span id="char-count">0 / 1000</span>
         </div>          
@@ -76,32 +76,3 @@
         </div>  
     </div>
 </div>
-
-
-<!--
-  <div class="chat-history" id="chat-history">
-              <div *ngFor="let message of sortedMessages">
-                <ng-container *ngIf="message.type === 'bot'">
-                  <div class="chat-message chat-message-bot">
-                    <div style="display: flex; align-items: center;">
-                      <div class="chat-icon">
-                        <mat-icon>chat</mat-icon>
-                      </div>
-                      <div class="chat-message-content">
-                        {{ message.content }}
-                      </div>
-                    </div>
-                    <div class="star-icon" (click)="toggleStar()">
-                      <mat-icon [ngClass]="{'active': starActive}">{{ starActive ? 'star' : 'star_border' }}</mat-icon>
-                    </div>
-                  </div>
-                </ng-container>
-                <ng-container *ngIf="message.type === 'user'">
-                  <div class="chat-message chat-message-user">
-                    <i class="material-icons user-icon">account_circle</i>
-                    <div class="chat-message-content">{{ message.content }}</div>
-                  </div>
-                </ng-container>
-              </div>
-            </div>
--->

@@ -144,12 +144,19 @@ export class ChatbotComponent implements OnInit {
     this.openaiService.changeMode(this.mode).subscribe(
       response => {
         console.log('Mode changed successfully', response);
+        if (this.mode === 'playful') {
+          this.botMessages = [
+            { content: "Hiya! I'm Polly, your English buddy! What are we learning today? 😊", timestamp: Date.now(), type: 'bot' }
+          ];
+        } else {
+          this.botMessages = [
+            { content: 'Hello! I am your English tutor, Polly. How may I assist you today?', timestamp: Date.now(), type: 'bot' }
+          ];
+        }
       },
       error => {
         console.error('Error changing mode:', error);
       }
     );
   }
-  
-
 }

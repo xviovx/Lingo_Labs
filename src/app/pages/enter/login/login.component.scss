@@ -1,34 +1,12 @@
 .container {
+    position: relative;
+    overflow: hidden;
     padding-top: 65px;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     background: linear-gradient(#28ACE2, #1C3C6D);
-    position: relative;
-
-    // Gradient circles
-    &:before, &:after {
-        content: '';
-        position: absolute;
-        border-radius: 50%;
-        background-color: rgba(6, 193, 158, 0.16);
-        z-index: -1;
-    }
-    
-    &:before {
-        top: -100px;
-        left: -100px;
-        width: 400px;
-        height: 400px;
-    }
-    
-    &:after {
-        bottom: -100px;
-        right: -100px;
-        width: 400px;
-        height: 400px;
-    }
     
     .logo {
         width: 50px;
@@ -58,7 +36,7 @@ h1, p {
 
 .divider {
     width: 100%;
-    max-width: 300px; // Set max-width to match input container width
+    max-width: 300px;
     height: 1px;
     background-color: white;
     position: relative;
@@ -100,4 +78,29 @@ mat-form-field {
         text-decoration: underline;
         color: teal;
     }
+}
+
+// Bubbles
+.bubble-top-right {
+    z-index: 9999;
+    position: absolute;
+    top: -20%;   
+    right: -20%; 
+    width: 600px;
+    height: 600px;
+    opacity: 0.16;
+    background-color: #06C19E;
+    border-radius: 50%;
+}
+
+.bubble-bottom-left {
+    z-index: 9999;
+    position: absolute;
+    bottom: -20%; 
+    left: -20%;     
+    width: 600px;
+    height: 600px;
+    opacity: 0.16;
+    background-color: #06C19E;
+    border-radius: 50%;
 }

@@ -9,6 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
+    isLoginPage(): boolean {
+        return this.router.url === '/login';
+      }
+  
+      isRegisterPage(): boolean {
+        return this.router.url === '/register';
+      }
+
     getGreeting(): string {
         switch (this.router.url) {
             case '/home':

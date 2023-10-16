@@ -31,12 +31,16 @@ import { HomeComponent } from './pages/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatbotComponent } from './pages/chatbot/chatbot.component';
+import { LoginComponent } from './pages/enter/login/login.component';
+import { RegisterComponent } from './pages/enter/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

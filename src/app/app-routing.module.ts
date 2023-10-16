@@ -6,6 +6,8 @@ import { PastExercisesComponent } from './pages/past exercises/past-exercises.co
 import { BookLessonComponent } from './pages/book lessons/book-lesson.component';
 import { StatsComponent } from './pages/stats/stats.component';
 import { ChatbotComponent } from './pages/chatbot/chatbot.component';
+import { LoginComponent } from './pages/enter/login/login.component';
+import { RegisterComponent } from './pages/enter/register/register.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,14 @@ const routes: Routes = [
   {
     path: "chatbot",
     component: ChatbotComponent
+  },
+  {
+    path: "login",
+    component: LoginComponent
+  },
+  {
+    path: "register",
+    component: RegisterComponent
   }
 ];
 

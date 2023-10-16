@@ -91,6 +91,8 @@ mat-form-field {
     opacity: 0.16;
     background-color: #06C19E;
     border-radius: 50%;
+    animation: bubbleMove 3s 0.5s infinite alternate;
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1); 
 }
 
 .bubble-bottom-left {
@@ -103,4 +105,19 @@ mat-form-field {
     opacity: 0.16;
     background-color: #06C19E;
     border-radius: 50%;
+    animation: bubbleMove 3.2s infinite alternate;
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 }
+
+//bubble animation
+
+@keyframes bubbleMove {
+    0%, 100% {
+        transform: translateY(-30px);
+    }
+    50% {
+        transform: translateY(30px);
+    }
+}
+
+

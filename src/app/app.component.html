@@ -64,3 +64,5 @@
   </mat-sidenav-content>
   
 </mat-sidenav-container>
+
+<router-outlet *ngIf="router.url === '/login' || router.url === '/register'"></router-outlet>

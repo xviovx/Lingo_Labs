@@ -3,8 +3,8 @@
     <div class="bubble-bottom-left"></div>
 
     <div class="logo"></div>
-    <h1>Login</h1>
-    <p>To your learning portal</p>
+    <h1>Register</h1>
+    <p>To access your learning portal</p>
     
     <button class="google-button">
         <img src="../../../../assets/google_logo.svg" class="google-logo" alt="Google Logo">
@@ -23,9 +23,14 @@
 
     <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput type="password">
+        <input matInput type="password" class="password_one">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Confirm password</mat-label>
+        <input matInput type="password" class="password_confirm">
     </mat-form-field>
 
     <button mat-raised-button class="confirm-button">CONFIRM</button>
-    <p class="footer">Need an account? <a href="#">SIGN UP</a></p>
+    <p class="footer">Already have an account? <a routerLink="/login">SIGN IN</a></p>
 </div>

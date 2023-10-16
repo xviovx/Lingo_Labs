@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OpenaiService } from 'src/app/openai.service';
+import { OpenaiService } from '../../services/openai.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 

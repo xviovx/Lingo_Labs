@@ -14,11 +14,26 @@ export class AuthGuard {
     return authGuard.checkAuthState();
   }
 
+  static canDeactivate() {
+    const authGuard = inject(AuthGuard);
+    return authGuard.checkNotAuthState();
+  }
+
   checkAuthState() {
     return this.afAuth.authState.pipe(
       map(user => {
         if (user) return true;
         this.router.navigate(['/login']);
+        return false;
+      })
+    );
+  }
+
+  checkNotAuthState() {
+    return this.afAuth.authState.pipe(
+      map(user => {
+        if (!user) return true;
+        this.router.navigate(['/home']);
         return false;
       })
     );

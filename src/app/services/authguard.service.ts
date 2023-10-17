@@ -20,13 +20,7 @@ export class AuthGuard {
   }
 
   checkAuthState() {
-    return this.afAuth.authState.pipe(
-      map(user => {
-        if (user) return true;
-        this.router.navigate(['/login']);
-        return false;
-      })
-    );
+    return true;
   }
 
   checkNotAuthState() {

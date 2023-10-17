@@ -67,7 +67,8 @@ import { RegisterComponent } from './pages/enter/register/register.component';
     ReactiveFormsModule,
     MatProgressBarModule,
     MatRadioModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FirebaseModule
   ],
   providers: [],
   bootstrap: [AppComponent] // the first initial component

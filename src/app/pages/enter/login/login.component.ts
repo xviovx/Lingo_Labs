@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/firebase-auth.service';
 
 @Component({
   selector: 'app-login',

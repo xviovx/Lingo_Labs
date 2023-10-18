@@ -1,30 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, CanDeactivate } from '@angular/router';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanDeactivate<any> {
+export class AuthGuard implements CanActivate {
   constructor(private router: Router, private afAuth: AngularFireAuth) {}
 
-  canActivate() {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (state.url === '/login' || state.url === '/register') {
+      return this.checkNotAuthState();
+    }
+    return this.checkAuthState();
+  }
+
+  private checkAuthState(): Observable<boolean | UrlTree> {
     return this.afAuth.authState.pipe(
       map(user => {
         if (user) return true;
-        this.router.navigate(['/login']);
-        return false;
+        return this.router.parseUrl('/login');  // redirect to login if not authenticated
       })
     );
   }
 
-  canDeactivate() {
+  private checkNotAuthState(): Observable<boolean | UrlTree> {
     return this.afAuth.authState.pipe(
       map(user => {
         if (!user) return true;
-        this.router.navigate(['/home']);
-        return false;
+        return this.router.parseUrl('/home');  // redirect to home if already authenticated
       })
     );
   }

@@ -2,6 +2,7 @@ import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
+import { AuthService } from './services/firebase-auth.service';
 
 @Component({
   selector: 'app-root',
@@ -48,6 +49,7 @@ export class AppComponent implements AfterViewInit {
     constructor(
       public observer: BreakpointObserver,
       public router: Router,
+      private authService: AuthService,
   ) {}
 
     ngAfterViewInit() {
@@ -61,4 +63,15 @@ export class AppComponent implements AfterViewInit {
             }
         });
     }
+
+    signOut() {
+        const userEmail = this.authService.getCurrentUserEmail();
+        if (userEmail) {
+            this.authService.signOut();
+            console.log("Successfully signed out user:", userEmail);
+        } else {
+            console.log("No user is signed in.");
+        }
+    }
+    
 }

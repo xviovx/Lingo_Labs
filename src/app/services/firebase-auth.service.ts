@@ -22,4 +22,10 @@ export class AuthService {
   async signOut() {
     await this.afAuth.signOut();
   }
+
+  async getCurrentUserEmail(): Promise<string | null> {
+    const user = await this.afAuth.currentUser;
+    return user?.email || null;
+  }  
+
 }

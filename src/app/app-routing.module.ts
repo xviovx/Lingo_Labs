@@ -8,12 +8,12 @@ import { StatsComponent } from './pages/stats/stats.component';
 import { ChatbotComponent } from './pages/chatbot/chatbot.component';
 import { LoginComponent } from './pages/enter/login/login.component';
 import { RegisterComponent } from './pages/enter/register/register.component';
-import { AuthGuard } from './services/authguard.service';  // Adjust this path to point to your AuthGuard service
+import { AuthGuard } from './services/authguard.service';
 
 const routes: Routes = [
   {
     path: '',
-    canActivate: [AuthGuard.canActivate],
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -45,12 +45,10 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginComponent,
-    canActivate: [AuthGuard.canDeactivate]
   },
   {
     path: "register",
     component: RegisterComponent,
-    canActivate: [AuthGuard.canDeactivate]
   }
 ];
 

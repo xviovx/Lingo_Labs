@@ -14,8 +14,9 @@ export class AuthService {
     return this.db.collection('users').doc(uid).set({ email });
   }
 
-  async signIn(email: string, password: string) {
-    await this.afAuth.signInWithEmailAndPassword(email, password);
+  async login(email: string, password: string) { 
+    const userCredential = await this.afAuth.signInWithEmailAndPassword(email, password);
+    return userCredential; 
   }
 
   async signOut() {

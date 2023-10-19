@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  errorMessage: string | null = null; 
+
   constructor(private auth: AuthService, private router: Router) {}
 
   login(email: string, password: string): void {
@@ -20,6 +22,24 @@ export class LoginComponent {
           console.error('No user found');
         }
       })
-      .catch(error => console.error('Login error', error));
+      .catch(error => {
+        console.error('Login error', error);
+        switch (error.code) {
+          case 'auth/invalid-email':
+            this.errorMessage = 'Invalid email address';
+            break;
+          case 'auth/user-not-found':
+            this.errorMessage = 'No user found with this email';
+            break;
+          case 'auth/wrong-password':
+            this.errorMessage = 'Incorrect password';
+            break;
+          case 'auth/invalid-login-credentials':
+            this.errorMessage = 'Invalid credentials';
+            break;
+          default:
+            this.errorMessage = "Invalid";
+        }
+      });
   }
 }

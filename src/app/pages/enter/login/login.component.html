@@ -16,17 +16,20 @@
         <span>OR</span>
     </div>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" hideRequiredMarker="true">
         <mat-label>Email Address</mat-label>
-        <input matInput type="email" #email>
+        <input matInput type="email" #email required>
     </mat-form-field>
     
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" hideRequiredMarker="true">
         <mat-label>Password</mat-label>
-        <input matInput type="password" #password>
+        <input matInput type="password" #password required>
     </mat-form-field>
     
-    <button mat-raised-button class="confirm-button" (click)="login(email.value, password.value)">CONFIRM</button>
+    <button mat-raised-button class="confirm-button" 
+            (click)="login(email.value, password.value)" 
+            [disabled]="!email.value || !password.value">CONFIRM</button>
+    
     <p class="footer">Need an account? <a routerLink="/register">SIGN UP</a></p>
     <br>
     <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>

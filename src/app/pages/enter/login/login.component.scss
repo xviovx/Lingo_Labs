@@ -171,3 +171,10 @@ mat-form-field {
     margin-top: 25x;
 }
 
+.confirm-button[disabled] {
+    background-color: rgba(0, 128, 128, 0.603) !important;
+    color: #ccc !important;
+    cursor: not-allowed !important;
+}
+
+

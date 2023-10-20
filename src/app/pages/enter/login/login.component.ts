@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/firebase-auth.service';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
   
   errorMessage: string | null = null; 
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router, private sharedService: SharedService) {}
 
   login(email: string, password: string): void {
     this.auth.login(email, password)
@@ -21,6 +22,7 @@ export class LoginComponent {
         if (userCredential.user) {
           console.log(userCredential.user.email);
           this.router.navigate(['/home']);
+          this.sharedService.setJustLoggedIn(true);
         } else {
           console.error('No user found');
         }

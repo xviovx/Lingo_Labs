@@ -47,10 +47,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   toggleSidenav() {
-    if (this.router.url === '/home' && !this.isLoginPage() && !this.isRegisterPage()) {
-      this.sidenav.open();
+    const openRoutes = ['/home', '/stats', '/chatbot', '/book-lesson', '/past-exercises'];
+    if (openRoutes.includes(this.router.url) && !this.isLoginPage() && !this.isRegisterPage()) {
+        this.sidenav.open();
     } else {
-      this.sidenav.close();
+        this.sidenav.close();
     }
   }
 

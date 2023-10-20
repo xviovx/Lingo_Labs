@@ -91,8 +91,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   signOut() {
     const userEmail = this.authService.getCurrentUserEmail();
     if (userEmail) {
-        this.authService.signOut();
-        console.log("Successfully signed out user:", userEmail);
+        this.authService.signOut().then(() => {
+          console.log("Successfully signed out user:", userEmail);
+          this.router.navigate(['/login']);
+        });
     } else {
         console.log("No user is signed in.");
     }

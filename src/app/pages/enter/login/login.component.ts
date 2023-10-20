@@ -47,4 +47,22 @@ export class LoginComponent {
         }
       });
   }
+
+  signInWithGoogle(): void {
+    this.auth.signInWithGoogle()
+        .then(() => {
+            this.auth.getCurrentUserEmail().then(email => {
+                if (email) {
+                    console.log(email);
+                    this.router.navigate(['/home']);
+                    this.sharedService.setJustLoggedIn(true);
+                } else {
+                    console.error('No user found');
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Google Sign-In error', error);
+        });
+  }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { GoogleAuthProvider } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -28,4 +29,14 @@ export class AuthService {
     return user?.email || null;
   }  
 
+  signInWithGoogle(): Promise<void> {
+    const provider = new GoogleAuthProvider();
+    return this.afAuth.signInWithPopup(provider)
+      .then(res => {
+        console.log('Google Sign-In successful!', res);
+      })
+      .catch(err => {
+        alert(err.message);
+      });
+  }
 }

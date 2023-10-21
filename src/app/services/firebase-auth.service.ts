@@ -29,6 +29,11 @@ export class AuthService {
     return user?.email || null;
   }  
 
+  async getCurrentUserId(): Promise<string | null> {
+    const user = await this.afAuth.currentUser;
+    return user ? user.uid : null;
+  }
+
   signInWithGoogle(): Promise<void> {
     const provider = new GoogleAuthProvider();
     return this.afAuth.signInWithPopup(provider)

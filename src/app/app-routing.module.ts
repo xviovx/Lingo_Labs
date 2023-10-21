@@ -10,6 +10,7 @@ import { LoginComponent } from './pages/enter/login/login.component';
 import { RegisterComponent } from './pages/enter/register/register-component/register.component';
 import { AuthGuard } from './services/authguard.service';
 import { RegisterWizardComponent } from './pages/enter/register/register-wizard/register-wizard/register-wizard.component';
+import { NotFoundComponent } from './pages/not-found/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -40,7 +41,7 @@ const routes: Routes = [
       {
         path: "chatbot",
         component: ChatbotComponent
-      },
+      }
     ]
   },
   {
@@ -56,6 +57,11 @@ const routes: Routes = [
   {
     path: "register-wizard",
     component: RegisterWizardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "**",
+    component: NotFoundComponent,
     canActivate: [AuthGuard]
   }
 ];

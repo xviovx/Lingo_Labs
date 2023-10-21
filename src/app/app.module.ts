@@ -36,6 +36,7 @@ import { ChatbotComponent } from './pages/chatbot/chatbot.component';
 import { LoginComponent } from './pages/enter/login/login.component';
 import { RegisterComponent } from './pages/enter/register/register-component/register.component';
 import { RegisterWizardComponent } from './pages/enter/register/register-wizard/register-wizard/register-wizard.component';
+import { NotFoundComponent } from './pages/not-found/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { RegisterWizardComponent } from './pages/enter/register/register-wizard/
     ChatbotComponent,
     LoginComponent,
     RegisterComponent,
-    RegisterWizardComponent
+    RegisterWizardComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

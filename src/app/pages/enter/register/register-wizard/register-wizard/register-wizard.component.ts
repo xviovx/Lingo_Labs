@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./register-wizard.component.scss']
 })
 export class RegisterWizardComponent {
+  isStepOneComplete: boolean = false;
+  
   confirmEmail(): void {
 
+  }
+
+  completeStepOne() {
+    this.isStepOneComplete = true;
   }
 }

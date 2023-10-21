@@ -16,6 +16,11 @@
     }
 }
 
+.mat-step-header-completed .mat-step-icon-content::before {
+    content: '\e876' !important;
+    font-family: 'Material Icons';
+}
+
 h1, p {
     color: white;
 }
@@ -74,6 +79,24 @@ mat-form-field {
     max-width: 300px;
     background-color: teal;
     color: white;
+    height: 55px;
+}
+
+.back-button {
+    width: 100%;
+    max-width: 300px;
+    background-color: white;
+    border-color: teal;
+    color: teal;
+    height: 55px;
+}
+
+.back-button:hover {
+    width: 100%;
+    max-width: 300px;
+    background-color: rgba(255, 255, 255, 0.623);
+    border-color: teal;
+    color: teal;
     height: 55px;
 }
 
@@ -145,5 +168,19 @@ mat-form-field {
     color: #ccc !important;
     cursor: not-allowed !important;
 }
+
+.stepper {
+    background-color: transparent;
+    width: 80vw;
+}
+
+.step-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+  
 
 

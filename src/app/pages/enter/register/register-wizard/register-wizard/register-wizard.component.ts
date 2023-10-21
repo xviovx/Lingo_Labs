@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./register-wizard.component.scss']
 })
 export class RegisterWizardComponent {
+  confirmEmail(): void {
 
+  }
 }

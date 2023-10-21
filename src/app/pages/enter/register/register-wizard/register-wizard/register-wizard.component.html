@@ -1,19 +1,63 @@
-<div class="container">
-    <div class="bubble-top-right"></div>
-    <div class="bubble-bottom-left"></div>
-
-    <div class="logo"></div>
-    <p>Hello friend 👋🏻</p>
-    <h1>Welcome to Lingo Labs!</h1>
-    <p>First thing's first, what's your name? 😊</p>
+<mat-horizontal-stepper>
     
-    <mat-form-field appearance="outline" hideRequiredMarker="true">
-        <mat-label>Your Name</mat-label>
-        <input matInput type="default" #passwordConfirm required>
-    </mat-form-field>
-    
-    <button mat-raised-button class="confirm-button">
-        CONFIRM
-    </button>
+    <!-- First Step -->
+    <mat-step label="Welcome">
+        <div class="container">
+            <div class="bubble-top-right"></div>
+            <div class="bubble-bottom-left"></div>
+            <div class="logo"></div>
+            <p>Hello friend!👋🏻</p>
+            <h1>Welcome to Lingo Labs!</h1>
+            <p>First thing's first, what's your name? 😊</p>
+            <mat-form-field appearance="outline" hideRequiredMarker="true">
+                <mat-label>Your Name</mat-label>
+                <input matInput type="text" required>
+            </mat-form-field>
+            <div>
+                <button mat-button class="confirm-button" matStepperNext>Next</button>
+            </div>
+        </div>
+    </mat-step>
 
-</div>
+    <!-- Second Step -->
+    <mat-step label="Details">
+        <div class="container">
+            <div class="bubble-top-right"></div>
+            <div class="bubble-bottom-left"></div>
+            <div class="logo"></div>
+            <p>Hello Kyle!👋</p>
+            <h1>Great to meet you.</h1>
+            <p>And where are you from, Kyle?</p>
+            <mat-form-field appearance="outline" hideRequiredMarker="true">
+                <mat-label>Location</mat-label>
+                <input matInput type="text" required>
+            </mat-form-field>
+            <div>
+                <button mat-button class="confirm-button" matStepperPrevious>Back</button>
+                <button mat-button class="confirm-button" matStepperNext>Next</button>
+            </div>
+        </div>
+    </mat-step>
+
+    <!-- Third Step -->
+    <mat-step>
+        <ng-template matStepLabel>Step 3</ng-template>
+        <div class="container">
+            <div class="bubble-top-right"></div>
+            <div class="bubble-bottom-left"></div>
+            <div class="logo"></div>
+            <h1 style="margin-top: 20px;">Final step, Kyle!</h1>
+            <p style="margin-top: 20px; margin-bottom: 25px">Before you dive in, please confirm your email address.</p>
+            <mat-form-field appearance="outline" hideRequiredMarker="true">
+                <mat-label>Email Address</mat-label>
+                <input matInput type="email" required>
+                <mat-error class="error-message">Please enter a valid email.</mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="confirm-button" (click)="confirmEmail()">Confirm Email</button>
+            <div class="footer">
+                <p>Having trouble? <a href="#">Contact Support</a></p>
+            </div>
+        </div>
+    </mat-step>
+
+</mat-horizontal-stepper>

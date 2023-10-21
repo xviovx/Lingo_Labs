@@ -22,7 +22,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatOptionModule} from '@angular/material/core';
-import { MatDialog } from '@angular/material/dialog';
+import {MatStepperModule} from '@angular/material/stepper';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
@@ -72,7 +72,8 @@ import { NotFoundComponent } from './pages/not-found/not-found/not-found.compone
     MatProgressBarModule,
     MatRadioModule,
     MatProgressSpinnerModule,
-    FirebaseModule
+    FirebaseModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent] // the first initial component

@@ -12,6 +12,7 @@
         width: 60px;
         height: 60px;
         background: url('../../../../../../assets/Logo.png') center/contain no-repeat;
+        margin-top: 40px;
     }
 }
 
@@ -24,7 +25,6 @@ h1{
     font-weight: bold;
     font-size: 28px;
     letter-spacing: 3px;
-    margin-top: 25px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
@@ -97,7 +97,7 @@ mat-form-field {
 .bubble-top-right {
     z-index: 9999;
     position: absolute;
-    top: -20%;   
+    bottom: -20%;   // Changed from top: -20%;
     right: -20%; 
     width: 600px;
     height: 600px;
@@ -111,7 +111,7 @@ mat-form-field {
 .bubble-bottom-left {
     z-index: 9999;
     position: absolute;
-    bottom: -20%; 
+    top: -20%;      // Changed from bottom: -20%;
     left: -20%;     
     width: 600px;
     height: 600px;

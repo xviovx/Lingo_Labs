@@ -84,6 +84,8 @@ export class AppComponent implements OnInit, AfterViewInit {
             return 'Check out your Stats!';
         case '/chatbot':
             return 'Chat with Polly, the English tutor!';
+        case '/**':
+            return "Page not found!"
         default:
             return '';
     }

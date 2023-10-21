@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/firebase-auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { UserInfo } from '../../../../../models/user-info.model';
+import { SharedService } from 'src/app/services/shared.service';
 import firebase from 'firebase/compat/app';
 
 @Component({
@@ -10,14 +11,16 @@ import firebase from 'firebase/compat/app';
   styleUrls: ['./register-wizard.component.scss']
 })
 export class RegisterWizardComponent {
+  userEmail: string = '';
   isStepOneComplete: boolean = false;
   validationPin: string = '';
   isValidationError: boolean = false;
 
   constructor(
     private authService: AuthService,
-    private firestoreService: FirestoreService
-  ) { }
+    private firestoreService: FirestoreService,
+    private sharedService: SharedService
+  ) { this.userEmail = this.sharedService.getEmail() }
 
   async saveUserInfo(name: string, location: string) {
     // get UID
@@ -30,6 +33,7 @@ export class RegisterWizardComponent {
 
     // structure data
     const userInfo: UserInfo = {
+        email: this.userEmail,
         name: name,
         location: location,
         current_streak: 0,

@@ -7,8 +7,9 @@ import { BookLessonComponent } from './pages/book lessons/book-lesson.component'
 import { StatsComponent } from './pages/stats/stats.component';
 import { ChatbotComponent } from './pages/chatbot/chatbot.component';
 import { LoginComponent } from './pages/enter/login/login.component';
-import { RegisterComponent } from './pages/enter/register/register.component';
+import { RegisterComponent } from './pages/enter/register/register-component/register.component';
 import { AuthGuard } from './services/authguard.service';
+import { RegisterWizardComponent } from './pages/enter/register/register-wizard/register-wizard/register-wizard.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,11 @@ const routes: Routes = [
   {
     path: "register",
     component: RegisterComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "register-wizard",
+    component: RegisterWizardComponent,
     canActivate: [AuthGuard]
   }
 ];

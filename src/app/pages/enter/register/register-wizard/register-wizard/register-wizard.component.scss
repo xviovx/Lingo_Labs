@@ -11,7 +11,7 @@
     .logo {
         width: 60px;
         height: 60px;
-        background: url('../../../../assets/Logo.png') center/contain no-repeat;
+        background: url('../../../../../../assets/Logo.png') center/contain no-repeat;
     }
 }
 
@@ -32,37 +32,6 @@ p {
     font-family: 'Poppins';
     letter-spacing: 2px;
     font-size: 12px;
-}
-
-.google-button {
-    width: 100%;          
-    max-width: 300px;       
-    height: 55px;           
-    background-color: white;
-    color: black;
-    margin: 10px 0;       
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; 
-    padding: 10px 20px;
-    font-family: 'Roboto';
-    font-size: 16px;
-    font-weight: 400;
-    border-radius: 2px;
-    letter-spacing: 0.009375em;
-    border: none;
-
-    img.google-logo {
-        width: 20px;
-        height: auto;
-        margin-right: 10px;
-    }
-}
-
-.google-button:hover {        
-    background-color: rgba(255, 255, 255, 0.764);
-    font-weight: 500;
-    cursor: pointer;
 }
 
 .divider {
@@ -162,6 +131,19 @@ mat-form-field {
     50% {
         transform: translateY(30px);
     }
+}
+
+.error-message {
+    font-size: 14px;
+    font-family: 'Roboto', 'sans-serif';
+    color: red;
+    margin-top: 25x;
+}
+
+.confirm-button[disabled] {
+    background-color: rgba(0, 128, 128, 0.603) !important;
+    color: #ccc !important;
+    cursor: not-allowed !important;
 }
 
 

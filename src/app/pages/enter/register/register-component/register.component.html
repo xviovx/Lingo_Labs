@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="bubble-top-right"></div>
+    <div class="bubble-bottom-left"></div>
+
+    <div class="logo"></div>
+    <h1>Register</h1>
+    <p>To access your learning portal</p>
+    
+    <button class="google-button">
+        <img src="../../../../assets/google_logo.svg" class="google-logo" alt="Google Logo">
+        Continue with Google
+    </button>
+    
+
+    <div class="divider">
+        <span>OR</span>
+    </div>
+
+    <mat-form-field appearance="outline" hideRequiredMarker="true">
+        <mat-label>Email Address</mat-label>
+        <input matInput type="email" #email required>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" hideRequiredMarker="true">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" #passwordOne required>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" hideRequiredMarker="true">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput type="password" #passwordConfirm required>
+    </mat-form-field>
+    
+    <button mat-raised-button class="confirm-button" 
+            (click)="register(email.value, passwordOne.value, passwordConfirm.value)" 
+            [disabled]="!email.value || !passwordOne.value || !passwordConfirm.value">
+        CONFIRM
+    </button>
+    
+    <p class="footer">Already have an account? <a routerLink="/login">SIGN IN</a></p>
+
+    <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+</div>

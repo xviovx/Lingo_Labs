@@ -63,6 +63,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     return this.router.url === '/register';
   }
 
+  isRegisterWizardPage(): boolean {
+    return this.router.url === '/register-wizard';
+  }
+
   getGreeting(): string {
     switch (this.router.url) {
         case '/home':

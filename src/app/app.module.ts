@@ -34,7 +34,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatbotComponent } from './pages/chatbot/chatbot.component';
 import { LoginComponent } from './pages/enter/login/login.component';
-import { RegisterComponent } from './pages/enter/register/register.component';
+import { RegisterComponent } from './pages/enter/register/register-component/register.component';
+import { RegisterWizardComponent } from './pages/enter/register/register-wizard/register-wizard/register-wizard.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { RegisterComponent } from './pages/enter/register/register.component';
     HomeComponent,
     ChatbotComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterWizardComponent
   ],
   imports: [
     BrowserModule,

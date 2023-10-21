@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatIconModule } from '@angular/material/icon';
 import { SharedService } from 'src/app/services/shared.service';
 
 

@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router, private afAuth: AngularFireAuth) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (state.url === '/login' || state.url === '/register') {
+    if (state.url === '/login' || state.url === '/register' || state.url === '/register-wizard') {
       return this.checkNotAuthState();
     }
     return this.checkAuthState();

@@ -17,9 +17,9 @@
                 <p style="margin-top: 20px; margin-bottom: 25px">First thing's first, what's your name? 😊</p>
                 <mat-form-field appearance="outline" hideRequiredMarker="true">
                     <mat-label>Your Name</mat-label>
-                    <input matInput type="text" required>
+                    <input matInput [(ngModel)]="userName" type="text" required>
                 </mat-form-field>
-                    <button mat-button class="confirm-button" matStepperNext>Next</button>
+                <button mat-button class="confirm-button" matStepperNext>Next</button>
             </div>
         </mat-step>
     
@@ -27,15 +27,14 @@
         <mat-step label="Your Location">
             <div class="step-content">
                 <div class="logo"></div>
-                <p style="margin-top: 20px;">Hello Kyle!👋🏻</p>
+                <p style="margin-top: 20px;">Hello {{userName}}!👋🏻</p>
                 <h1 style="margin-top: 20px;">Great to meet you.</h1>
-                <p style="margin-top: 20px; margin-bottom: 25px">And where are you from, Kyle?</p>
+                <p style="margin-top: 20px; margin-bottom: 25px">And where are you from, {{userName}}?</p>
                 <mat-form-field appearance="outline" hideRequiredMarker="true">
                     <mat-label>Location</mat-label>
-                    <input matInput type="text" required>
+                    <input matInput [(ngModel)]="userLocation" type="text" required>
                 </mat-form-field>
                 <button mat-button class="confirm-button" matStepperNext>Next</button>
-                <!--<button mat-button class="back-button" matStepperPrevious>Back</button>-->
             </div>
         </mat-step>
     
@@ -43,14 +42,14 @@
         <mat-step label="Verify Email">
             <div class="step-content">
                 <div class="logo"></div>
-                <h1 style="margin-top: 20px;">Final step, Kyle!</h1>
+                <h1 style="margin-top: 20px;">Final step, {{userName}}!</h1>
                 <p style="margin-top: 20px; margin-bottom: 25px">Before you dive in, please check your emails.</p>
                 <mat-form-field appearance="outline" hideRequiredMarker="true">
                     <mat-label>Verification Code</mat-label>
-                    <input matInput type="email" required>
+                    <input matInput [(ngModel)]="verificationCode" type="email" required>
                     <mat-error class="error-message">Incorrect pin</mat-error>
                 </mat-form-field>
-                <button mat-raised-button color="primary" class="confirm-button" (click)="confirmEmail()">Confirm Email</button>
+                <button mat-raised-button color="primary" class="confirm-button" (click)="confirmEmail()">Confirm</button>
                 <div class="footer">
                     <p>Having trouble? <a href="#">Contact Support</a></p>
                 </div>

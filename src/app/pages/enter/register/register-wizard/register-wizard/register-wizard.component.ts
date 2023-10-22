@@ -11,9 +11,12 @@ import firebase from 'firebase/compat/app';
   styleUrls: ['./register-wizard.component.scss']
 })
 export class RegisterWizardComponent {
+  userName: string = '';
   userEmail: string = '';
+  userLocation: string = '';
+  verificationCode: string = '';
+
   isStepOneComplete: boolean = false;
-  validationPin: string = '';
   isValidationError: boolean = false;
 
   constructor(
@@ -57,9 +60,19 @@ export class RegisterWizardComponent {
 }
 
   //TO-DO: integrate with back-end
-  confirmEmail(): void {
-    if(this.validationPin === '123456') {
-      this.isValidationError = false;
+  async confirmEmail(): Promise<void> {
+    if (this.verificationCode === '123456') {
+      this.isValidationError = false
+      const {email, password} = this.sharedService.getTempCredentials();
+
+      try {
+        await this.authService.signUp(email, password);
+        console.log('User registration complete.');
+        await this.saveUserInfo(this.userName, this.userLocation);
+      } catch (error) {
+        console.error('A registration error occurred: ', error);
+        this.isValidationError = true;
+      }
     } else {
       this.isValidationError = true;
     }

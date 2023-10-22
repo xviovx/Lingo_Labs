@@ -18,18 +18,12 @@ export class RegisterComponent {
     if(password !== confirmPassword) {
       this.errorMessage = 'Passwords do not match!';
       return;
+    } else {
+      this.sharedService.setTempCredentials(email, password);
+      console.log("Registration initiated");
+      this.errorMessage = null;
+      this.sharedService.setEmail(email);
+      this.router.navigate(['register-wizard'])
     }
-
-    this.authService.signUp(email, password)
-      .then(() => {
-        console.log('Registration successful!');
-        this.errorMessage = null; 
-        this.sharedService.setEmail(email);
-        this.router.navigate(['registration-wizard']);
-      })
-      .catch(error => {
-        console.error('Registration error:', error);
-        this.errorMessage = error.message;
-      });
   }
 }

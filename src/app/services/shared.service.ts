@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 export class SharedService {
   private email: string = '';
   private justLoggedIn = false;
+  private tempEmail: string = '';
+  private tempPassword: string = '';
 
   setJustLoggedIn(value: boolean) {
     this.justLoggedIn = value;
@@ -21,5 +23,14 @@ export class SharedService {
 
   getEmail(): string {
     return this.email;
+  }
+
+  setTempCredentials(email: string, password: string): void {
+    this.tempEmail = email;
+    this.tempPassword = password;
+  }
+
+  getTempCredentials(): {email: string, password: string} {
+    return { email: this.tempEmail, password: this.tempPassword}
   }
 }

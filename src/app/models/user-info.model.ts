@@ -1,9 +1,6 @@
-import firebase from 'firebase/compat/app';
-
 export interface UserInfo {
   email: string;
   current_streak: number;
-  date_joined: firebase.firestore.Timestamp;
   exercises_complete: number;
   level: string;
   live_sessions: number;

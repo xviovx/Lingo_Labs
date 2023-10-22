@@ -22,7 +22,6 @@ export class RegisterComponent {
       this.sharedService.setTempCredentials(email, password);
       console.log("Registration initiated");
       this.errorMessage = null;
-      this.sharedService.setEmail(email);
       this.router.navigate(['register-wizard'])
     }
   }

@@ -3,7 +3,7 @@ import { AuthService } from 'src/app/services/firebase-auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { UserInfo } from '../../../../../models/user-info.model';
 import { SharedService } from 'src/app/services/shared.service';
-import firebase from 'firebase/compat/app';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-wizard',
@@ -22,7 +22,8 @@ export class RegisterWizardComponent {
   constructor(
     private authService: AuthService,
     private firestoreService: FirestoreService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private router: Router
   ) { this.userEmail = this.sharedService.getEmail() }
 
   async saveUserInfo(name: string, location: string) {
@@ -40,7 +41,6 @@ export class RegisterWizardComponent {
         name: name,
         location: location,
         current_streak: 0,
-        date_joined: firebase.firestore.Timestamp.now(),
         exercises_complete: 0,
         level: "", 
         live_sessions: 0,
@@ -69,6 +69,7 @@ export class RegisterWizardComponent {
         await this.authService.signUp(email, password);
         console.log('User registration complete.');
         await this.saveUserInfo(this.userName, this.userLocation);
+        this.router.navigate(['home'])
       } catch (error) {
         console.error('A registration error occurred: ', error);
         this.isValidationError = true;

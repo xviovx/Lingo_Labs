@@ -63,7 +63,7 @@ const routes: Routes = [
   {
     path: "placement-test",
     component: PlacementTestComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: "**",

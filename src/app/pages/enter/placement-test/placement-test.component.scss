@@ -11,14 +11,9 @@
     .logo {
         width: 60px;
         height: 60px;
-        background: url('../../../../../../assets/Logo.png') center/contain no-repeat;
+        background: url('../../../../assets/Logo.png') center/contain no-repeat;
         margin-top: 40px;
     }
-}
-
-.mat-step-header-completed .mat-step-icon-content::before {
-    content: '\e876' !important;
-    font-family: 'Material Icons';
 }
 
 h1, p {
@@ -74,10 +69,10 @@ mat-form-field {
     }
 }
 
-.confirm-button {
+.start-button {
     width: 100%;
     max-width: 300px;
-    background-color: teal;
+    background-color: teal !important;
     color: white;
     height: 55px;
 }
@@ -136,31 +131,6 @@ mat-form-field {
     50% {
         transform: translateY(30px);
     }
-}
-
-.error-message {
-    font-size: 14px;
-    font-family: 'Roboto', 'sans-serif';
-    color: red;
-    margin-top: 25x;
-}
-
-.confirm-button[disabled] {
-    background-color: rgba(0, 128, 128, 0.603) !important;
-    color: #ccc !important;
-    cursor: not-allowed !important;
-}
-
-.stepper {
-    background-color: transparent;
-    width: 80vw;
-}
-
-.step-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
 }
 
   

@@ -48,7 +48,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   toggleSidenav() {
     const openRoutes = ['/home', '/stats', '/chatbot', '/book-lesson', '/past-exercises'];
-    const closedRoutes = ['/login', '/register', '/register-wizard'];
+    const closedRoutes = ['/login', '/register', '/register-wizard', '/placement-test'];
 
     if (openRoutes.includes(this.router.url)) {
         this.sidenav.open();
@@ -58,7 +58,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.sidenav.open();
     }
   }
-
 
   isLoginPage(): boolean {
     return this.router.url === '/login';
@@ -70,6 +69,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   isRegisterWizardPage(): boolean {
     return this.router.url === '/register-wizard';
+  }
+
+  isPlacementTestPage(): boolean {
+    return this.router.url === '/placement-test';
   }
 
   getGreeting(): string {

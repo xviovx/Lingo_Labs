@@ -1,11 +1,11 @@
-<mat-toolbar *ngIf="!isLoginPage() && !isRegisterPage() && !isRegisterWizardPage() && (observer.isMatched('(max-width: 767px)'))">
+<mat-toolbar *ngIf="!isLoginPage() && !isRegisterPage() && !isRegisterWizardPage() && !isPlacementTestPage() && (observer.isMatched('(max-width: 767px)'))">
   <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
     <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
     <mat-icon *ngIf="sidenav.opened">close</mat-icon>
   </button>
 </mat-toolbar>
 
-<mat-sidenav-container *ngIf="!isLoginPage() && !isRegisterPage() && !isRegisterWizardPage()">
+<mat-sidenav-container *ngIf="!isLoginPage() && !isRegisterPage() && !isRegisterWizardPage() && !isPlacementTestPage()">
   <mat-sidenav #sidenav="matSidenav" (mouseenter)="onSidenavHover(true)" (mouseleave)="onSidenavHover(false)" class="bubble-animation">
     <img class="logo mat-elevation-z8" src="https://i.ibb.co/y6Ljfzw/Logo.png" width="25px">
 
@@ -65,4 +65,4 @@
   
 </mat-sidenav-container>
 
-<router-outlet *ngIf="router.url === '/login' || router.url === '/register' || router.url === '/register-wizard'"></router-outlet>
+<router-outlet *ngIf="router.url === '/login' || router.url === '/register' || router.url === '/register-wizard' || router.url === '/placement-test'"></router-outlet>

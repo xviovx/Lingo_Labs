@@ -14,6 +14,7 @@ export class RegisterComponent {
 
   constructor(private authService: AuthService, private router: Router, private sharedService: SharedService) {}
 
+  //TO-DO: utilize firebase cloud functions to check if an email already exists
   register(email: string, password: string, confirmPassword: string): void {
     if(password.length < 6) {
       this.errorMessage = 'Password should be at least 6 characters!';
@@ -28,6 +29,7 @@ export class RegisterComponent {
       this.sharedService.setTempCredentials(email, password);
       console.log("Registration initiated");
       this.errorMessage = null;
+      this.sharedService.setJustRegistered(true);
       this.router.navigate(['register-wizard']);
     }
   }  

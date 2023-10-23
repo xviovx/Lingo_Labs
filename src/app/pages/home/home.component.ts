@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
 import { SharedService } from 'src/app/services/shared.service';
 
 
@@ -16,9 +15,10 @@ export class HomeComponent {
   constructor(private sharedService: SharedService) {}
 
   ngOnInit() {
-    if (this.sharedService.getJustLoggedIn()) {
-      this.sharedService.setJustLoggedIn(false);
-      window.location.reload();
+    if (this.sharedService.getJustLoggedIn() || this.sharedService.getJustRegistered()) {
+        this.sharedService.setJustLoggedIn(false);
+        this.sharedService.setJustRegistered(false);
+        window.location.reload();
     }
-  }  
+  } 
 }

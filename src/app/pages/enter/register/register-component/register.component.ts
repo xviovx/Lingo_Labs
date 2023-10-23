@@ -15,14 +15,20 @@ export class RegisterComponent {
   constructor(private authService: AuthService, private router: Router, private sharedService: SharedService) {}
 
   register(email: string, password: string, confirmPassword: string): void {
-    if(password !== confirmPassword) {
+    if(password.length < 6) {
+      this.errorMessage = 'Password should be at least 6 characters!';
+    }
+    else if(password !== confirmPassword) {
       this.errorMessage = 'Passwords do not match!';
-      return;
-    } else {
+    } 
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      this.errorMessage = 'Invalid email format!';
+    }
+    else {
       this.sharedService.setTempCredentials(email, password);
       console.log("Registration initiated");
       this.errorMessage = null;
-      this.router.navigate(['register-wizard'])
+      this.router.navigate(['register-wizard']);
     }
-  }
+  }  
 }

@@ -16,6 +16,8 @@ export class RegisterWizardComponent {
   userLocation: string = '';
   verificationCode: string = '';
 
+  errorMessage: string = '';
+
   isStepOneComplete: boolean = false;
   isValidationError: boolean = false;
 
@@ -76,6 +78,7 @@ export class RegisterWizardComponent {
       }
     } else {
       this.isValidationError = true;
+      this.errorMessage = "Incorrect pin"
     }
   }
 }

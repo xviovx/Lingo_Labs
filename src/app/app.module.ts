@@ -37,6 +37,7 @@ import { LoginComponent } from './pages/enter/login/login.component';
 import { RegisterComponent } from './pages/enter/register/register-component/register.component';
 import { RegisterWizardComponent } from './pages/enter/register/register-wizard/register-wizard/register-wizard.component';
 import { NotFoundComponent } from './pages/not-found/not-found/not-found.component';
+import { PlacementTestComponent } from './pages/enter/placement-test/placement-test.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { NotFoundComponent } from './pages/not-found/not-found/not-found.compone
     LoginComponent,
     RegisterComponent,
     RegisterWizardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PlacementTestComponent
   ],
   imports: [
     BrowserModule,

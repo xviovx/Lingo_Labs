@@ -28,7 +28,7 @@ export class RegisterWizardComponent {
     private router: Router
   ) { this.userEmail = this.sharedService.getEmail() }
 
-  async saveUserInfo(name: string, location: string) {
+  async saveUserInfo(name: string, location: string, email: string) {
     // get UID
     const userId = await this.authService.getCurrentUserId();
 
@@ -39,7 +39,7 @@ export class RegisterWizardComponent {
 
     // structure data
     const userInfo: UserInfo = {
-        email: this.userEmail,
+        email: email,
         name: name,
         location: location,
         current_streak: 0,
@@ -70,7 +70,7 @@ export class RegisterWizardComponent {
       try {
         await this.authService.signUp(email, password);
         console.log('User registration complete.');
-        await this.saveUserInfo(this.userName, this.userLocation);
+        await this.saveUserInfo(this.userName, this.userLocation, email);
         this.router.navigate(['home'])
       } catch (error) {
         console.error('A registration error occurred: ', error);

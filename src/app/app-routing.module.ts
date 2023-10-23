@@ -11,6 +11,7 @@ import { RegisterComponent } from './pages/enter/register/register-component/reg
 import { AuthGuard } from './services/authguard.service';
 import { RegisterWizardComponent } from './pages/enter/register/register-wizard/register-wizard/register-wizard.component';
 import { NotFoundComponent } from './pages/not-found/not-found/not-found.component';
+import { PlacementTestComponent } from './pages/enter/placement-test/placement-test.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,11 @@ const routes: Routes = [
   {
     path: "register-wizard",
     component: RegisterWizardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "placement-test",
+    component: PlacementTestComponent,
     canActivate: [AuthGuard]
   },
   {

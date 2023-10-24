@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./placement-test.component.scss']
 })
 export class PlacementTestComponent {
+  isModalOpen = false;
 
+  toggleModal() {
+    this.isModalOpen = !this.isModalOpen;
+  }
 }

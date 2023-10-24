@@ -276,23 +276,22 @@ mat-form-field {
 .test-container label:before {
     content: '';
     position: absolute;
-    top: 50%;
+    top: 0;
+    bottom: 0;
     left: 0;
     width: 18px;
     height: 18px;
-    border-radius: 50%;
     border: 2px solid #5AC0B1;
-    transform: translateY(-50%);
+    margin: auto 0;
 }
 
 .test-container input[type="radio"]:checked + label:after {
     content: '';
     position: absolute;
     top: 50%;
-    left: 5px;
+    left: 6px;
     width: 10px;
     height: 10px;
-    border-radius: 50%;
     background-color: #5AC0B1;
     transform: translateY(-50%);
 }
@@ -330,6 +329,7 @@ mat-form-field {
 .test-container .option:last-child {
     border-bottom: none;
 }
+
 
 
 

@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div *ngIf="isTestStarted" class="test-container">
+    <div *ngIf="isTestStarted" class="test-container" [@fadeIn]>
         <p style="color: black; font-size: 14px;">Question {{currentQuestionIndex + 1}} of 30:</p>
         <p style="color: black; padding-top: 15px; font-weight: 500; margin-bottom: 50px">{{questions[currentQuestionIndex].text}}</p>
         <div *ngFor="let option of questions[currentQuestionIndex].options; let last = last" class="option-container">

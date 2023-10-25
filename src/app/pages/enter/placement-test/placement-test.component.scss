@@ -66,6 +66,47 @@ p {
     justify-content: center;
 }
 
+.test-finished {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-test-buttons-con {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.test-results, .to-home {
+    flex: 1;
+    margin: 0 5px;
+    width: calc(50% - 10px);
+}
+
+.test-results{
+    width: 100%;
+    max-width: 300px;
+    background-color: rgb(255, 255, 255) !important;
+    color: teal !important;
+    height: 55px;
+}
+
+.test-results:hover{
+    background-color: rgb(214, 214, 214) !important;
+}
+
+.to-home{
+    width: 100%;
+    max-width: 300px;
+    background-color: teal !important;
+    color: white;
+    height: 55px;
+}
+
 mat-form-field {
     width: 100%;
     max-width: 300px;

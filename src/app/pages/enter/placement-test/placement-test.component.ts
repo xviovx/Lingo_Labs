@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class PlacementTestComponent {
   selectedOption: string | null = null;
   isTestStarted: boolean = false;
+  isTestFinished: boolean = true;
   isModalOpen = false;
   currentQuestionIndex = 0;
   score = 0;

@@ -20,13 +20,14 @@
         </div>
     </div>
 
-    <div *ngIf="isTestStarted" class="test-container" [@fadeIn]>
+    <div *ngIf="isTestStarted" class="test-container">
         <p style="color: black; font-size: 14px;">Question {{currentQuestionIndex + 1}} of 30:</p>
         <p style="color: black; padding-top: 15px; font-weight: 500; margin-bottom: 50px">{{questions[currentQuestionIndex].text}}</p>
         <div *ngFor="let option of questions[currentQuestionIndex].options; let last = last" class="option-container">
             <input type="radio" [value]="option" [(ngModel)]="selectedOption" name="optionGroup" id="{{option}}">
             <label for="{{option}}"><span style="padding-left: 10px;">{{option}}</span></label>
             <hr *ngIf="!last">
-        </div>                
-    </div>
+        </div> 
+        <button (click)="submitAnswer(selectedOption)" class="submit-button" style="color: white;">Next</button>              
+    </div>    
 </div>

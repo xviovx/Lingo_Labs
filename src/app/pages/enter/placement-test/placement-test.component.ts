@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class PlacementTestComponent {
   selectedOption: string | null = null;
-  isTestStarted: boolean = true;
+  isTestStarted: boolean = false;
   isModalOpen = false;
   currentQuestionIndex = 0;
   score = 0;
@@ -90,20 +90,23 @@ export class PlacementTestComponent {
     this.isTestStarted = true;
   }
 
-  submitAnswer(answer: string) {
+  submitAnswer(answer: string | null) {
+    if (!answer) return;
+  
     localStorage.setItem(`question_${this.currentQuestionIndex}`, answer);
-    
+  
     if (answer === this.questions[this.currentQuestionIndex].correctOption) {
       this.score++;
+      console.log(this.score);
     }
-
+  
     this.currentQuestionIndex++;
-    
+  
     if (this.currentQuestionIndex >= this.questions.length) {
       this.isTestStarted = false;
       localStorage.setItem('score', this.score.toString());
     } else {
       this.selectedOption = null;
     }
-  }
+  }  
 }

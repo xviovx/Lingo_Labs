@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-placement-test',
   templateUrl: './placement-test.component.html',
   styleUrls: ['./placement-test.component.scss']
 })
-export class PlacementTestComponent {
+export class PlacementTestComponent implements OnInit, OnDestroy{
   selectedOption: string | null = null;
   isTestStarted: boolean = false;
-  isTestFinished: boolean = true;
+  isTestFinished: boolean = false;
   isModalOpen = false;
   currentQuestionIndex = 0;
   score = 0;
   questions = [
+    //general
     {
       text: "You _______ all go to London next weekend",
       options: ["are", "have", "can", "need"],
@@ -63,11 +64,8 @@ export class PlacementTestComponent {
       options: ["am", "was", "were", "had been"],
       correctOption: "were"
     },
-    {
-      text: "I wish I _______ fly.",
-      options: ["can", "could", "canning", "will"],
-      correctOption: "could"
-    }
+    //listening
+
   ];
 
   constructor() {
@@ -80,6 +78,13 @@ export class PlacementTestComponent {
     if (previousAnswers) {
       const answers = JSON.parse(previousAnswers);
     }
+  }
+
+  private audio = new Audio();
+
+  ngOnInit() {
+    this.audio.src = "../../../assets/test_audio.mp3";
+    this.audio.load();
   }
 
   toggleModal() {
@@ -105,6 +110,7 @@ export class PlacementTestComponent {
   
     if (this.currentQuestionIndex >= this.questions.length) {
       this.isTestStarted = false;
+      this.isTestFinished = true;
       localStorage.setItem('score', this.score.toString());
     } else {
       this.selectedOption = null;

@@ -20,8 +20,28 @@
         </div>
     </div>
 
+    <div class="listening-modal" *ngIf="showListeningModal">
+        <div class="modal-content">
+            <span class="close-btn" (click)="closeListening();">×</span>
+            <div class="document-icon"></div>
+            <p class="modal-text">Time for a listening exercise! 😊</p>
+            <p class="modal-text">Listen and answer.</p>
+            <button mat-raised-button class="modal-btn" (click)="closeListening();">OK</button>
+        </div>
+    </div>
+    
+    <div class="reading-modal" *ngIf="showReadingModal">
+        <div class="modal-content">
+            <span class="close-btn" (click)="closeReading();">×</span>
+            <div class="document-icon"></div>
+            <p class="modal-text">You're doing great! Now time for a reading exercise! 😊</p>
+            <p class="modal-text">Read the paragraph carefully and answer the questions that follow.</p>
+            <button mat-raised-button class="modal-btn" (click)="closeReading();">OK</button>
+        </div>
+    </div>    
+
     <div *ngIf="isTestStarted" class="test-container">
-        <div class="question-container">
+        <div class="question-container" *ngIf="!showReadingText">
             <div class="question-texts">
                 <p style="color: black; font-size: 14px;">Question {{currentQuestionIndex + 1}} of 30:</p>
                 <p style="color: black; padding-top: 15px; font-weight: 500; margin-bottom: 50px">{{questions[currentQuestionIndex].text}}</p>
@@ -37,12 +57,27 @@
                 <span>{{ currentTime | timeFormat }}/{{ duration | timeFormat }}</span>
             </div>            
         </div>
+
+        <div class="reading-container" *ngIf="showReadingText">
+            <p style="color: black; font-size: 14px; line-height: 30px;">The Romans were famous for their road network. Putting in place highways, bridges, fords and ferry crossings was a key strategy in the expansion of the Roman Empire across Europe and into Asia and Africa. The long, mostly straight routes provided a fast connection (by the standards of the day) between towns, forts and ports for the purposes of military operations and trade. Countries that had previously had just a few dirt tracks here and there suddenly became part of an international infrastructure radiating from Rome.
+
+                For a project that took place almost 2,000 years ago, the Roman road network was an incredible engineering achievement. And it was built to last. In most of the former parts of the Roman Empire, there would be no more infrastructure projects on such a scale for another one and a half thousand years, with the building of canals and railroads in the 18th and 19th centuries. And large-scale highway construction didn't occur again until the mid-20th century, when countries began to build national networks of expressways. Indeed, some of Europe's new multi-lane freeways were built along former Roman roads, following the same direct routes.</p>    
+        </div>
             
-        <div *ngFor="let option of questions[currentQuestionIndex].options; let last = last" class="option-container">
-            <input type="radio" [value]="option" [(ngModel)]="selectedOption" name="optionGroup" id="{{option}}">
-            <label for="{{option}}"><span style="padding-left: 10px;">{{option}}</span></label>
-            <hr *ngIf="!last">
+        <div *ngIf="currentQuestionIndex !== 20">
+            <div *ngFor="let option of questions[currentQuestionIndex].options; let last = last" class="option-container" >
+                <input type="radio" [value]="option" [(ngModel)]="selectedOption" name="optionGroup" id="{{option}}">
+                <label for="{{option}}"><span style="padding-left: 10px;">{{option}}</span></label>
+                <hr *ngIf="!last">
+            </div> 
         </div> 
+        <button 
+  class="back-button" 
+  style="color: teal; background-color: white; border: 1px solid Teal" 
+  (click)="goBack()"
+  *ngIf="currentQuestionIndex > 0">Back
+</button>
+
         <button (click)="submitAnswer(selectedOption)" class="submit-button" style="color: white;">Next</button>              
     </div>        
 

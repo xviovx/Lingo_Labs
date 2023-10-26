@@ -21,16 +21,30 @@
     </div>
 
     <div *ngIf="isTestStarted" class="test-container">
-        <p style="color: black; font-size: 14px;">Question {{currentQuestionIndex + 1}} of 30:</p>
-        <p style="color: black; padding-top: 15px; font-weight: 500; margin-bottom: 50px">{{questions[currentQuestionIndex].text}}</p>
+        <div class="question-container">
+            <div class="question-texts">
+                <p style="color: black; font-size: 14px;">Question {{currentQuestionIndex + 1}} of 30:</p>
+                <p style="color: black; padding-top: 15px; font-weight: 500; margin-bottom: 50px">{{questions[currentQuestionIndex].text}}</p>
+            </div>
+            <div *ngIf="questions[currentQuestionIndex]?.type === 'listening'" class="listening-container">
+                <button (click)="toggleAudio()" class="small-button">
+                    <mat-icon *ngIf="!isPlaying">play_arrow</mat-icon>
+                    <mat-icon *ngIf="isPlaying">pause</mat-icon>
+                </button>                                
+                <div class="progress-container">
+                    <div [style.width]="(currentTime / duration) * 100 + '%'"></div>
+                </div>
+                <span>{{ currentTime | timeFormat }}/{{ duration | timeFormat }}</span>
+            </div>            
+        </div>
+            
         <div *ngFor="let option of questions[currentQuestionIndex].options; let last = last" class="option-container">
             <input type="radio" [value]="option" [(ngModel)]="selectedOption" name="optionGroup" id="{{option}}">
             <label for="{{option}}"><span style="padding-left: 10px;">{{option}}</span></label>
             <hr *ngIf="!last">
         </div> 
         <button (click)="submitAnswer(selectedOption)" class="submit-button" style="color: white;">Next</button>              
-    </div>    
-
+    </div>        
 
     <div *ngIf="isTestFinished" class="test-finished">
         <div class="logo"></div>
@@ -41,7 +55,5 @@
             <button mat-raised-button class="test-results">Results</button>   
             <button mat-raised-button class="to-home">Next</button>  
         </div>         
-        <button (click)="playAudio()">Play Audio</button>
-<button (click)="pauseAudio()">Pause Audio</button>
     </div>  
 </div>

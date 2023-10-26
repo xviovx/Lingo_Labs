@@ -6,100 +6,125 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./placement-test.component.scss']
 })
 export class PlacementTestComponent implements OnInit, OnDestroy{
+  isPlaying = false;
+  audio = new Audio("../../../assets/test_audio.mp3");
+  duration = 0;
+  currentTime = 0;
   selectedOption: string | null = null;
-  isTestStarted: boolean = false;
-  isTestFinished: boolean = true;
+  isTestStarted: boolean = true;
+  isTestFinished: boolean = false;
   isModalOpen = false;
   currentQuestionIndex = 0;
   score = 0;
+  
   questions = [
-    //general
+    // general questions
     {
+      type: "listening",
       text: "You _______ all go to London next weekend",
       options: ["are", "have", "can", "need"],
       correctOption: "can"
     },
     {
+      type: "general",
       text: "We _______ go to the beach if it's raining.",
       options: ["will", "would", "should", "won't"],
       correctOption: "won't"
     },
     {
+      type: "general",
       text: "He _______ finished his homework yet.",
       options: ["hasn't", "don't", "hasn't been", "isn't"],
       correctOption: "hasn't"
     },
     {
+      type: "general",
       text: "She can sing _______.",
       options: ["good", "best", "well", "betterly"],
       correctOption: "well"
     },
     {
+      type: "general",
       text: "I'm afraid of _______ in the dark.",
       options: ["walks", "walked", "walking", "to walk"],
       correctOption: "walking"
     },
     {
+      type: "general",
       text: "She has been living here _______ 2010.",
       options: ["since", "for", "during", "by"],
       correctOption: "since"
     },
     {
+      type: "general",
       text: "I _______ have some milk in my coffee.",
       options: ["like", "likes", "would like", "liking"],
       correctOption: "would like"
     },
     {
+      type: "general",
       text: "Every student _______ wear a uniform.",
       options: ["has to", "don't have to", "doesn't has to", "need"],
       correctOption: "has to"
     },
     {
+      type: "general",
       text: "She _______ her keys. She can't find them anywhere.",
       options: ["loses", "losted", "has lost", "was lost"],
       correctOption: "has lost"
     },
     {
+      type: "general",
       text: "If I _______ you, I'd study more.",
       options: ["am", "was", "were", "had been"],
       correctOption: "were"
     },
-    //listening
-
+    //listening questions
+    {
+      type: "listening",
+      text: "What does the speaker say about gravity?",
+      options: ["am", "was", "were", "had been"],
+      correctOption: "were"
+    },
   ];
-
+  
   constructor() {
     const previousScore = localStorage.getItem('score');
     if (previousScore) {
       this.score = +previousScore;
     }
-
+    
     const previousAnswers = localStorage.getItem('answers');
     if (previousAnswers) {
       const answers = JSON.parse(previousAnswers);
     }
   }
 
-  private audio = new Audio();
-
   ngOnInit() {
-    this.audio.src = "../../../assets/test_audio.mp3";
     this.audio.load();
+    this.audio.onloadedmetadata = () => {
+        this.duration = Math.floor(this.audio.duration);
+    };
+    
+    this.audio.ontimeupdate = () => {
+        this.currentTime = Math.floor(this.audio.currentTime);
+    };
   }
 
-  playAudio() {
-    this.audio.play();
-  }
-
-  pauseAudio() {
-    this.audio.pause();
+  toggleAudio() {
+    if (this.isPlaying) {
+        this.audio.pause();
+    } else {
+        this.audio.play();
+    }
+    this.isPlaying = !this.isPlaying;
   }
 
   ngOnDestroy() {
     this.audio.pause();
-    this.audio = new Audio();  // This will release the audio resource
+    this.audio = new Audio(); 
   }
-
+  
   toggleModal() {
     this.isModalOpen = !this.isModalOpen;
   }

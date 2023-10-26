@@ -284,6 +284,36 @@ mat-form-field {
     margin: 0 auto; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 9999;
+
+    .question-container {
+        display: flex;
+        justify-content: space-between;
+
+        .question-texts {
+            flex: 1;
+        }
+
+        .listening-container {
+            flex: 1; 
+        }
+    }
+}
+///fixixixix hereherehre
+.small-button {
+    padding: 2px 5px;
+    width: 40px;   
+    height: 40px;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent; 
+}
+
+.small-button mat-icon {
+    font-size: 20px;
+    width: 10px;
+    height: 10px;
 }
 
 .test-container p {
@@ -386,6 +416,20 @@ mat-form-field {
     right: 35px;
     color: white;
 }
+
+.progress-container {
+    width: 100%;
+    height: 5px;
+    background-color: #f0f0f0;
+}
+
+.progress-container > div {
+    height: 100%;
+    background-color: #ff0000;
+}
+
+
+
 
 
 

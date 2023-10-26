@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
-
 import { FirebaseModule } from './firebase/firebase/firebase.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -38,6 +37,7 @@ import { RegisterComponent } from './pages/enter/register/register-component/reg
 import { RegisterWizardComponent } from './pages/enter/register/register-wizard/register-wizard/register-wizard.component';
 import { NotFoundComponent } from './pages/not-found/not-found/not-found.component';
 import { PlacementTestComponent } from './pages/enter/placement-test/placement-test.component';
+import { TimeFormatPipe } from './pipes/time-format.pipe';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,8 @@ import { PlacementTestComponent } from './pages/enter/placement-test/placement-t
     RegisterComponent,
     RegisterWizardComponent,
     NotFoundComponent,
-    PlacementTestComponent
+    PlacementTestComponent,
+    TimeFormatPipe
   ],
   imports: [
     BrowserModule,

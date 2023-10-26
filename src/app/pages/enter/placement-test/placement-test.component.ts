@@ -8,7 +8,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class PlacementTestComponent implements OnInit, OnDestroy{
   selectedOption: string | null = null;
   isTestStarted: boolean = false;
-  isTestFinished: boolean = false;
+  isTestFinished: boolean = true;
   isModalOpen = false;
   currentQuestionIndex = 0;
   score = 0;
@@ -85,6 +85,19 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
   ngOnInit() {
     this.audio.src = "../../../assets/test_audio.mp3";
     this.audio.load();
+  }
+
+  playAudio() {
+    this.audio.play();
+  }
+
+  pauseAudio() {
+    this.audio.pause();
+  }
+
+  ngOnDestroy() {
+    this.audio.pause();
+    this.audio = new Audio();  // This will release the audio resource
   }
 
   toggleModal() {

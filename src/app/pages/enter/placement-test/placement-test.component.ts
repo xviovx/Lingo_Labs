@@ -207,12 +207,18 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
   ];
   
   goBack() {
+    if (this.currentQuestionIndex === 20 && this.showReadingText) {
+        this.showReadingText = false;
+    }
+
     if (this.currentQuestionIndex > 0) {
         this.currentQuestionIndex--;
         const prevAnswer = localStorage.getItem(`question_${this.currentQuestionIndex}`);
         this.selectedOption = prevAnswer || null;
     }
   }
+
+
   
   constructor() {
     const previousScore = localStorage.getItem('score');

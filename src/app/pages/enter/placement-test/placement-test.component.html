@@ -84,10 +84,10 @@
     <div *ngIf="isTestFinished" class="test-finished">
         <div class="logo"></div>
         <p style="margin-top: 40px; margin-bottom: 10px">Congratulations! **NAME**</p>
-        <p style="margin-top: 20px; margin-bottom: 40px">Based on your score, we have determined your level to be:</p>
-        <h1 style="margin-top: 15px; font-size: 72px;">A2</h1>
+        <p style="margin-top: 20px; margin-bottom: 40px">Based on your score ({{score}}/30), we have determined your level to be:</p>
+        <h1 style="margin-top: 15px; font-size: 72px;">{{level}}</h1>
         <div class="post-test-buttons-con" style="margin-top: 40px">
-            <button mat-raised-button class="test-results">Results</button>   
+            <button mat-raised-button class="test-results">Retry</button>   
             <button mat-raised-button class="to-home">Next</button>  
         </div>         
     </div>  

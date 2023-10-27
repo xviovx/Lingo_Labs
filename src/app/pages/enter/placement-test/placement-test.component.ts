@@ -18,7 +18,8 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
   isTestFinished: boolean = false;
   isModalOpen = false;
   currentQuestionIndex = 0;
-  score = 0;
+  score: number = 0;
+  level: string = "";
   
   questions = [
     // general questions
@@ -253,8 +254,8 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
         this.currentTime = Math.floor(this.audio.currentTime);
     };
 
-    this.currentQuestionIndex = 15;
-    this.checkQuestionIndex();
+    // this.currentQuestionIndex = 15;
+    // this.checkQuestionIndex();
   }
 
   toggleAudio() {
@@ -293,6 +294,22 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
       this.currentQuestionIndex++;
     }
   }  
+
+  getLevelBasedOnScore(): string {
+    if (this.score <= 5) {
+        return 'A1'; 
+    } else if (this.score <= 10) {
+        return 'A2'; 
+    } else if (this.score <= 15) {
+        return 'B1'; 
+    } else if (this.score <= 20) {
+        return 'B2'; 
+    } else if (this.score <= 25) {
+        return 'C1'; 
+    } else {
+        return 'C2'; 
+    }
+}
 
   submitAnswer(answer: string | null) {
     // If no answer is given at any index other than 20, return
@@ -334,6 +351,9 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
         this.isTestStarted = false;
         this.isTestFinished = true;
         localStorage.setItem('score', this.score.toString());
+        this.getLevelBasedOnScore();
+        this.level = this.getLevelBasedOnScore();
+        
     } else {
         this.selectedOption = null;
     }

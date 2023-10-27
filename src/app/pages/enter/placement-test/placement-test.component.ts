@@ -247,7 +247,7 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
         this.currentTime = Math.floor(this.audio.currentTime);
     };
 
-    this.currentQuestionIndex = 20;  // set to 20 manually for testing
+    this.currentQuestionIndex = 15;
     this.checkQuestionIndex();
   }
 
@@ -289,8 +289,10 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
   }  
 
   submitAnswer(answer: string | null) {
+    // If no answer is given at any index other than 20, return
     if (this.currentQuestionIndex !== 20 && !answer) return;
 
+    // Handle saving the answer
     if (answer) {
         localStorage.setItem(`question_${this.currentQuestionIndex}`, answer);
 
@@ -300,16 +302,28 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
         }
     }
 
-    if (this.currentQuestionIndex === 20) {
-        this.currentQuestionIndex = 21;
-        this.showReadingText = false;
-        return;
-    } else {
+    // If we're at index 19, simply increment to the next index
+    if (this.currentQuestionIndex === 19) {
         this.currentQuestionIndex++;
+        this.showReadingText = true; // Show the reading text at index 20
+        this.showReadingModal = true;
+        return;  // return here so that nothing else in the function executes
+    } 
+    // If we're at index 20
+    else if (this.currentQuestionIndex === 20) {
+        // If the reading is being shown, hide the reading and do not increment the index
+        if (this.showReadingText) {
+            this.showReadingText = false; // Hide the reading text
+            return; // return here so that nothing else in the function executes
+        }
     }
-    
+
+    // For all other cases, increment the question index normally
+    this.currentQuestionIndex++;
+
     this.checkQuestionIndex();
 
+    // Check if the test is over
     if (this.currentQuestionIndex >= this.questions.length) {
         this.isTestStarted = false;
         this.isTestFinished = true;
@@ -317,5 +331,6 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
     } else {
         this.selectedOption = null;
     }
-  }
+}
+
 }

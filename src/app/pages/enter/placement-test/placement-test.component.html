@@ -64,13 +64,13 @@
                 For a project that took place almost 2,000 years ago, the Roman road network was an incredible engineering achievement. And it was built to last. In most of the former parts of the Roman Empire, there would be no more infrastructure projects on such a scale for another one and a half thousand years, with the building of canals and railroads in the 18th and 19th centuries. And large-scale highway construction didn't occur again until the mid-20th century, when countries began to build national networks of expressways. Indeed, some of Europe's new multi-lane freeways were built along former Roman roads, following the same direct routes.</p>    
         </div>
             
-        <div *ngIf="currentQuestionIndex !== 20">
-            <div *ngFor="let option of questions[currentQuestionIndex].options; let last = last" class="option-container" >
+        <div *ngIf="currentQuestionIndex !== 20 || (currentQuestionIndex === 20 && !showReadingText)">
+            <div *ngFor="let option of questions[currentQuestionIndex].options; let last = last" class="option-container">
                 <input type="radio" [value]="option" [(ngModel)]="selectedOption" name="optionGroup" id="{{option}}">
                 <label for="{{option}}"><span style="padding-left: 10px;">{{option}}</span></label>
                 <hr *ngIf="!last">
             </div> 
-        </div> 
+        </div>         
         <button 
   class="back-button" 
   style="color: teal; background-color: white; border: 1px solid Teal" 

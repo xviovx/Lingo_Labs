@@ -46,7 +46,7 @@ export class AuthService {
 
   getUserInfo(userId: string): Observable<any> {
     console.log("Fetching user info for userId:", userId);
-    return this.db.collection('users').doc(userId).valueChanges().pipe(
+    return this.db.collection('user_info').doc(userId).valueChanges().pipe(
       switchMap(data => {
         if (data) {
           console.log("User info fetched for userId:", userId, data);

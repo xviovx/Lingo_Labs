@@ -13,6 +13,7 @@ import { SharedService } from './services/shared.service';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   userName: string = "";
+  dataAttempted: boolean = false;
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
@@ -48,6 +49,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.cdr.detectChanges();
     });
     this.fetchUserData();
+    console.log("fetched username" + this.userName)
   }
 
   fetchUserData() {
@@ -58,8 +60,10 @@ export class AppComponent implements OnInit, AfterViewInit {
       } else {
         console.log('User Data is null or undefined.');
       }
+      this.dataAttempted = true;
     }, (error: any) => {
         console.error('Error fetching user data:', error);
+        this.dataAttempted = true;
     });
 }
 
@@ -94,10 +98,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   getGreeting(): string {
-    const nameToDisplay = this.userName || "Friend";
     switch (this.router.url) {
         case '/home':
-            return `Welcome, ${nameToDisplay}! 👋🏻`;
+            return 'Welcome!';
         case '/past-exercises':
             return 'View your Past Exercises here!';
         case '/book-lesson':

@@ -255,6 +255,7 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
   }  
 
   ngOnInit() {
+    this.score = 0;
     localStorage.clear(); // clear local storage on init
     this.audio.load();
     this.audio.onloadedmetadata = () => {

@@ -87,7 +87,7 @@
         <p style="margin-top: 20px; margin-bottom: 40px">Based on your score ({{score}}/30), we have determined your level to be:</p>
         <h1 style="margin-top: 15px; font-size: 72px;">{{level}}</h1>
         <div class="post-test-buttons-con" style="margin-top: 40px">
-            <button mat-raised-button class="test-results">Retry</button>   
+            <button mat-raised-button class="test-results" (click)="restartTest();">Retry</button>   
             <button mat-raised-button class="to-home" (click)="completeRegistration();">Next</button>  
         </div>         
     </div>  

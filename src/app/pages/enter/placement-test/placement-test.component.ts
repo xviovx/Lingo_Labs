@@ -274,6 +274,12 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
     // this.checkQuestionIndex();
   }
 
+  restartTest(): void {
+    this.router.navigateByUrl('/some-temp-route').then(() => {
+      this.router.navigate(['/placement-test']); 
+    });
+  }  
+
   toggleAudio() {
     if (this.isPlaying) {
         this.audio.pause();

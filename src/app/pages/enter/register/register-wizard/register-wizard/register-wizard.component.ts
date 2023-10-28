@@ -71,7 +71,7 @@ export class RegisterWizardComponent {
         await this.authService.signUp(email, password);
         console.log('User registration complete.');
         await this.saveUserInfo(this.userName, this.userLocation, email);
-        this.router.navigate(['home'])
+        this.router.navigate(['placement-test'])
       } catch (error) {
         console.error('A registration error occurred: ', error);
         this.isValidationError = true;

@@ -22,12 +22,5 @@ export class HomeComponent {
         this.sharedService.setJustRegistered(false);
         window.location.reload();
     }
-
-    this.authService.getCurrentUserInfo().then(userData => {
-      if (userData) {
-        this.userName = userData.name;
-      }
-    })
-    
   } 
 }

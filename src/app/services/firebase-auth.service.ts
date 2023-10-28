@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { GoogleAuthProvider } from '@angular/fire/auth';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -29,27 +31,47 @@ export class AuthService {
     return user?.email || null;
   }  
 
-  async getCurrentUserId(): Promise<string | null> {
-    const user = await this.afAuth.currentUser;
-    return user ? user.uid : null;
+  getCurrentUserId(): Observable<string | null> {
+    return new Observable<string | null>(observer => {
+      this.afAuth.onAuthStateChanged(user => {
+        if (user) {
+          observer.next(user.uid);
+        } else {
+          observer.next(null);
+        }
+        observer.complete();
+      });
+    });
   }
 
-  async getUserInfo(userId: string): Promise<any> {
-    const docSnapshot = await this.db.collection('users').doc(userId).get().toPromise();
-    
-    if (docSnapshot && docSnapshot.exists) {
-        return docSnapshot.data();
-    }
-    return null;
-}
-
-async getCurrentUserInfo(): Promise<any> {
-  const userId = await this.getCurrentUserId();
-  if (userId) {
-      return this.getUserInfo(userId);
+  getUserInfo(userId: string): Observable<any> {
+    console.log("Fetching user info for userId:", userId);
+    return this.db.collection('users').doc(userId).valueChanges().pipe(
+      switchMap(data => {
+        if (data) {
+          console.log("User info fetched for userId:", userId, data);
+          return of(data);
+        } else {
+          console.log("No user data found for userId:", userId);
+          return of(null);
+        }
+      })
+    );
   }
-  return null;
-}
+
+  fetchCurrentUserData(): Observable<any> {
+    return this.getCurrentUserId().pipe(
+      switchMap(userId => {
+        if (userId) {
+          console.log("Current user ID obtained:", userId);
+          return this.getUserInfo(userId);
+        } else {
+          console.log("No current user ID found");
+          return of(null);
+        }
+      })
+    );
+  }
 
   signInWithGoogle(): Promise<void> {
     const provider = new GoogleAuthProvider();
@@ -62,4 +84,7 @@ async getCurrentUserInfo(): Promise<any> {
       });
   }
 
+  public getAuthState() {
+    return this.afAuth.authState;
+  }
 }

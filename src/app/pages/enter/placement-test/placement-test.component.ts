@@ -374,37 +374,36 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
     }
 }
 
-async saveUserInfo(name: string, location: string, email: string, level: string) {
-  // get UID
-  const userId = await this.authService.getCurrentUserId();
+saveUserInfo(name: string, location: string, email: string, level: string) {
+  this.authService.getCurrentUserId().subscribe(async userId => {
+    if (!userId) {
+        console.error('No user ID found.');
+        return;
+    }
 
-  if (!userId) {
-      console.error('No user ID found.');
-      return;
-  }
+    // structure data
+    const userInfo: UserInfo = {
+        email: email,
+        name: name,
+        location: location,
+        current_streak: 0,
+        exercises_complete: 0,
+        level: level, 
+        live_sessions: 0,
+        longest_streak: 0,
+        messages_sent: 0,
+        time_in_chat: 0,
+        time_learning: 0
+    };
 
-  // structure data
-  const userInfo: UserInfo = {
-      email: email,
-      name: name,
-      location: location,
-      current_streak: 0,
-      exercises_complete: 0,
-      level: level, 
-      live_sessions: 0,
-      longest_streak: 0,
-      messages_sent: 0,
-      time_in_chat: 0,
-      time_learning: 0
-  };
-
-  // save to firestore
-  try {
-      await this.firestoreService.setUserInfo(userId, userInfo);
-      console.log('User info saved successfully.');
-  } catch (error) {
-      console.error('Error saving user info:', error);
-  }
+    // save to firestore
+    try {
+        await this.firestoreService.setUserInfo(userId, userInfo);
+        console.log('User info saved successfully.');
+    } catch (error) {
+        console.error('Error saving user info:', error);
+    }
+  });
 }
 
 async completeRegistration(): Promise<void> {

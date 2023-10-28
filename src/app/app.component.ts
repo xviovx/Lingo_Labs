@@ -34,7 +34,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     console.log("app loaded");
     this.toggleSidenav();
-    this.fetchUserData();
   }
 
   ngAfterViewInit() {
@@ -48,17 +47,18 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
       this.cdr.detectChanges();
     });
+    this.fetchUserData();
   }
 
   fetchUserData() {
-    this.authService.getCurrentUserInfo().then(userData => {
+    this.authService.fetchCurrentUserData().subscribe((userData: any) => {
       if (userData) {
         console.log('User Data fetched:', userData);
         this.userName = userData.name;
       } else {
         console.log('User Data is null or undefined.');
       }
-    }).catch(error => {
+    }, (error: any) => {
         console.error('Error fetching user data:', error);
     });
 }

@@ -9,6 +9,8 @@ export class SharedService {
   private justRegistered = false;
   private tempEmail: string = '';
   private tempPassword: string = '';
+  private userName: string = '';
+  private userLocation: string = '';
 
   setJustRegistered(value: boolean) {
     this.justRegistered = value;
@@ -41,5 +43,21 @@ export class SharedService {
 
   getTempCredentials(): {email: string, password: string} {
     return { email: this.tempEmail, password: this.tempPassword}
+  }
+
+  setUserName(name: string): void {
+    this.userName = name;
+  }
+
+  getUserName(): string {
+    return this.userName;
+  }
+
+  setUserLocation(location: string): void {
+    this.userLocation = location;
+  }
+
+  getUserLocation(): string {
+    return this.userLocation;
   }
 }

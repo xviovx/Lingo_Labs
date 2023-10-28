@@ -51,7 +51,7 @@
       {{ getGreeting() }}
     </div>
     <div class="bell-and-profile">
-      <button mat-icon-button>
+      <button mat-icon-button (click)="fetchUserData();">
         <mat-icon>notifications</mat-icon>
     </button>
     <button mat-icon-button (click)="signOut()">

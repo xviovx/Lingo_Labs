@@ -12,6 +12,8 @@ import { SharedService } from './services/shared.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, AfterViewInit {
+  userName: string = "";
+
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
@@ -30,7 +32,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    console.log("app loaded");
     this.toggleSidenav();
+    this.fetchUserData();
   }
 
   ngAfterViewInit() {
@@ -45,6 +49,20 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.cdr.detectChanges();
     });
   }
+
+  fetchUserData() {
+    this.authService.getCurrentUserInfo().then(userData => {
+      if (userData) {
+        console.log('User Data fetched:', userData);
+        this.userName = userData.name;
+      } else {
+        console.log('User Data is null or undefined.');
+      }
+    }).catch(error => {
+        console.error('Error fetching user data:', error);
+    });
+}
+
 
   toggleSidenav() {
     const openRoutes = ['/home', '/stats', '/chatbot', '/book-lesson', '/past-exercises'];
@@ -76,9 +94,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   getGreeting(): string {
+    const nameToDisplay = this.userName || "Friend";
     switch (this.router.url) {
         case '/home':
-            return 'Welcome, Gringo! 👋🏻';
+            return `Welcome, ${nameToDisplay}! 👋🏻`;
         case '/past-exercises':
             return 'View your Past Exercises here!';
         case '/book-lesson':

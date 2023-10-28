@@ -34,6 +34,23 @@ export class AuthService {
     return user ? user.uid : null;
   }
 
+  async getUserInfo(userId: string): Promise<any> {
+    const docSnapshot = await this.db.collection('users').doc(userId).get().toPromise();
+    
+    if (docSnapshot && docSnapshot.exists) {
+        return docSnapshot.data();
+    }
+    return null;
+}
+
+async getCurrentUserInfo(): Promise<any> {
+  const userId = await this.getCurrentUserId();
+  if (userId) {
+      return this.getUserInfo(userId);
+  }
+  return null;
+}
+
   signInWithGoogle(): Promise<void> {
     const provider = new GoogleAuthProvider();
     return this.afAuth.signInWithPopup(provider)
@@ -44,4 +61,5 @@ export class AuthService {
         alert(err.message);
       });
   }
+
 }

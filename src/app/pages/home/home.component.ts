@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedService } from 'src/app/services/shared.service';
+import { AuthService } from 'src/app/services/firebase-auth.service';
 
 
 @Component({
@@ -9,10 +10,11 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class HomeComponent {
   progressValue = 50;
+  userName: string = "";
 
   isDisabled = true;
 
-  constructor(private sharedService: SharedService) {}
+  constructor(private sharedService: SharedService, private authService: AuthService) {}
 
   ngOnInit() {
     if (this.sharedService.getJustLoggedIn() || this.sharedService.getJustRegistered()) {
@@ -20,5 +22,12 @@ export class HomeComponent {
         this.sharedService.setJustRegistered(false);
         window.location.reload();
     }
+
+    this.authService.getCurrentUserInfo().then(userData => {
+      if (userData) {
+        this.userName = userData.name;
+      }
+    })
+    
   } 
 }

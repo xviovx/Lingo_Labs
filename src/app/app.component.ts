@@ -100,7 +100,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   getGreeting(): string {
     switch (this.router.url) {
         case '/home':
-            return 'Welcome!';
+            if (this.dataAttempted && !this.userName) {
+                return 'Welcome, Friend!';
+            } else if (this.dataAttempted && this.userName) {
+                return `Welcome, ${this.userName} 👋🏻!`;
+            } else {
+                return 'Welcome!';
+            }
         case '/past-exercises':
             return 'View your Past Exercises here!';
         case '/book-lesson':
@@ -110,11 +116,11 @@ export class AppComponent implements OnInit, AfterViewInit {
         case '/chatbot':
             return 'Chat with Polly, the English tutor!';
         case '/**':
-            return "Page not found!"
+            return "Page not found!";
         default:
             return '';
     }
-  }
+}
 
   sidenavHovered = false;
 

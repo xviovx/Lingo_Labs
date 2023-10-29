@@ -48,9 +48,7 @@
 
   <mat-sidenav-content>
     <div class="greeting-text">
-      <span *ngIf="dataAttempted && !userName">Friend</span>
       <span>{{ getGreeting() }}</span>
-      <span *ngIf="dataAttempted && userName"> {{ userName }} 👋🏻</span>
     </div>
     <div class="bell-and-profile">
       <button mat-icon-button (click)="fetchUserData();">

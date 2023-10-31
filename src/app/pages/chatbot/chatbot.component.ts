@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OpenaiService } from '../../services/openai.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-chatbot',
@@ -21,7 +22,7 @@ export class ChatbotComponent implements OnInit {
   mode: 'formal' | 'playful' = 'formal';
   loading: boolean = false;
   userInput: string = '';
-  userLevel: string = 'A2';
+  userLevel: string = '';
   botMessages: { content: string, timestamp: number, type: string }[] = [
     { content: 'Hello! I am your English tutor, Polly. How may I assist you today?', timestamp: Date.now(), type: 'bot' }
   ];
@@ -31,7 +32,8 @@ export class ChatbotComponent implements OnInit {
 
   constructor(
     private openaiService: OpenaiService,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private sharedService: SharedService
   ) { }
 
   ngOnInit(): void {
@@ -43,6 +45,11 @@ export class ChatbotComponent implements OnInit {
         event.preventDefault();
         this.sendMessage();
       }
+    });
+
+    this.sharedService.userLevel$.subscribe(level => {
+      this.userLevel = level;
+      console.log('User level in ChatbotComponent:', this.userLevel);
     });
   }
 

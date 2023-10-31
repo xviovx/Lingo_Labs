@@ -13,6 +13,7 @@ import { SharedService } from './services/shared.service';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   userName: string = "";
+  userLevel: string = "";
   dataAttempted: boolean = false;
 
   @ViewChild(MatSidenav)
@@ -57,6 +58,9 @@ export class AppComponent implements OnInit, AfterViewInit {
       if (userData) {
         console.log('User Data fetched:', userData);
         this.userName = userData.name;
+        this.userLevel = userData.level;
+        this.sharedService.setUserLevel(this.userLevel);
+        console.log("user level is: " + this.userLevel);
       } else {
         console.log('User Data is null or undefined.');
       }

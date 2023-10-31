@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,11 @@ export class SharedService {
   private tempPassword: string = '';
   private userName: string = '';
   private userLocation: string = '';
+  private userLevel: string = "";
+  private userLevelSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
+  // Expose the subject as an observable
+  userLevel$: Observable<string> = this.userLevelSubject.asObservable();
 
   setJustRegistered(value: boolean) {
     this.justRegistered = value;
@@ -59,5 +66,14 @@ export class SharedService {
 
   getUserLocation(): string {
     return this.userLocation;
+  }
+
+  setUserLevel(level: string): void {
+    this.userLevel = level;
+    this.userLevelSubject.next(level); 
+  }
+
+  getUserLevel(): string {
+    return this.userLevel;
   }
 }

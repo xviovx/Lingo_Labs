@@ -12,6 +12,7 @@ import { AuthGuard } from './services/authguard.service';
 import { RegisterWizardComponent } from './pages/enter/register/register-wizard/register-wizard/register-wizard.component';
 import { NotFoundComponent } from './pages/not-found/not-found/not-found.component';
 import { PlacementTestComponent } from './pages/enter/placement-test/placement-test.component';
+import { TestWritingComponent } from './pages/test-writing/test-writing.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
       {
         path: "chatbot",
         component: ChatbotComponent
+      },
+      {
+        path: "test-writing",
+        component: TestWritingComponent
       }
     ]
   },

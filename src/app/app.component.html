@@ -50,8 +50,14 @@
     <div class="greeting-text">
       <span>{{ getGreeting() }}</span>
     </div>
+    <div class="subtitle-text">
+      <span>{{ getSubtitle() }}</span>
+    </div>
     <div class="bell-and-profile">
-      <button mat-icon-button (click)="fetchUserData();">
+      <button mat-icon-button (click)="testWriting();">
+        <mat-icon>spellcheck</mat-icon>
+    </button>
+      <button mat-icon-button>
         <mat-icon>notifications</mat-icon>
     </button>
     <button mat-icon-button (click)="signOut()">

@@ -38,6 +38,7 @@ import { RegisterWizardComponent } from './pages/enter/register/register-wizard/
 import { NotFoundComponent } from './pages/not-found/not-found/not-found.component';
 import { PlacementTestComponent } from './pages/enter/placement-test/placement-test.component';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
+import { TestWritingComponent } from './pages/test-writing/test-writing.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { TimeFormatPipe } from './pipes/time-format.pipe';
     RegisterWizardComponent,
     NotFoundComponent,
     PlacementTestComponent,
-    TimeFormatPipe
+    TimeFormatPipe,
+    TestWritingComponent
   ],
   imports: [
     BrowserModule,

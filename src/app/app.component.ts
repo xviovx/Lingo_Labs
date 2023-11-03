@@ -15,6 +15,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   userName: string = "";
   userLevel: string = "";
   dataAttempted: boolean = false;
+  testWritingSelected: boolean = false;
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
@@ -71,6 +72,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
 }
 
+testWriting() {
+  this.router.navigate(['/test-writing']);
+}
 
   toggleSidenav() {
     const openRoutes = ['/home', '/stats', '/chatbot', '/book-lesson', '/past-exercises'];
@@ -118,13 +122,42 @@ export class AppComponent implements OnInit, AfterViewInit {
         case '/stats':
             return 'Check out your Stats!';
         case '/chatbot':
-            return 'Chat with Polly, the English tutor!';
+            return 'Chat with Polly';
+        case '/test-writing':
+            return 'Test your writing level!'
         case '/**':
             return "Page not found!";
         default:
             return '';
     }
 }
+
+getSubtitle(): string {
+  switch (this.router.url) {
+      case '/home':
+          // Return a home-specific subtitle
+          return 'Start your learning journey today!';
+      case '/past-exercises':
+          // Return a past-exercises-specific subtitle
+          return 'See how far you’ve come!';
+      case '/book-lesson':
+          // Return a booking-specific subtitle
+          return 'Choose the best time for your next lesson.';
+      case '/stats':
+          // Return a stats-specific subtitle
+          return 'Your progress is just a click away.';
+      case '/chatbot':
+          // Return a chatbot-specific subtitle
+          return 'The English Tutor!';
+      case '/test-writing':
+          // Return a test-writing-specific subtitle
+          return 'Find out your English proficiency level.';
+      // ... other cases as needed ...
+      default:
+          return '';
+  }
+}
+
 
   sidenavHovered = false;
 

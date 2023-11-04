@@ -71,6 +71,7 @@
     overflow-x: hidden;
     font-family: 'Roboto', 'sans-serif';
     font-size: 15px;
+    line-height: 30px;
 }
 
 #char-count {
@@ -91,6 +92,7 @@
 }
 
 .info-container {
+    position: relative; /* Add this line to ensure the positioning context for the overlay */
     width: calc(35% - 20px);
     height: 55vh;
     background-color: #0093FF;
@@ -98,7 +100,62 @@
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
-    overflow-y: auto; 
+    overflow-y: auto;
+  }
+
+  .loader {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background to see the loader clearly */
+    z-index: 20; /* Higher than everything else inside the info-container */
+  }
+  
+  
+  .overlay {
+    position: absolute; /* Changed from relative to absolute */
+    top: 0; /* Add this to ensure it covers the top edge */
+    bottom: 0; /* Add this to ensure it covers the bottom edge */
+    left: 0; /* Add this to ensure it covers the left edge */
+    right: 0; /* Add this to ensure it covers the right edge */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7); /* Adjusted for better visibility */
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  .diamond-shape {
+    margin-top: 100px !important;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(45deg);
+    border: 7px solid white;
+    border-radius: 5px;
+    background-color: #0093FF;
+}
+
+
+.writing-level-result {
+    transform: rotate(-45deg);
+    text-align: center;
+    font-size: 68px;
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: 700;
+    margin: 0;
+    color: white;
 }
 
 .info-container::-webkit-scrollbar {
@@ -146,32 +203,6 @@
     margin: 0;
 }
 
-.diamond-shape {
-    margin-top: 100px !important;
-    margin-left: auto;
-    margin-right: auto;
-    width: 200px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: rotate(45deg);
-    border: 7px solid white;
-    border-radius: 5px;
-    background-color: #0093FF;
-}
-
-
-.writing-level-result {
-    transform: rotate(-45deg);
-    text-align: center;
-    font-size: 68px;
-    font-family: 'Poppins', 'sans-serif';
-    font-weight: 700;
-    margin: 0;
-    color: white;
-}
-
 .question-container {
     display: flex;
     justify-content: space-between;
@@ -189,7 +220,6 @@
 .clickable-text:hover {
     font-weight: 700;
 }
-
 
 @media (max-width: 768px) {
     .chat-and-info-container {

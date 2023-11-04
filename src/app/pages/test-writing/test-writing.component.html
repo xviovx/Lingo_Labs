@@ -1,24 +1,30 @@
 <div class="content-container">
   <h2>Answer the question:</h2>
   <div class="question-container">
-    <h3>Who is your favourite person to spend time with and why?</h3>
-    <span style="margin-right: 5px; font-weight: 500;"><a href="#" class="clickable-text">New Question</a></span>
+    <h3>{{ currentQuestion }}</h3>
+    <span style="margin-right: 5px; font-weight: 500;">
+      <a class="clickable-text" (click)="changeQuestion(); $event.preventDefault()">New Question</a>
+    </span>
   </div>
     <div class="chat-and-info-container">
         <div class="chat-container">
-            <!--<div class="loader">
-              <mat-spinner></mat-spinner>
-            </div>-->
             <div class="chat-input">
-              <textarea id="chat-input-field" [(ngModel)]="userInput" placeholder="Type your message here..." maxlength="100"></textarea>
+              <textarea id="chat-input-field" [(ngModel)]="userInput" placeholder="Type your message here..." maxlength="1000"></textarea>
               <button mat-raised-button id="submit-button" (click)="onSubmit(userInput);">
                 Submit
             </button>                    
             </div>
-            <span id="char-count">0 / 100</span>
+            <span id="char-count">0 / 1000</span>
         </div>          
 
         <div class="info-container">
+          <div class="overlay" *ngIf="!hasSubmitted && !showLoader">
+            Submit your text to see your level
+          </div>
+          <div class="loader" *ngIf="showLoader">
+            <mat-spinner></mat-spinner>
+          </div>
+          <div *ngIf="hasSubmitted">
             <div class="info-header">
               <h1>Result</h1>
               <h4>We have determined your English writing level to be:</h4>
@@ -26,6 +32,7 @@
             <div class="diamond-shape">
                 <div class="writing-level-result">{{writingLevel}}</div>
             </div>
+          </div>
         </div>  
     </div>
 </div>

@@ -19,7 +19,7 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
   duration = 0;
   currentTime = 0;
   selectedOption: string | null = null;
-  isTestStarted: boolean = false;
+  isTestStarted: boolean = true;
   isTestFinished: boolean = false;
   isModalOpen = false;
   currentQuestionIndex = 0;
@@ -32,7 +32,7 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
   questions = [
     // general questions
     {
-      type: "general",
+      type: "reading",
       text: "You _______ all go to London next weekend",
       options: ["are", "have", "can", "need"],
       correctOption: "can"
@@ -400,7 +400,8 @@ saveUserInfo(name: string, location: string, email: string, level: string) {
         longest_streak: 0,
         messages_sent: 0,
         time_in_chat: 0,
-        time_learning: 0
+        time_learning: 0,
+        starred_responses: []
     };
 
     // save to firestore

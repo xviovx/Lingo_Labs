@@ -19,5 +19,6 @@ export class FirestoreService {
     updateUserInfo(userId: string, partialInfo: Partial<UserInfo>) {
       return this.firestore.collection('user_info').doc(userId).update(partialInfo);
     }
-  
+
+    //TO-DO: add function to star responses
 }

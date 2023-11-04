@@ -10,4 +10,5 @@ export interface UserInfo {
   name: string;
   time_in_chat: number;
   time_learning: number;
+  starred_responses?: { content: string; date: string }[];
 }

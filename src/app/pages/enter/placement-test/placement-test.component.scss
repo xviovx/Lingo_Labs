@@ -446,6 +446,12 @@ mat-form-field {
     background-color: #ff0000;
 }
 
+@media screen and (max-width: 1549px) {
+    .test-container {
+        height: 72vh;
+    }
+  }
+
 
 
 

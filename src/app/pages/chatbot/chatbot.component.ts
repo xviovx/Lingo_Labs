@@ -165,10 +165,15 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
             { content: 'Hello! I am your English tutor, Polly. How may I assist you today?', timestamp: Date.now(), type: 'bot' }
           ];
         }
+        this.userMessages = [];
+        this.cdRef.detectChanges();
+        this.scrollToBottom();
       },
       error => {
         console.error('Error changing mode:', error);
       }
     );
   }
+
+  //TO-DO: add method to handle starring responses
 }

@@ -1,0 +1,202 @@
+/* Updated CSS */
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.chat-and-info-container {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.content-container h2, .content-container h3{
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.content-container h2 {
+    color: black;
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.content-container h3 {
+    color: black;
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.chat-container {
+    width: 65%;
+    height: 55vh;
+    border: 2px solid #ccc;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-right: 25px;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chat-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 10px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#chat-input-field {
+    width: 100%;
+    flex-grow: 1; 
+    padding: 5px;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow-y: auto;  
+    overflow-x: hidden;
+    font-family: 'Roboto', 'sans-serif';
+    font-size: 15px;
+}
+
+#char-count {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    font-size: 10px;
+    color: #666;
+}
+
+#send-icon {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.712);
+}
+
+#send-icon:hover {
+    color: rgba(0, 0, 0, 0.501);
+}
+
+.info-container {
+    width: calc(35% - 20px);
+    height: 55vh;
+    background-color: #0093FF;
+    border-radius: 15px;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto; 
+}
+
+.info-container::-webkit-scrollbar {
+    display: none;
+}
+
+.info-header h1 {
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: bold;
+    letter-spacing: 6px;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.info-header h4 {
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.writing-level-result {
+    text-align: center;
+    font-size: 48px;
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: 700;
+}
+
+#submit-button {
+    border: none;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    background-color: #2ad1b3;
+}
+
+#send-icon {
+    color: white;
+    font-size: 20px;
+    margin: 0;
+}
+
+.diamond-shape {
+    margin-top: 100px !important;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(45deg);
+    border: 7px solid white;
+    border-radius: 5px;
+    background-color: #0093FF;
+}
+
+
+.writing-level-result {
+    transform: rotate(-45deg);
+    text-align: center;
+    font-size: 68px;
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: 700;
+    margin: 0;
+    color: white;
+}
+
+.question-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 65%;
+}
+
+.clickable-text {
+    color: #2ad1b3;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+.clickable-text:hover {
+    font-weight: 700;
+}
+
+
+@media (max-width: 768px) {
+    .chat-and-info-container {
+        flex-direction: column;
+    }
+
+    .chat-container,
+    .info-container {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}

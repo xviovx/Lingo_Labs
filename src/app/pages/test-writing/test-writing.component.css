@@ -92,7 +92,7 @@
 }
 
 .info-container {
-    position: relative; /* Add this line to ensure the positioning context for the overlay */
+    position: relative; 
     width: calc(35% - 20px);
     height: 55vh;
     background-color: #0093FF;
@@ -112,24 +112,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.8); /* Light background to see the loader clearly */
-    z-index: 20; /* Higher than everything else inside the info-container */
+    background-color: rgba(255, 255, 255, 0.8); 
+    z-index: 20; 
   }
   
   
   .overlay {
-    position: absolute; /* Changed from relative to absolute */
-    top: 0; /* Add this to ensure it covers the top edge */
-    bottom: 0; /* Add this to ensure it covers the bottom edge */
-    left: 0; /* Add this to ensure it covers the left edge */
-    right: 0; /* Add this to ensure it covers the right edge */
+    position: absolute; 
+    top: 0; 
+    bottom: 0;
+    left: 0;
+    right: 0; 
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.7); /* Adjusted for better visibility */
+    background-color: rgba(0, 0, 0, 0.7); 
     color: white;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', 'sans-serif';
   }
 
   .diamond-shape {
@@ -194,7 +195,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
     background-color: #2ad1b3;
-    margin-left: 20px; /* Space between the chat container and the button */
+    margin-left: 20px; 
   }
 
 #send-icon {
@@ -221,6 +222,8 @@
     font-weight: 700;
 }
 
+/*media queries */
+
 @media (max-width: 768px) {
     .chat-and-info-container {
         flex-direction: column;
@@ -233,3 +236,13 @@
         margin-bottom: 20px;
     }
 }
+
+@media screen and (max-width: 1549px) {
+    .diamond-shape {
+        margin-top: 50px !important;
+        width: 130px;
+        height: 130px;
+        border: 5px solid white;
+    }
+  }
+  

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { OpenaiService } from '../../services/openai.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
@@ -18,7 +18,7 @@ import { SharedService } from 'src/app/services/shared.service';
   ]
 })
 
-export class ChatbotComponent implements OnInit {
+export class ChatbotComponent implements OnInit, AfterViewInit {
   mode: 'formal' | 'playful' = 'formal';
   loading: boolean = false;
   userInput: string = '';
@@ -51,6 +51,11 @@ export class ChatbotComponent implements OnInit {
       this.userLevel = level;
       console.log('User level in ChatbotComponent:', this.userLevel);
     });
+
+  }
+
+  ngAfterViewInit(): void {
+    this.updateStarColor();
   }
 
   fetchCompletion(userInput: string): void {

@@ -13,7 +13,12 @@
             <div class="inner-circle"></div>
         </div>
         <span style="color: black; margin-left: 10px; font-weight: bold;">Playful</span>
-    </label>    
+    </label>
+      <!-- <div class="refresh-button">
+        <button mat-icon-button aria-label="Refresh">
+          <mat-icon class="refresh">refresh</mat-icon>
+        </button>   
+      </div> -->
     </div>
 
     <div class="chat-and-info-container">
@@ -30,7 +35,7 @@
                         {{ message.content }}
                       </div>
                     </div>
-                    <div class="star-icon" (click)="toggleStar()" style="margin-left: 10px;">
+                    <div class="star-icon" (click)="toggleStar(message)" style="margin-left: 10px;">
                       <mat-icon [ngClass]="{'active': starActive}">{{ starActive ? 'star' : 'star_border' }}</mat-icon>
                     </div>
                   </div>

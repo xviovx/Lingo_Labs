@@ -11,6 +11,9 @@ import { AuthService } from 'src/app/services/firebase-auth.service';
 export class HomeComponent {
   progressValue = 50;
   userName: string = "";
+  userLevel: string = "";
+  userExComplete: string = "";
+  timeSpentLearning: string = "";
 
   isDisabled = true;
 
@@ -22,5 +25,25 @@ export class HomeComponent {
         this.sharedService.setJustRegistered(false);
         window.location.reload();
     }
+
+    this.fetchUserData();
+
   } 
+
+  private fetchUserData(): void {
+    this.authService.fetchCurrentUserData().subscribe({
+      next: (userData) => {
+        if (userData) {
+          this.userName = userData.name;
+          this.userLevel = userData.level;
+          this.userExComplete = userData.exercises_complete;
+          this.timeSpentLearning = userData.time_learning;
+          console.log(this.userName + this.userLevel + this.userExComplete + this.timeSpentLearning);
+        }
+      },
+      error: (error) => {
+        console.error('Error fetching user data:', error);
+      }
+    });
+  }
 }

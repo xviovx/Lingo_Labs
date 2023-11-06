@@ -3,6 +3,8 @@ import { OpenaiService } from '../../services/openai.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { SharedService } from 'src/app/services/shared.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
+import { AuthService } from 'src/app/services/firebase-auth.service';
 
 @Component({
   selector: 'app-chatbot',
@@ -29,11 +31,14 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
   userMessages: { content: string, timestamp: number, type: string }[] = [];
   starActive = false;
   characterCount: number = 0;
+  starredResponse: { content: string, timestamp: number, type: string }[] = [];
 
   constructor(
     private openaiService: OpenaiService,
     private cdRef: ChangeDetectorRef,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private firestoreService: FirestoreService,
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -81,7 +86,7 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
     );
   }
 
-  toggleStar(): void {
+  toggleStar(message: {content: string, timestamp: number, type: string}): void {
     this.starActive = !this.starActive;
     localStorage.setItem('starActive', this.starActive.toString());
     const starElement = document.querySelector('.star-icon mat-icon') as HTMLElement;

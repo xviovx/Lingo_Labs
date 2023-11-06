@@ -1,3 +1,24 @@
+.custom-radio-group {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.refresh-button {
+  margin-left: auto;
+  position: absolute;
+  right: 480px;
+}
+
+.refresh-btn:hover {
+  opacity: 0.6;
+}
+
+.refresh {
+  color: #000000; /* Replace with your desired icon color */
+}
+
 .custom-radio-button,
 .custom-radio-button * {
     box-sizing: border-box;
@@ -324,9 +345,7 @@
     width: 30%;
   }
 
-  .refresh-button {
-    margin-left: auto;
-  }
+ 
 
   button {
     background: none;
@@ -336,11 +355,6 @@
     cursor: pointer;
     display: inline-block; /* or block, depending on your specific layout */
   }
-  
-  .refresh {
-    color: #000000; /* Replace with your desired icon color */
-  }
-  
   
 
 /* Media Query for Mobile Devices */

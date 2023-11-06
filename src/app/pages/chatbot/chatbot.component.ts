@@ -180,5 +180,18 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
     );
   }
 
+  refreshChat(): void {
+    this.userMessages = [];
+  
+    if (this.mode === 'formal') {
+      this.botMessages = [{ content: 'Great, let\'s start over!', timestamp: Date.now(), type: 'bot' }];
+    } else {
+      this.botMessages = [{ content: 'Yay 😄 Let\'s start over!', timestamp: Date.now(), type: 'bot' }];
+    }
+  
+    this.cdRef.detectChanges();
+    this.scrollToBottom();
+  }  
+
   //TO-DO: add method to handle starring responses
 }

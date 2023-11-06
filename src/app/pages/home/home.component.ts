@@ -9,9 +9,10 @@ import { AuthService } from 'src/app/services/firebase-auth.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  progressValue = 50;
+  progressValue = 0;
   userName: string = "";
   userLevel: string = "";
+  nextUserLevel: string = "";
   userExComplete: string = "";
   timeSpentLearning: string = "";
 
@@ -27,8 +28,23 @@ export class HomeComponent {
     }
 
     this.fetchUserData();
-
   } 
+
+  private determineNextUserLevel(): void {
+    if (this.userLevel === "A1"){
+      this.nextUserLevel = 'A2';
+    } else if (this.userLevel === "A2"){
+      this.nextUserLevel = 'B1';
+    } else if (this.userLevel === 'B1'){
+      this.nextUserLevel = 'B2';
+    } else if (this.userLevel === 'B2'){
+      this.nextUserLevel = 'C1';
+    } else if (this.userLevel === 'C1'){
+      this.nextUserLevel = 'C2';
+    } else if (this.userLevel === 'C2'){
+      this.nextUserLevel = 'Max';
+    }
+  }
 
   private fetchUserData(): void {
     this.authService.fetchCurrentUserData().subscribe({
@@ -38,6 +54,7 @@ export class HomeComponent {
           this.userLevel = userData.level;
           this.userExComplete = userData.exercises_complete;
           this.timeSpentLearning = userData.time_learning;
+          this.determineNextUserLevel();
           console.log(this.userName + this.userLevel + this.userExComplete + this.timeSpentLearning);
         }
       },

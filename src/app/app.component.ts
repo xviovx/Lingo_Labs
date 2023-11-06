@@ -158,7 +158,6 @@ getSubtitle(): string {
   }
 }
 
-
   sidenavHovered = false;
 
   onSidenavHover(hovered: boolean) {

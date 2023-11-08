@@ -6,6 +6,11 @@ import { SharedService } from 'src/app/services/shared.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { AuthService } from 'src/app/services/firebase-auth.service';
 import { Message } from 'src/app/models/message.model';
+import { MatDialog } from '@angular/material/dialog';
+import { SaveChatDialogComponent } from 'src/app/subcomponents/save-chat-dialog/save-chat-dialog.component';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { DocumentData } from '@angular/fire/compat/firestore';
+import { ChatData } from 'src/app/models/chat-data.model';
 
 @Component({
   selector: 'app-chatbot',
@@ -39,13 +44,16 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
     private cdRef: ChangeDetectorRef,
     private sharedService: SharedService,
     private firestoreService: FirestoreService,
-    private auth: AuthService
+    private firestore: AngularFirestore,
+    private auth: AuthService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     this.starActive = localStorage.getItem('starActive') === 'true';
     this.updateStarColor();
     this.loadMessages();
+    this.loadSavedChats();
 
     document.getElementById('chat-input-field')?.addEventListener('keydown', (event: KeyboardEvent) => {
       if (event.key === 'Enter' && !event.shiftKey) {
@@ -77,6 +85,12 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
   
     this.userMessages = JSON.parse(localStorage.getItem('userMessages') || '[]');
     this.starActive = localStorage.getItem('starActive') === 'true';
+
+    this.botMessages.forEach(message => {
+      const starred = localStorage.getItem(`star_${message.timestamp}`);
+      message.starred = starred === 'true';
+    });
+    
     this.updateStarColor();
 
     setTimeout(() => this.scrollToBottom(), 0)
@@ -185,9 +199,10 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
       .sort((a, b) => a.timestamp - b.timestamp);
   }
 
-  onRowClick(): void {
-    console.log("clicked")
-  }
+  onRowClick(chat: any): void {
+    //update chat container with selected chat
+    this.updateChatContainer(chat.messages);
+  }  
 
   handleModeChange(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -228,24 +243,23 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
     this.scrollToBottom();
   } 
 
-  saveChatToDatabase(): void {
+  saveChatToDatabase(chatTitle: string): void {
     this.auth.getCurrentUserId().subscribe(currentUserId => {
       if (currentUserId) {
         const userMessagesWithTypes = this.userMessages.map(msg => ({ ...msg, type: 'user' }));
         const botMessagesWithTypes = this.botMessages.map(msg => ({ ...msg, type: 'bot' }));
-  
+    
         const chatData = {
+          timestamp: Date.now(),
+          title: chatTitle,
           messages: {
             user: userMessagesWithTypes,
             bot: botMessagesWithTypes
           },
-          starred_responses: this.starredResponse.map(({ content }) => ({ content }))
         };
-  
-        this.firestoreService.updateUserInfo(currentUserId, {
-          messages_sent: this.userMessages.length,
-          ...chatData
-        })
+    
+        // create new document in the chats subcollection
+        this.firestore.collection(`user_info/${currentUserId}/chats`).add(chatData)
         .then(() => {
           console.log('Chat saved to database successfully');
         })
@@ -258,6 +272,85 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
     }, error => {
       console.error('Error getting current user ID', error);
     });
+  }  
+
+  savedChats: ChatData[] = [];
+  searchText = ''
+
+  loadSavedChats(): void {
+    this.auth.getCurrentUserId().subscribe(currentUserId => {
+      if (currentUserId) {
+        this.firestore.collection(`user_info/${currentUserId}/chats`)
+          .snapshotChanges()
+          .subscribe(snapshot => {
+            this.savedChats = snapshot.map(doc => {
+              return {
+                id: doc.payload.doc.id,
+                ...doc.payload.doc.data() as any 
+              };
+            });
+            // TO-DO: sort by date
+          });
+      } else {
+        console.error('No current user ID found');
+      }
+    }, error => {
+      console.error('Error getting current user ID', error);
+    });
   }
+
+  openSaveChatDialog(): void {
+    const dialogRef = this.dialog.open(SaveChatDialogComponent, {
+      width: '250px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result) {
+        this.saveChatToDatabase(result); 
+      }
+    });
+  }
+
+  currentChat!: ChatData & { date?: Date };
+
+  //load chat messages from the db
+  loadChatFromDatabase(chatId: string): void {
+    this.firestore.doc(`user_info/${this.auth.getCurrentUserId()}/chats/${chatId}`)
+      .valueChanges()
+      .subscribe((data: DocumentData | undefined) => {
+        if (data && data['timestamp']) { 
+          const convertedDate = new Date(data['timestamp']);
+          console.log("converted date is:" + convertedDate);
+          this.currentChat = {
+            ...(data as ChatData),
+            date: convertedDate 
+          };
+          this.updateChatContainer(this.currentChat.messages);
+        } else {
+          console.error('The fetched chat data is not in the expected format or missing a timestamp.');
+        }
+      }, error => {
+        console.error('Error fetching chat:', error);
+      });
+  }
+  
+  updateChatContainer(messages: { user: Message[], bot: Message[] }): void {
+    this.userMessages = [];
+    // clear msgs and replace with the ones from the selected chat
+    localStorage.removeItem('userMessages');
+    localStorage.removeItem('botMessages');
+    
+    this.botMessages = messages.bot;
+    this.userMessages = messages.user;
+  
+    localStorage.setItem('botMessages', JSON.stringify(this.botMessages));
+    localStorage.setItem('userMessages', JSON.stringify(this.userMessages));
+  
+    this.cdRef.detectChanges();
+    this.scrollToBottom();
+  }
+  
   
 }

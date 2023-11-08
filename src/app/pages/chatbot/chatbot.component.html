@@ -15,7 +15,7 @@
         <span style="color: black; margin-left: 10px; font-weight: bold;">Playful</span>
     </label>
       <div class="refresh-button">
-        <button mat-icon-button aria-label="Save" class="save-btn" (click)="saveChatToDatabase();">
+        <button mat-icon-button aria-label="Save" class="save-btn" (click)="openSaveChatDialog();">
           <mat-icon class="save">bookmark_border</mat-icon>
         </button>   
         <button mat-icon-button aria-label="Refresh" class="refresh-btn" (click)="refreshChat();">
@@ -69,20 +69,16 @@
             </div>
             <div class="search-bar">
               <mat-icon style="font-size: 16px; height: 16px; width: 16px;">search</mat-icon>
-              <input type="text" class="search-input" placeholder="Search...">
+              <input type="text" class="search-input" [(ngModel)]="searchText" placeholder="Search...">
             </div>
             <table class="starred-responses">
               <tbody>
-                <tr (click)="onRowClick()">
-                  <td class="response-text">This is some dummy...</td>
-                  <td class="response-date">Oct 10, 2023</td>
-                </tr>
-                <tr (click)="onRowClick()">
-                  <td class="response-text">Another dummy text...</td>
-                  <td class="response-date">Oct 9, 2023</td>
+                <tr *ngFor="let chat of savedChats | filterChat:searchText" (click)="onRowClick(chat)">
+                  <td class="response-text">{{ chat.title }}</td>
+                  <td class="response-date">exampole date that is lingggg</td>
                 </tr>
               </tbody>
-            </table>
+            </table>            
         </div>  
     </div>
 </div>

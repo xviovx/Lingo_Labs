@@ -26,6 +26,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 
 //components
 import { HomeComponent } from './pages/home/home.component';
@@ -39,6 +40,8 @@ import { NotFoundComponent } from './pages/not-found/not-found/not-found.compone
 import { PlacementTestComponent } from './pages/enter/placement-test/placement-test.component';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
 import { TestWritingComponent } from './pages/test-writing/test-writing.component';
+import { SaveChatDialogComponent } from './subcomponents/save-chat-dialog/save-chat-dialog.component';
+import { FilterChatPipe } from './pipes/filter-chat.pipe';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,9 @@ import { TestWritingComponent } from './pages/test-writing/test-writing.componen
     NotFoundComponent,
     PlacementTestComponent,
     TimeFormatPipe,
-    TestWritingComponent
+    TestWritingComponent,
+    SaveChatDialogComponent,
+    FilterChatPipe
   ],
   imports: [
     BrowserModule,
@@ -78,7 +83,8 @@ import { TestWritingComponent } from './pages/test-writing/test-writing.componen
     MatRadioModule,
     MatProgressSpinnerModule,
     FirebaseModule,
-    MatStepperModule
+    MatStepperModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent] // the first initial component

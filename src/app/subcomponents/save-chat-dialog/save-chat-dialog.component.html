@@ -1,0 +1,10 @@
+<div mat-dialog-content style="background-color: #044A7C;">
+  <mat-form-field>
+    <mat-label style="color: white;">Chat Title</mat-label>
+    <input matInput #chatTitleInput>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions style="justify-content: space-between; background-color: #044A7C; padding: 1rem;">
+  <button mat-button (click)="onNoClick()" style="color: white;">Cancel</button>
+  <button mat-button (click)="onSave(chatTitleInput.value)" style="color: white;">Save</button>
+</div>

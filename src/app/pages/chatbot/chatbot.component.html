@@ -15,6 +15,9 @@
         <span style="color: black; margin-left: 10px; font-weight: bold;">Playful</span>
     </label>
       <div class="refresh-button">
+        <button mat-icon-button aria-label="Save" class="save-btn">
+          <mat-icon class="save">bookmark_border</mat-icon>
+        </button>   
         <button mat-icon-button aria-label="Refresh" class="refresh-btn" (click)="refreshChat();">
           <mat-icon class="refresh">refresh</mat-icon>
         </button>   
@@ -62,7 +65,7 @@
 
         <div class="info-container">
             <div class="info-header">
-              Starred Responses
+              Saved Chats
             </div>
             <div class="search-bar">
               <mat-icon style="font-size: 16px; height: 16px; width: 16px;">search</mat-icon>

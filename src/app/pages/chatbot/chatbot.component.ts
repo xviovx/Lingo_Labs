@@ -46,6 +46,7 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.starActive = localStorage.getItem('starActive') === 'true';
     this.updateStarColor();
+    this.loadMessages();
 
     document.getElementById('chat-input-field')?.addEventListener('keydown', (event: KeyboardEvent) => {
       if (event.key === 'Enter' && !event.shiftKey) {
@@ -65,18 +66,34 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
     this.updateStarColor();
   }
 
+  loadMessages(): void {
+    this.botMessages = JSON.parse(localStorage.getItem('botMessages') || '[]') || this.botMessages;
+    this.userMessages = JSON.parse(localStorage.getItem('userMessages') || '[]') || [];
+    this.starActive = localStorage.getItem('starActive') === 'true';
+    this.updateStarColor();
+  }  
+
+  updateLocalStorageStarred(messageToToggle: Message): void {
+    // Find the message and update its 'starred' status
+    const starredMessages = this.sortedMessages.filter(m => m.starred);
+    localStorage.setItem('starredMessages', JSON.stringify(starredMessages));
+  }
+
   fetchCompletion(userInput: string): void {
     this.loading = true;
     const chatContainer = document.querySelector('.chat-container');
     if (chatContainer) chatContainer.classList.add('loading');
-
+  
     this.openaiService.getCompletionWithLevel(userInput, this.userLevel).subscribe(
       response => {
         this.loading = false;
         if (chatContainer) chatContainer.classList.remove('loading');
         const newBotMessage = response.completion;
         this.botMessages.push({ content: newBotMessage, timestamp: Date.now(), type: 'bot' });
-
+  
+        // Save botMessages to local storage right after adding the new bot message
+        localStorage.setItem('botMessages', JSON.stringify(this.botMessages));
+  
         this.cdRef.detectChanges();
         this.scrollToBottom();
       },
@@ -87,24 +104,23 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
       }
     );
   }
+  
 
   toggleStar(messageToToggle: Message): void {
     messageToToggle.starred = !messageToToggle.starred;
   
-    // Instead of using a global starActive, we now directly store the starred status of the individual message
     localStorage.setItem(`star_${messageToToggle.timestamp}`, messageToToggle.starred.toString());
   
-    // Call updateStarColor to reflect changes
     this.updateStarColor();
     this.cdRef.detectChanges();
+
+    this.updateLocalStorageStarred(messageToToggle);
   }
   
   updateStarColor(): void {
     this.sortedMessages.forEach((message) => {
-      // Select the star element using a data attribute that connects it to the specific message
       const starElement = document.querySelector(`.star-icon[data-message-id="${message.timestamp}"] mat-icon`) as HTMLElement;
       if (starElement) {
-        // Set the color based on whether the message is starred or not
         starElement.style.color = message.starred ? '#0093FF' : 'black';
       }
     });
@@ -148,6 +164,9 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
       this.cdRef.detectChanges();
       this.scrollToBottom();
 
+      localStorage.setItem('userMessages', JSON.stringify(this.userMessages));
+      localStorage.setItem('botMessages', JSON.stringify(this.botMessages));
+
       setTimeout(() => {
         this.fetchCompletion(userMessage);
       }, 1000);
@@ -189,17 +208,19 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
   }
 
   refreshChat(): void {
+    // Reset messages to initial state depending on mode
+    this.botMessages = this.mode === 'formal'
+      ? [{ content: 'Great, let\'s start over!', timestamp: Date.now(), type: 'bot' }]
+      : [{ content: 'Yay 😄 Let\'s start over!', timestamp: Date.now(), type: 'bot' }];
+    
     this.userMessages = [];
-  
-    if (this.mode === 'formal') {
-      this.botMessages = [{ content: 'Great, let\'s start over!', timestamp: Date.now(), type: 'bot' }];
-    } else {
-      this.botMessages = [{ content: 'Yay 😄 Let\'s start over!', timestamp: Date.now(), type: 'bot' }];
-    }
+    // Clear messages from localStorage
+    localStorage.removeItem('userMessages');
+    localStorage.removeItem('botMessages');
   
     this.cdRef.detectChanges();
     this.scrollToBottom();
-  }  
+  } 
 
   //TO-DO: add method to handle starring responses
 }

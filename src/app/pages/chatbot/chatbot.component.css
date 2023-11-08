@@ -15,8 +15,16 @@
   opacity: 0.6;
 }
 
+.save-btn:hover {
+  opacity: 0.6;
+}
+
 .refresh {
   color: #000000; /* Replace with your desired icon color */
+}
+
+.save {
+  color: #000000;
 }
 
 .custom-radio-button,

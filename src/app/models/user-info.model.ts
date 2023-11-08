@@ -1,3 +1,5 @@
+import { Message } from "./message.model";
+
 export interface UserInfo {
   email: string;
   current_streak: number;
@@ -11,4 +13,8 @@ export interface UserInfo {
   time_in_chat: number;
   time_learning: number;
   starred_responses?: { content: string;}[];
+  messages?: {
+    user: Message[];
+    bot: Message[];
+  };
 }

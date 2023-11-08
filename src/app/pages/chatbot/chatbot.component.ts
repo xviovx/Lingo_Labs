@@ -7,7 +7,6 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import { AuthService } from 'src/app/services/firebase-auth.service';
 import { Message } from 'src/app/models/message.model';
 
-
 @Component({
   selector: 'app-chatbot',
   templateUrl: './chatbot.component.html',
@@ -67,14 +66,23 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
   }
 
   loadMessages(): void {
-    this.botMessages = JSON.parse(localStorage.getItem('botMessages') || '[]') || this.botMessages;
-    this.userMessages = JSON.parse(localStorage.getItem('userMessages') || '[]') || [];
+    const storedBotMessages = JSON.parse(localStorage.getItem('botMessages') || '[]');
+    if (storedBotMessages.length === 0) {
+      this.botMessages = this.mode === 'formal'
+        ? [{ content: 'Hello! I am your English tutor, Polly. How may I assist you today?', timestamp: Date.now(), type: 'bot' }]
+        : [{ content: "Hiya! I'm Polly, your English buddy! What are we learning today? 😊", timestamp: Date.now(), type: 'bot' }];
+    } else {
+      this.botMessages = storedBotMessages;
+    }
+  
+    this.userMessages = JSON.parse(localStorage.getItem('userMessages') || '[]');
     this.starActive = localStorage.getItem('starActive') === 'true';
     this.updateStarColor();
-  }  
+
+    setTimeout(() => this.scrollToBottom(), 0)
+  }
 
   updateLocalStorageStarred(messageToToggle: Message): void {
-    // Find the message and update its 'starred' status
     const starredMessages = this.sortedMessages.filter(m => m.starred);
     localStorage.setItem('starredMessages', JSON.stringify(starredMessages));
   }
@@ -91,7 +99,7 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
         const newBotMessage = response.completion;
         this.botMessages.push({ content: newBotMessage, timestamp: Date.now(), type: 'bot' });
   
-        // Save botMessages to local storage right after adding the new bot message
+        // save msg to local storage 
         localStorage.setItem('botMessages', JSON.stringify(this.botMessages));
   
         this.cdRef.detectChanges();
@@ -104,7 +112,6 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
       }
     );
   }
-  
 
   toggleStar(messageToToggle: Message): void {
     messageToToggle.starred = !messageToToggle.starred;
@@ -208,13 +215,12 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
   }
 
   refreshChat(): void {
-    // Reset messages to initial state depending on mode
     this.botMessages = this.mode === 'formal'
       ? [{ content: 'Great, let\'s start over!', timestamp: Date.now(), type: 'bot' }]
       : [{ content: 'Yay 😄 Let\'s start over!', timestamp: Date.now(), type: 'bot' }];
     
     this.userMessages = [];
-    // Clear messages from localStorage
+    // clear msgs
     localStorage.removeItem('userMessages');
     localStorage.removeItem('botMessages');
   
@@ -222,5 +228,36 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
     this.scrollToBottom();
   } 
 
-  //TO-DO: add method to handle starring responses
+  saveChatToDatabase(): void {
+    this.auth.getCurrentUserId().subscribe(currentUserId => {
+      if (currentUserId) {
+        const userMessagesWithTypes = this.userMessages.map(msg => ({ ...msg, type: 'user' }));
+        const botMessagesWithTypes = this.botMessages.map(msg => ({ ...msg, type: 'bot' }));
+  
+        const chatData = {
+          messages: {
+            user: userMessagesWithTypes,
+            bot: botMessagesWithTypes
+          },
+          starred_responses: this.starredResponse.map(({ content }) => ({ content }))
+        };
+  
+        this.firestoreService.updateUserInfo(currentUserId, {
+          messages_sent: this.userMessages.length,
+          ...chatData
+        })
+        .then(() => {
+          console.log('Chat saved to database successfully');
+        })
+        .catch(error => {
+          console.error('Error saving chat to database', error);
+        });
+      } else {
+        console.error('No current user ID found');
+      }
+    }, error => {
+      console.error('Error getting current user ID', error);
+    });
+  }
+  
 }

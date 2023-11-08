@@ -35,9 +35,11 @@
                         {{ message.content }}
                       </div>
                     </div>
-                    <div class="star-icon" (click)="toggleStar(message)" style="margin-left: 10px;">
-                      <mat-icon [ngClass]="{'active': starActive}">{{ starActive ? 'star' : 'star_border' }}</mat-icon>
-                    </div>
+                    <div class="star-icon" [attr.data-message-id]="message.timestamp" (click)="toggleStar(message)" style="margin-left: 10px;">
+                      <mat-icon [ngClass]="{'active': message.starred}">
+                        {{ message.starred ? 'star' : 'star_border' }}
+                      </mat-icon>
+                    </div>                    
                   </div>
                 </ng-container>
                 <ng-container *ngIf="message.type === 'user'">

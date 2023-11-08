@@ -5,6 +5,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { SharedService } from 'src/app/services/shared.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { AuthService } from 'src/app/services/firebase-auth.service';
+import { Message } from 'src/app/models/message.model';
+
 
 @Component({
   selector: 'app-chatbot',
@@ -25,13 +27,13 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
   loading: boolean = false;
   userInput: string = '';
   userLevel: string = '';
-  botMessages: { content: string, timestamp: number, type: string }[] = [
+  botMessages: Message[]= [
     { content: 'Hello! I am your English tutor, Polly. How may I assist you today?', timestamp: Date.now(), type: 'bot' }
   ];
-  userMessages: { content: string, timestamp: number, type: string }[] = [];
+  userMessages: Message[] = [];
   starActive = false;
   characterCount: number = 0;
-  starredResponse: { content: string, timestamp: number, type: string }[] = [];
+  starredResponse: Message[] = [];
 
   constructor(
     private openaiService: OpenaiService,
@@ -86,20 +88,26 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
     );
   }
 
-  toggleStar(message: {content: string, timestamp: number, type: string}): void {
-    this.starActive = !this.starActive;
-    localStorage.setItem('starActive', this.starActive.toString());
-    const starElement = document.querySelector('.star-icon mat-icon') as HTMLElement;
-    if (starElement) {
-      starElement.style.color = this.starActive ? '#0093FF' : 'initial';
-    }
+  toggleStar(messageToToggle: Message): void {
+    messageToToggle.starred = !messageToToggle.starred;
+  
+    // Instead of using a global starActive, we now directly store the starred status of the individual message
+    localStorage.setItem(`star_${messageToToggle.timestamp}`, messageToToggle.starred.toString());
+  
+    // Call updateStarColor to reflect changes
+    this.updateStarColor();
+    this.cdRef.detectChanges();
   }
-
+  
   updateStarColor(): void {
-    const starElement = document.querySelector('.star-icon mat-icon') as HTMLElement;
-    if (starElement) {
-      starElement.style.color = this.starActive ? '#0093FF' : 'initial';
-    }
+    this.sortedMessages.forEach((message) => {
+      // Select the star element using a data attribute that connects it to the specific message
+      const starElement = document.querySelector(`.star-icon[data-message-id="${message.timestamp}"] mat-icon`) as HTMLElement;
+      if (starElement) {
+        // Set the color based on whether the message is starred or not
+        starElement.style.color = message.starred ? '#0093FF' : 'black';
+      }
+    });
   }
 
   updateCharacterCount(event: Event | KeyboardEvent): void {

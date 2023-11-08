@@ -19,7 +19,7 @@ export class PlacementTestComponent implements OnInit, OnDestroy{
   duration = 0;
   currentTime = 0;
   selectedOption: string | null = null;
-  isTestStarted: boolean = true;
+  isTestStarted: boolean = false;
   isTestFinished: boolean = false;
   isModalOpen = false;
   currentQuestionIndex = 0;

@@ -1,7 +1,7 @@
 import { Message } from "./message.model";
 
 export interface ChatData {
-    timestamp: string,
+    // timestamp: string,
     title: string;
     messages: {
       user: Message[];

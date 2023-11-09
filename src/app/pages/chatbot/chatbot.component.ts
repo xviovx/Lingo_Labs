@@ -320,21 +320,18 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
     this.firestore.doc(`user_info/${this.auth.getCurrentUserId()}/chats/${chatId}`)
       .valueChanges()
       .subscribe((data: DocumentData | undefined) => {
-        if (data && data['timestamp']) { 
-          const convertedDate = new Date(data['timestamp']);
-          console.log("converted date is:" + convertedDate);
+        if (data) {
           this.currentChat = {
-            ...(data as ChatData),
-            date: convertedDate 
+            ...(data as ChatData)
           };
           this.updateChatContainer(this.currentChat.messages);
         } else {
-          console.error('The fetched chat data is not in the expected format or missing a timestamp.');
+          console.error('The fetched chat data is not in the expected format.');
         }
       }, error => {
         console.error('Error fetching chat:', error);
       });
-  }
+  }  
   
   updateChatContainer(messages: { user: Message[], bot: Message[] }): void {
     this.userMessages = [];

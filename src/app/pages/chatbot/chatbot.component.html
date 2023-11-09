@@ -75,7 +75,7 @@
               <tbody>
                 <tr *ngFor="let chat of savedChats | filterChat:searchText" (click)="onRowClick(chat)">
                   <td class="response-text">{{ chat.title }}</td>
-                  <td class="response-date">exampole date that is lingggg</td>
+                  <td class="response-date">{{chat.timestamp | date:'shortDate'}}</td>
                 </tr>
               </tbody>
             </table>            

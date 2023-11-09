@@ -243,6 +243,20 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
     this.scrollToBottom();
   } 
 
+  refreshChatPostChatDelete(): void {
+    this.botMessages = this.mode === 'formal'
+      ? [{ content: 'Great, where were we?', timestamp: Date.now(), type: 'bot' }]
+      : [{ content: 'Good stuff! 😁 Now what were we talking about?', timestamp: Date.now(), type: 'bot' }];
+    
+    this.userMessages = [];
+    // clear msgs
+    localStorage.removeItem('userMessages');
+    localStorage.removeItem('botMessages');
+  
+    this.cdRef.detectChanges();
+    this.scrollToBottom();
+  } 
+
   saveChatToDatabase(chatTitle: string): void {
     this.auth.getCurrentUserId().subscribe(currentUserId => {
       if (currentUserId) {
@@ -289,7 +303,6 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
                 ...doc.payload.doc.data() as any 
               };
             });
-            // TO-DO: sort by date
           });
       } else {
         console.error('No current user ID found');
@@ -348,6 +361,39 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
     this.cdRef.detectChanges();
     this.scrollToBottom();
   }
+
+  // functionality for deleting a chat
   
-  
+  onMouseEnter(icon: any) {
+    icon.textContent = 'delete';
+  }
+
+  onMouseLeave(icon: any) {
+    icon.textContent = 'delete_outline';
+  }
+
+  deleteChat(chatId: string): void {
+    this.auth.getCurrentUserId().subscribe(currentUserId => {
+      if (currentUserId) {
+        (this.firestore.doc(`user_info/${currentUserId}/chats/${chatId}`) as any).delete()
+        .then(() => {
+            console.log('Chat deleted successfully');
+            // update the ui by filtering out the deleted chat
+            this.savedChats = this.savedChats.filter(chat => chat.id !== chatId);
+            // detect the changes
+            this.refreshChatPostChatDelete();
+            this.cdRef.detectChanges();
+          })
+          .catch((error: any) => {
+            console.error('Error deleting chat:', error);
+          });
+      } else {
+        console.error('No current user ID found');
+      }
+    }, error => {
+      console.error('Error getting current user ID:', error);
+    });
+  }
+
+  //TO-DO: add functionality for handling chat saves in different modes, and displaying them accordingly
 }

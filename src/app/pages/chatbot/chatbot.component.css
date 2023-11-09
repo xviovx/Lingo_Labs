@@ -333,11 +333,11 @@
   .starred-responses tr {
     cursor: pointer;
   }
-
+  
   .starred-responses tr:hover {
     background-color: rgba(0, 0, 0, 0.2);
   }
-
+  
   .starred-responses td {
     padding: 10px;
     border-bottom: 1px solid #fff;
@@ -345,15 +345,33 @@
   
   .response-text {
     text-align: left;
-    width: 70%;
+    width: 85%;
+  }
+  
+  .icon-cell {
+    padding-right: 5px; 
+    margin-left: 20px;
+  }
+
+  .icon-cell mat-icon{
+    width: 22px;
+    height: 22px;
   }
   
   .response-date {
     text-align: right;
-    width: 30%;
+    width: 15%;
+    /* If you feel the date and icon are too close, you can reduce the width here */
   }
 
- 
+  .starred-responses tr .delete-icon {
+    visibility: hidden; /* Make the delete icon hidden by default */
+    color: white; /* Optional: Change the color of the icon when visible */
+}
+
+.starred-responses tr:hover .delete-icon {
+    visibility: visible; /* Make the delete icon visible when the row is hovered over */
+}
 
   button {
     background: none;

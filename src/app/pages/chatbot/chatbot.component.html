@@ -75,10 +75,16 @@
               <tbody>
                 <tr *ngFor="let chat of savedChats | filterChat:searchText" (click)="onRowClick(chat)">
                   <td class="response-text">{{ chat.title }}</td>
+                  <td class="icon-cell" (click)="deleteChat(chat.id);">
+                    <mat-icon 
+                  class="delete-icon" 
+                  (mouseenter)="onMouseEnter($event.target)" 
+                  (mouseleave)="onMouseLeave($event.target)">delete_outline</mat-icon>
+                  </td>
                   <td class="response-date">{{chat.timestamp | date:'shortDate'}}</td>
-                </tr>
+                </tr>                
               </tbody>
-            </table>            
+            </table>                      
         </div>  
     </div>
 </div>

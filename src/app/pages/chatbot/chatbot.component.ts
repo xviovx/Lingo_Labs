@@ -280,7 +280,7 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
   loadSavedChats(): void {
     this.auth.getCurrentUserId().subscribe(currentUserId => {
       if (currentUserId) {
-        this.firestore.collection(`user_info/${currentUserId}/chats`)
+        this.firestore.collection(`user_info/${currentUserId}/chats`, ref => ref.orderBy('timestamp', 'desc'))
           .snapshotChanges()
           .subscribe(snapshot => {
             this.savedChats = snapshot.map(doc => {

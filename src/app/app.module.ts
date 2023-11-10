@@ -42,6 +42,7 @@ import { TimeFormatPipe } from './pipes/time-format.pipe';
 import { TestWritingComponent } from './pages/test-writing/test-writing.component';
 import { SaveChatDialogComponent } from './subcomponents/save-chat-dialog/save-chat-dialog.component';
 import { FilterChatPipe } from './pipes/filter-chat.pipe';
+import { ConfirmDeleteComponent } from './subcomponents/confirm-delete/confirm-delete.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { FilterChatPipe } from './pipes/filter-chat.pipe';
     TimeFormatPipe,
     TestWritingComponent,
     SaveChatDialogComponent,
-    FilterChatPipe
+    FilterChatPipe,
+    ConfirmDeleteComponent
   ],
   imports: [
     BrowserModule,

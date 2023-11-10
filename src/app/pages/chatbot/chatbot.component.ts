@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/firebase-auth.service';
 import { Message } from 'src/app/models/message.model';
 import { MatDialog } from '@angular/material/dialog';
 import { SaveChatDialogComponent } from 'src/app/subcomponents/save-chat-dialog/save-chat-dialog.component';
+import { ConfirmDeleteComponent } from 'src/app/subcomponents/confirm-delete/confirm-delete.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { DocumentData } from '@angular/fire/compat/firestore';
 import { ChatData } from 'src/app/models/chat-data.model';
@@ -393,6 +394,19 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
     }, error => {
       console.error('Error getting current user ID:', error);
     });
+  }
+
+  openDeleteConfirmDialog(chatId: string): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      width: '400px',
+      data: {chatId: chatId}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.deleteChat(chatId)
+      }
+    })
   }
 
   //TO-DO: add functionality for handling chat saves in different modes, and displaying them accordingly

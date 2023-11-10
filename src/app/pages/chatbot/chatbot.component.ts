@@ -203,6 +203,9 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
   onRowClick(chat: any): void {
     //update chat container with selected chat
     this.updateChatContainer(chat.messages);
+
+    this.mode = chat.mode;
+    this.cdRef.detectChanges();
   }  
 
   handleModeChange(event: Event): void {
@@ -267,6 +270,7 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
         const chatData = {
           timestamp: Date.now(),
           title: chatTitle,
+          mode: this.mode,
           messages: {
             user: userMessagesWithTypes,
             bot: botMessagesWithTypes
@@ -339,6 +343,8 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
             ...(data as ChatData)
           };
           this.updateChatContainer(this.currentChat.messages);
+          this.mode = this.currentChat.mode as 'formal' | 'playful';
+          this.cdRef.detectChanges();
         } else {
           console.error('The fetched chat data is not in the expected format.');
         }

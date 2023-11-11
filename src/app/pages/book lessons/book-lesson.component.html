@@ -5,38 +5,36 @@
                 <h2 class="form-heading">Book a session</h2>
                 
                 <div class="custom-form-field">
-                    <label for="availability" style="margin-bottom: 15px;">Preferred Availability:</label>
+                    <label for="availability" style='margin-bottom: 15px; font-weight: 600;'>Preferred Availability:</label>
                     <input matInput [matDatepicker]="picker" id="availability" name="availability" class="custom-input" placeholder="Choose a date">
                     <mat-datepicker-toggle matSuffix [for]="picker" style="color: black; margin-top: 5px;" ></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </div>                
                 
                 <div class="custom-form-field">
-                    <label for="classes" style="margin-bottom: 15px;">Preferred Classes:</label>
+                    <label for="classes" style="margin-bottom: 15px; font-weight: 600;">Preferred Classes:</label>
                     <mat-select id="lessons" name="lessons" placeholder="Type of Lessons" style="color: black;">
                         <mat-option [value]="null" disabled>Choose an option</mat-option>
                         <mat-option value="general_english">Group Classes</mat-option>
                         <mat-option value="general_english">Individual Classes</mat-option>
-                        <!-- Other options -->
                     </mat-select>
                 </div>
                 
                 <div class="custom-form-field">
-                    <label for="lessons" style="margin-bottom: 15px;">Type of Lessons:</label>
+                    <label for="lessons" style="margin-bottom: 15px; font-weight: 600;">Type of Lessons:</label>
                     <mat-select id="lessons" name="lessons" placeholder="Type of Lessons">
                         <mat-option value="general_english">General English</mat-option>
                         <mat-option value="general_english">Business English</mat-option>
                         <mat-option value="general_english">Conversation Lessons</mat-option>
-                        <!-- Other options -->
                     </mat-select>
                 </div>
                 
-                <button mat-raised-button type="submit" class="custom-button">SUBMIT</button>
+                <button mat-raised-button type="submit" class="custom-button" (click)="openModal();">SUBMIT</button>
             </form>
         </div>       
 
         <div class="info-container">
-            <h1>Upcoming lessons</h1>
+            <h1>Upcoming Lessons</h1>
             <div class="sub-container-one">
                 <div class="text-container">
                     <h2 class="exercise-level">General English (A2)</h2>

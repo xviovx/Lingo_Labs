@@ -46,6 +46,8 @@ import { SaveChatDialogComponent } from './subcomponents/save-chat-dialog/save-c
 import { FilterChatPipe } from './pipes/filter-chat.pipe';
 import { ConfirmDeleteComponent } from './subcomponents/confirm-delete/confirm-delete.component';
 import { BookLessonComponent } from './pages/book lessons/book-lesson.component';
+import { EmailModalComponent } from './subcomponents/email-modal/email-modal.component';
+import { StatsComponent } from './pages/stats/stats.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { BookLessonComponent } from './pages/book lessons/book-lesson.component'
     SaveChatDialogComponent,
     FilterChatPipe,
     ConfirmDeleteComponent,
-    BookLessonComponent
+    BookLessonComponent,
+    EmailModalComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,23 +1,64 @@
-<div class="stats-container">
-    <div class="user-stats">
-        <h2>Stats</h2>
-        <div class="level">A2 <span>Current Level</span></div>
-        <div class="lessons">{{ lessonsCompleted }} <span>Lessons Completed</span></div>
-        <div class="time-learned">126h <span>Time Spent Learning</span></div>
-        <div class="longest-streak">22 days <span>Longest Streak</span></div>
-        <div class="current-streak">12 days <span>Current Streak</span></div>
-        <div class="date-joined">2023/03/23 <span>Date joined</span></div>
-        <div class="live-sessions">22 <span>Live Sessions</span></div>
-        <div class="time-chat">123h <span>Time in chat</span></div>
-        <div class="messages">1223 <span>Messages sent</span></div>
-        <div class="progress">
-            <div class="progress-bar" style="width: 10%;"></div>
-            <span>Progress to next level</span>
+<div class="content-container">
+    <h1 class="stats-heading">Stats</h1>
+    <div class="stats-and-graph-container">
+      <div class="stats-container" style="font-family: 'Roboto, sans-serif">
+        <div class="stats-section">
+          <div class="stat">
+            <span class="stat-title">Current Level</span>
+            <span class="stat-value">A2</span>
+          </div>
+          <div class="stat">
+            <span class="stat-title">Lessons Completed</span>
+            <span class="stat-value">12</span>
+          </div>
+          <div class="stat">
+            <span class="stat-title">Time Spent Learning</span>
+            <span class="stat-value">126h</span>
+          </div>
         </div>
+        <div class="stats-section">
+          <div class="stat">
+            <span class="stat-title">Longest Streak</span>
+            <span class="stat-value">22 days</span>
+          </div>
+          <div class="stat">
+            <span class="stat-title">Current Streak</span>
+            <span class="stat-value">12 days</span>
+          </div>
+          <div class="stat">
+            <span class="stat-title">Date Joined</span>
+            <span class="stat-value">2023/03/23</span>
+          </div>
+        </div>
+        <div class="stats-progress">
+            <div class="stat-title-container">
+              <span class="stat-title">Progress to next level</span>
+            </div>
+            <div class="level-labels">
+              <span class="level-start">A1</span>
+              <div class="progress-bar">
+                <mat-progress-bar mode="determinate" value="65"></mat-progress-bar>
+              </div>
+              <span class="level-end">A2</span>
+            </div>
+          </div>
+                    
+      </div>       
+      <div class="graph-container">
+        <h1>All Time Performance</h1>
+        <h4>Until the next level</h4>
+        <div class="pie-chart">
+            <div class="slice slice-listening">
+              <span class="label">33.3% Listening</span>
+            </div>
+            <div class="slice slice-reading">
+              <span class="label">33.3% Reading</span>
+            </div>
+            <div class="slice slice-vocabulary">
+              <span class="label">33.3% Vocabulary</span>
+            </div>
+          </div>                  
+      </div>  
     </div>
-    
-    <div class="performance">
-        <h2>All time performance</h2>
-        <!--FIND CHART LIBRARY-->
-    </div>
-</div>
+  </div>
+  

@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./book-lesson.component.css'],
 })
 export class BookLessonComponent {
-  
+  selectedLesson = null;
 }
 

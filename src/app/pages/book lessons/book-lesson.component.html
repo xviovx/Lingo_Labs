@@ -1,41 +1,53 @@
-<div class="booking-container">
-    <div class="booking-section">
-        <h2>Book a session</h2>
-        <div class="lesson-type">
-            <!-- <mat-icon>person</mat-icon>  -->
-            <span>Private Lesson</span>
-        </div>
-        <div class="input-group">
-            <label>Preferred Availability:</label>
-            <input type="date">
-        </div>
-        <div class="input-group">
-            <label>Preferred Trainer:</label>
-            <select>
-                <option>Female</option>
-                <!-- Add other options as needed -->
-            </select>
-        </div>
-        <div class="input-group">
-            <label>Type of lessons:</label>
-            <select>
-                <option>General English</option>
-                <!-- Add other options as needed -->
-            </select>
-        </div>
-        <button>SUBMIT</button>
-    </div>
+<div class="content-container">
+    <div class="chat-and-info-container">
+        <div class="chat-container" style="font-family: 'Roboto, sans-serif">
+            <form class="booking-form" ng-submit="submitForm()">
+                <h2 class="form-heading">Book a session</h2>
+                
+                <div class="custom-form-field">
+                    <label for="availability" style="margin-bottom: 15px;">Preferred Availability:</label>
+                    <input matInput [matDatepicker]="picker" id="availability" name="availability" class="custom-input" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker" style="color: black; margin-top: 5px;" ></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </div>                
+                
+                <div class="custom-form-field">
+                    <label for="classes" style="margin-bottom: 15px;">Preferred Classes:</label>
+                    <mat-select id="lessons" name="lessons" placeholder="Type of Lessons" style="color: black;">
+                        <mat-option [value]="null" disabled>Choose an option</mat-option>
+                        <mat-option value="general_english">Group Classes</mat-option>
+                        <mat-option value="general_english">Individual Classes</mat-option>
+                        <!-- Other options -->
+                    </mat-select>
+                </div>
+                
+                <div class="custom-form-field">
+                    <label for="lessons" style="margin-bottom: 15px;">Type of Lessons:</label>
+                    <mat-select id="lessons" name="lessons" placeholder="Type of Lessons">
+                        <mat-option value="general_english">General English</mat-option>
+                        <mat-option value="general_english">Business English</mat-option>
+                        <mat-option value="general_english">Conversation Lessons</mat-option>
+                        <!-- Other options -->
+                    </mat-select>
+                </div>
+                
+                <button mat-raised-button type="submit" class="custom-button">SUBMIT</button>
+            </form>
+        </div>       
 
-    <div class="upcoming-section">
-        <h2>Upcoming lessons</h2>
-        <!-- <mat-icon class="more-icon">more</mat-icon> -->
-        <!-- Repeated for each lesson -->
-        <div class="lesson">
-            <h3>General English (A2)</h3>
-            <p>Discussing Experiences</p>
-            <span>2023/09/23 at 10h30</span>
-            <button class="join-btn">Join</button>
-        </div>
-        <!-- Repeat lesson div for each upcoming lesson -->
+        <div class="info-container">
+            <h1>Upcoming lessons</h1>
+            <div class="sub-container-one">
+                <div class="text-container">
+                    <h2 class="exercise-level">General English (A2)</h2>
+                    <h4 class="exercise-details">Book 1, Step 2, Unit 3.1</h4>
+                    <h6 class="exercise-details" style="font-size: 13px;">2023/09/23 at 10h30</h6>
+                </div>
+                <button mat-raised-button class="continue-button" style="background-color: teal;">
+                    <mat-icon>play_arrow</mat-icon> 
+                    Join
+                </button>
+            </div>
+        </div>  
     </div>
 </div>

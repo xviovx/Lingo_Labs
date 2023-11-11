@@ -38,10 +38,10 @@ body {
   scrollbar-color: #61C2FF #f9f9f9;
 }
 
-::ng-deep .mat-progress-bar {
-  height: 10px;
+.content-container .mat-mdc-select-value {
+  color: black !important; /* Ensures the text color is black */
 }
 
-::ng-deep .mat-progress-bar-fill::after {
-  background-color: red;
-}
+/* If you have a unique class for the component that contains the mat-select,
+ use that class name instead of .content-container for more specificity */
+

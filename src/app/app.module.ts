@@ -27,6 +27,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 //components
 import { HomeComponent } from './pages/home/home.component';
@@ -43,6 +45,7 @@ import { TestWritingComponent } from './pages/test-writing/test-writing.componen
 import { SaveChatDialogComponent } from './subcomponents/save-chat-dialog/save-chat-dialog.component';
 import { FilterChatPipe } from './pipes/filter-chat.pipe';
 import { ConfirmDeleteComponent } from './subcomponents/confirm-delete/confirm-delete.component';
+import { BookLessonComponent } from './pages/book lessons/book-lesson.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,8 @@ import { ConfirmDeleteComponent } from './subcomponents/confirm-delete/confirm-d
     TestWritingComponent,
     SaveChatDialogComponent,
     FilterChatPipe,
-    ConfirmDeleteComponent
+    ConfirmDeleteComponent,
+    BookLessonComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +90,9 @@ import { ConfirmDeleteComponent } from './subcomponents/confirm-delete/confirm-d
     MatProgressSpinnerModule,
     FirebaseModule,
     MatStepperModule,
-    MatDialogModule
+    MatDialogModule,
+    MatNativeDateModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent] // the first initial component

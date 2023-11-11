@@ -1,0 +1,333 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-section h1,
+.exercises-section h1 {
+    color: black;
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+}
+
+.exercises-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    width: 98%;
+}
+
+.view-all a:hover{
+    opacity: 0.8;
+}
+
+.exercises-section h1 {
+    color: black;
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.view-all a {
+    color: black; /* Or whatever color you prefer */
+    /* Additional styling for the link */
+}
+
+.sub-container {
+    background-color: #0093FF;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    height: 18vh;
+    border-radius: 10px;
+    position: relative;
+}
+
+.sub-container-one {
+    background-color: #0093FF;
+    padding: 10px;
+    margin-bottom: 25px;
+    height: 18vh;
+    border-radius: 10px;
+    position: relative;
+    padding-left: 15px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    flex-direction: row; 
+}
+
+.sub-container-one-unstarted {
+    background-color: #cccccc; 
+    opacity: 0.5; 
+    padding: 10px;
+    margin-bottom: 10px;
+    height: 18vh;
+    border-radius: 10px;
+    position: relative;
+    padding-left: 15px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    flex-direction: row; 
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.continue-button {
+    color: #fff;
+    background-color: #2ad1b3;
+    margin-right: 5px;
+}
+
+.sub-container-one-unstarted h1, .sub-container-one h1 {
+    font-family: 'Roboto', '';
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    letter-spacing: 3px;
+    margin-bottom: 10px; 
+    margin-left: 10px;
+    margin-top: 12px;
+}
+
+.sub-container-one-unstarted h4, .sub-container-one h4 {
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: 400;
+    font-size: 11px;
+    color: white;
+    letter-spacing: 3px;
+    margin-top: 0; 
+    margin-left: 10px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 15px;
+    width: 50%;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-top: 10px;
+    font-family: 'Poppins';
+}
+
+.current-level,
+.lessons-completed,
+.learning-time {
+    font-size: 32px;
+    padding: 5px;
+    width: 100%;
+    font-family: 'Roboto', 'sans-serif';
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.exercises-section {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px; 
+    height: 68vh;
+}
+
+.scroll-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 1200px;
+    overflow-y: auto;
+}
+
+.right-section {
+    flex: 1;
+    background-color: #0093FF;
+    padding-left: 25px;
+    padding-top: 25px;
+    margin-left: 10px;
+    margin-top: 40px;
+    margin-right: 25px;
+    border-radius: 10px;
+}
+
+.right-section h1{
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: bold;
+    letter-spacing: 6px;
+    font-size: 28px;
+}
+
+.right-section h4{
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+.progress-container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-container-one {
+    width: 95%;
+    margin-top: 60px;
+    position: relative;
+}
+
+.progress-container label {
+    margin-bottom: 5px; 
+    font-size: 12px; 
+    color: white; 
+    text-align: center; 
+}
+
+.progress-labels {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    top: -40px;
+    font-size: 18px;
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+
+.left-label,
+.right-label {
+    position: relative;
+    z-index: 1;
+}
+
+mat-progress-bar {
+    width: 100%; 
+    height: 10px; 
+}
+
+.info-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer; 
+}
+
+.info-icon:hover {
+    opacity: 0.8;
+    cursor: pointer; 
+}
+
+.text-section {
+    float: left;
+    width: 50%;
+}
+
+.red-button {
+    background-color: rgba(255, 0, 0, 0.559) !important;
+}
+
+.progress-label {
+    width: 80px;
+    margin-right: 25px; 
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #fff; 
+    text-align: right;
+    margin-top: -15px;
+}
+
+.custom-progress-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; 
+}
+
+.custom-progress-bars {
+    margin-top: 20px;
+    width: 95%;
+}
+
+.custom-progress-bar {
+    position: relative;
+    border-radius: 0 65px 65px 0;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.progress-percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #fff;
+}
+
+.graph-history {
+    display: flex;
+    justify-content: space-between;
+    height: 450px;
+    padding: 10px;
+    position: relative;
+  
+    .day {
+      flex: 0 0 calc(100% / 7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      position: relative;
+  
+      .bar {
+        background-color: #00ff7f;
+        width: 60%;
+        border-radius: 10px;
+        position: absolute;
+        bottom: 20px; // Adjusted to lift the bar above the label
+        left: 50%;
+        transform: translateX(-50%);
+      }
+  
+      span {
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        bottom: 0; // Position label at the bottom of .day
+        left: 50%;
+        transform: translateX(-50%);
+      }
+  
+      label {
+        color: white;
+        position: absolute;
+        bottom: -20px; // Adjusted to move the day label below the bar
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap; // Prevents the label from wrapping
+      }
+    }
+}
+
+ 

@@ -48,6 +48,7 @@ import { ConfirmDeleteComponent } from './subcomponents/confirm-delete/confirm-d
 import { BookLessonComponent } from './pages/book lessons/book-lesson.component';
 import { EmailModalComponent } from './subcomponents/email-modal/email-modal.component';
 import { StatsComponent } from './pages/stats/stats.component';
+import { PastExercisesComponent } from './pages/past exercises/past-exercises.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { StatsComponent } from './pages/stats/stats.component';
     ConfirmDeleteComponent,
     BookLessonComponent,
     EmailModalComponent,
-    StatsComponent
+    StatsComponent,
+    PastExercisesComponent
   ],
   imports: [
     BrowserModule,

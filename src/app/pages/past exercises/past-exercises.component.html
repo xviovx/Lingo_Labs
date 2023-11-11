@@ -1,30 +1,82 @@
-<div class="exercise-container">
-    <div class="past-exercises">
-        <h2>Past exercises</h2>
-        <a href="#">View All</a>
-        
-        <!-- Repeated for each exercise -->
-        <div class="exercise">
-            <h3>General English (A2)</h3>
-            <p>Book 1, Step 2, Unit 3.1</p>
-            <div class="score">
-                <span>100%</span>
-                <button>Review</button>
+<div class="container">
+    <div class="left-section">
+        <div class="exercises-section">
+            <div class="exercises-header">
+                <h1>Exercises</h1>
+                <span class="view-all"><a href="#" style="text-decoration: none; color: teal; font-family: 'Poppins'">View All</a></span>
             </div>
-        </div>
-        <!-- Repeat exercise div for each past exercise -->
-    </div>
+            <div class="scroll-container">
+                <div class="sub-container-one">
+                    <div class="text-container">
+                        <h1 class="exercise-level">General English (A2)</h1>
+                        <h4 class="exercise-details">Book 1, Step 2, Unit 3.1</h4>
+                    </div>
+                    <div class="progress-container">
+                        <label>Exercise Completion</label>
+                        <mat-progress-bar
+                            mode="determinate"
+                            [value]="value">
+                        </mat-progress-bar>
+                        <label style="text-align: center;">100%</label>
+                    </div>
+                    <button mat-raised-button class="continue-button">
+                        <mat-icon>sync</mat-icon> 
+                        Review
+                    </button>
+                </div>       
+                
+                <div class="sub-container-one">
+                    <div class="text-container">
+                        <h1 class="exercise-level">General English (A2)</h1>
+                        <h4 class="exercise-details">Book 1, Step 2, Unit 3.1</h4>
+                    </div>
+                    <div class="progress-container">
+                        <label>Exercise Completion</label>
+                        <mat-progress-bar
+                            mode="determinate"
+                            [value]="value">
+                        </mat-progress-bar>
+                        <label style="text-align: center;">100%</label>
+                    </div>
+                    <button mat-raised-button class="continue-button">
+                        <mat-icon>sync</mat-icon> 
+                        Review
+                    </button>
+                </div> 
 
-    <div class="history">
-        <h2>History</h2>
-        <p>Activity over the past week</p>
-        
-        <div class="chart">
-            <!-- Repeated for each day -->
-            <div class="bar" style="height: 80%;">
-                <span>Mon</span>
+                <div class="sub-container-one">
+                    <div class="text-container">
+                        <h1 class="exercise-level">General English (A2)</h1>
+                        <h4 class="exercise-details">Book 1, Step 2, Unit 3.1</h4>
+                    </div>
+                    <div class="progress-container">
+                        <label>Exercise Completion</label>
+                        <mat-progress-bar
+                            mode="determinate"
+                            [value]="value">
+                        </mat-progress-bar>
+                        <label style="text-align: center;">100%</label>
+                    </div>
+                    <button mat-raised-button class="continue-button">
+                        <mat-icon>sync</mat-icon> 
+                        Review
+                    </button>
+                </div> 
+
             </div>
-            <!-- Repeat for each day of the week -->
         </div>
     </div>
+    <div class="right-section">
+        <h1>History</h1>
+        <h4>Activity over the past week</h4>
+        <div class="graph-history">
+            <div class="day" id="mon"><div class="bar" style="height: 70%;"><span>70%</span></div><label>Mon</label></div>
+            <div class="day" id="tue"><div class="bar" style="height: 80%;"><span>80%</span></div><label>Tue</label></div>
+            <div class="day" id="wed"><div class="bar" style="height: 65%;"><span>65%</span></div><label>Wed</label></div>
+            <div class="day" id="thu"><div class="bar" style="height: 85%;"><span>85%</span></div><label>Thur</label></div>
+            <div class="day" id="fri"><div class="bar" style="height: 90%;"><span>90%</span></div><label>Fri</label></div>
+            <div class="day" id="sat"><div class="bar" style="height: 60%;"><span>60%</span></div><label>Sat</label></div>
+            <div class="day" id="sun"><div class="bar" style="height: 75%;"><span>75%</span></div><label>Sun</label></div>
+          </div>                                        
+    </div>            
 </div>

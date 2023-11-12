@@ -3,6 +3,7 @@ import { Message } from "./message.model";
 export interface UserInfo {
   email: string;
   current_streak: number;
+  level_progress: number;
   exercises_complete: number;
   level: string;
   live_sessions: number;

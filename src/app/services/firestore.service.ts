@@ -20,5 +20,10 @@ export class FirestoreService {
       return this.firestore.collection('user_info').doc(userId).update(partialInfo);
     }
 
-    //TO-DO: add function to star responses
+    // In FirestoreService
+
+    updateLevelProgress(userId: string, newProgress: number) {
+      return this.firestore.collection('user_info').doc(userId).update({ level_progress: newProgress });
+    }
+
 }

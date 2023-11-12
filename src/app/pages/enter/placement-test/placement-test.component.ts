@@ -396,6 +396,7 @@ saveUserInfo(name: string, location: string, email: string, level: string) {
         current_streak: 0,
         exercises_complete: 0,
         level: level, 
+        level_progress: 0,
         live_sessions: 0,
         longest_streak: 0,
         messages_sent: 0,

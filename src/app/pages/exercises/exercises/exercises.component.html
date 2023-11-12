@@ -1,0 +1,43 @@
+<div class="container">
+    <!--<div class="bubble-top-right"></div>
+    <div class="bubble-bottom-left"></div>-->
+
+    <div *ngIf="isTestStarted" class="test-container">
+        <div class="question-container" *ngIf="!showReadingText && currentQuestionIndex >= 0">
+            <div class="question-texts">
+                <p style="color: black; font-size: 14px;">Question {{currentQuestionIndex}} of 5:</p>
+                <p style="color: black; padding-top: 15px; font-weight: 500; margin-bottom: 50px">{{questions[currentQuestionIndex].text}}</p>
+            </div>           
+        </div>
+
+        <div class="reading-container" *ngIf="showReadingText">
+            <p style="color: black; font-size: 14px; line-height: 30px;">The Internet, often likened to a global roadway for information, has its own history of remarkable development. Much like the Roman roads, which connected distant lands and facilitated trade and military movement, the Internet has bridged gaps across the world, enabling unprecedented communication and data exchange. It began as a simple network in the late 20th century, connecting a handful of computers, and has since evolved into an intricate web linking billions of devices. This digital infrastructure, which has reshaped industries, economies, and social interactions, continues to expand, echoing the Roman emphasis on connectivity and influence. Just as Roman roads were the backbone of their empire, the Internet is the foundation of our modern, interconnected world, continually paving new paths for technological advancement and global integration.</p>    
+        </div>
+            
+        <div *ngIf="currentQuestionIndex > 0">
+            <div *ngFor="let option of questions[currentQuestionIndex].options; let last = last" class="option-container">
+                <input type="radio" [value]="option" [(ngModel)]="selectedOption" name="optionGroup" id="{{option}}">
+                <label for="{{option}}"><span style="padding-left: 10px; color: black !important;">{{option}}</span></label>
+                <hr *ngIf="!last">
+            </div> 
+        </div>        
+        <button 
+  class="back-button" 
+  style="color: teal; background-color: white; border: 1px solid Teal" 
+  (click)="goBack()"
+  *ngIf="currentQuestionIndex > 0">Back
+</button>
+
+        <button (click)="submitAnswer(selectedOption)" class="submit-button" style="color: white;">Next</button>              
+    </div>        
+
+    <div *ngIf="isTestFinished" class="test-finished">
+        <p style="margin-top: 40px; margin-bottom: 30px; font-size: 28px;">Well done, you scored:</p>
+        <p style="margin-top: 30px; margin-bottom: 5px; font-size: 64px; font-weight: 800;">{{score}}/5</p>
+        <h1 style="margin-top: 10px; font-size: 72px;"></h1>
+        <div class="post-test-buttons-con" style="margin-top: 40px">
+            <button mat-raised-button class="test-results" (click)="restartTest();">Retry</button>   
+            <button mat-raised-button class="to-home" (click)="navigateToHomeAndUpdateProgress();">Home</button>  
+        </div>         
+    </div>  
+</div>

@@ -288,7 +288,7 @@ mat-progress-bar {
 .graph-history {
     display: flex;
     justify-content: space-between;
-    height: 450px;
+    height: 430px;
     padding: 10px;
     position: relative;
   
@@ -305,7 +305,7 @@ mat-progress-bar {
         width: 60%;
         border-radius: 10px;
         position: absolute;
-        bottom: 20px; // Adjusted to lift the bar above the label
+        bottom: 20px; 
         left: 50%;
         transform: translateX(-50%);
       }
@@ -314,7 +314,7 @@ mat-progress-bar {
         color: white;
         font-weight: bold;
         position: absolute;
-        bottom: 0; // Position label at the bottom of .day
+        bottom: 0; 
         left: 50%;
         transform: translateX(-50%);
       }
@@ -322,10 +322,10 @@ mat-progress-bar {
       label {
         color: white;
         position: absolute;
-        bottom: -20px; // Adjusted to move the day label below the bar
+        bottom: -20px; 
         left: 50%;
         transform: translateX(-50%);
-        white-space: nowrap; // Prevents the label from wrapping
+        white-space: nowrap;
       }
     }
 }

@@ -49,6 +49,7 @@ import { BookLessonComponent } from './pages/book lessons/book-lesson.component'
 import { EmailModalComponent } from './subcomponents/email-modal/email-modal.component';
 import { StatsComponent } from './pages/stats/stats.component';
 import { PastExercisesComponent } from './pages/past exercises/past-exercises.component';
+import { ExercisesComponent } from './pages/exercises/exercises/exercises.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { PastExercisesComponent } from './pages/past exercises/past-exercises.co
     BookLessonComponent,
     EmailModalComponent,
     StatsComponent,
-    PastExercisesComponent
+    PastExercisesComponent,
+    ExercisesComponent
   ],
   imports: [
     BrowserModule,

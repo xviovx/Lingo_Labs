@@ -13,6 +13,7 @@ import { RegisterWizardComponent } from './pages/enter/register/register-wizard/
 import { NotFoundComponent } from './pages/not-found/not-found/not-found.component';
 import { PlacementTestComponent } from './pages/enter/placement-test/placement-test.component';
 import { TestWritingComponent } from './pages/test-writing/test-writing.component';
+import { ExercisesComponent } from './pages/exercises/exercises/exercises.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
       {
         path: "test-writing",
         component: TestWritingComponent
+      },
+      {
+        path: "exercise",
+        component: ExercisesComponent
       }
     ]
   },

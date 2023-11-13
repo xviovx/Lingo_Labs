@@ -31,17 +31,16 @@
 
 ## Table of Contents
 
-* [About](#about)
-  * [Description](#description)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Installation](#installation)
-* [Features and Functionality](#features-and-functionality)
-* [Concept Process](#concept-process)
-* [Future Features](#future-features)
-* [Contributing](#contributing)
-* [Authors & Contact](#authors--contact)
-* [Acknowledgements](#acknowledgements)
+- [Description](#description)
+- [Built With](#built-with)
+- [Installation](#installation)
+- [Features and Functionality](#features-and-functionality)
+- [Authors](#authors)
+- [Acknowledgements](#acknowledgements)
+
+<br>
+
+![Header image](./src/assets/README-header.png)
 
 ### Description
 
@@ -54,10 +53,50 @@ Lingo Labs aims to make language learning more accessible, engaging, and effecti
 * [Angular Material](https://material.angular.io/)
 * [RxJS](https://rxjs.dev/) 
 
+### Installation
+
+Follow these steps to get this project running on your machine:
+
+1. **Clone the Repository** 
+
+    Run the following command in your terminal to clone the project:
+    ```sh
+    git clone https://github.com/xviovx/Lingo_Labs.git
+    ```
+
+2. **Open the Project** 
+
+    Open VS Code, select `File | Open...` from the menu, navigate to the cloned directory, and press `Open`.
+
+3. **Install Dependencies** 
+
+    ```sh
+    npm install
+    ```
+
+4. **Set Up Firebase** 
+
+    To allow the app to securely connect to your Firebase project, a configuration file must be downloaded and added to your project. Follow the instructions provided in the [Firebase Console](https://console.firebase.google.com/).
+
+5. **Additional dependencies** 
+
+    Install any additional dependencies listed in the package.json file.
+
+5. **Run the server for the Chatbot** 
+
+    Run the Flask server from: https://github.com/xviovx/LL_server
+  
+
 <!-- FEATURES AND FUNCTIONALITY-->
 ## Features and Functionality
 
-![Wireframes](readMeAssets/wireframes.png)
+![Header image](./src/assets/README-signUp.png)
+
+![Header image](./src/assets/README-testWriting.png)
+
+![Header image](./src/assets/README-languageExercises.png)
+
+![Header image](./src/assets/README-chatWithPolly.png)
 
 <!-- AUTHORS -->
 ## Authors

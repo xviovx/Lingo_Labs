@@ -15,7 +15,7 @@
 
 <p align="center">
     <a href="https://github.com/xviovx/Nova">
-        <img src="../Lingo_Labs/src/assets/LogoWithText.png" alt="Logo" width="230">
+        <img src="./src/assets/LogoWithText.png" alt="Logo" width="230">
     </a>
 </p>
   <p align="center">

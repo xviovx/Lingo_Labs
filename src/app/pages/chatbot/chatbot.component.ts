@@ -366,6 +366,7 @@ export class ChatbotComponent implements OnInit, AfterViewInit {
     localStorage.setItem('userMessages', JSON.stringify(this.userMessages));
   
     this.cdRef.detectChanges();
+    this.updateStarColor();
     this.scrollToBottom();
   }
 

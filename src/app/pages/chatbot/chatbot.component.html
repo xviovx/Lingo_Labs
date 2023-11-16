@@ -8,7 +8,7 @@
         <span style="color: black; margin-left: 10px; font-weight: bold;">Formal</span>
     </label>
     <label class="custom-radio-button">
-      <input type="radio" name="options" value="1" [checked]="mode === 'playful'" (change)="handleModeChange($event)">
+      <input type="radio" name="options" [checked]="mode === 'playful'" (change)="handleModeChange($event)">
       <div class="outer-circle">
             <div class="inner-circle"></div>
         </div>

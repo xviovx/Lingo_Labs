@@ -62,7 +62,7 @@ h4 {
         font-family: 'Poppins';
       }
       .stat-value {
-        font-size: 38px;
+        font-size: 24px;
         font-weight: bold;
         font-family: 'Roboto';
       }
@@ -146,14 +146,14 @@ h4 {
 
 .pie-chart {
   position: relative;
-  width: 460px;
-  height: 460px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   background: conic-gradient(
-    #FFAD34 0% 33.3%,
-    #4CAF50 33.3% 66.6%, 
-    #9C27B0 66.6% 
-  );
+    #FFAD34 0% 25%,
+    #4CAF50 25% 50%,  
+    #9C27B0 50%       
+);
   margin-top: 30px;
 }
 
@@ -168,7 +168,7 @@ h4 {
   transform: rotate(0deg);
   .label {
     position: absolute;
-    transform: rotate(60deg) translate(200px) rotate(-60deg);
+    transform: rotate(60deg) translate(250px) translateY(-50px) rotate(-60deg);
   }
 }
 
@@ -176,7 +176,7 @@ h4 {
   transform: rotate(0deg);
   .label {
     position: absolute;
-    transform: rotate(60deg) translate(370px) rotate(-60deg);
+    transform: rotate(60deg) translate(100px) translateX(25px) translateY(30px) rotate(-60deg);
   }
 }
 
@@ -184,7 +184,7 @@ h4 {
   transform: rotate(0deg);
   .label {
     position: absolute;
-    transform: rotate(60deg) translateX(300px) translateY(-170px) rotate(-60deg);
+    transform: rotate(60deg) translate(100px) translateX(50px) translateY(-110px) rotate(-60deg);
   }
 }
 

@@ -125,6 +125,8 @@ testWriting() {
             return 'Chat with Polly';
         case '/test-writing':
             return 'Test your writing level!'
+        case '/exercise':
+              return 'Exercise in progress.'
         case '/**':
             return "Page not found!";
         default:
@@ -152,7 +154,8 @@ getSubtitle(): string {
       case '/test-writing':
           // Return a test-writing-specific subtitle
           return 'Find out your English proficiency level.';
-      // ... other cases as needed ...
+      case '/exercise':
+          return 'Take your time.'
       default:
           return '';
   }

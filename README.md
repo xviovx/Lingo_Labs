@@ -21,7 +21,7 @@
   <p align="center">
     An English-learning portal.<br>
    <br />
-   <a href="https://youtu.be/yod-qX49ZTs" align="center" align="center">View Demo</a>
+   <a href="https://youtu.be/eHNFI2MwSTc" align="center" align="center">View Demo</a>
     ·
     <a href="https://github.com/xviovx/Lingo_Labs/issues" align="center">Report Bug</a>
     ·
